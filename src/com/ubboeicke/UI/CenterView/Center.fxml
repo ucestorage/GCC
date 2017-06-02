@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TabPane prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ubboeicke.CenterController">
+<fx:root type="TabPane"  prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" >
     <tabs>
         <Tab fx:id="overviewTab" closable="false" text="Overview">
             <content>
@@ -1336,7 +1336,7 @@
                                                 </AnchorPane>
                                                 <AnchorPane GridPane.columnIndex="1">
                                                     <children>
-                                                        <TextField fx:id="playerNameTextField" onKeyReleased="#write" prefHeight="86.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                        <TextField fx:id="playerNameTextField"  prefHeight="86.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                     </children>
                                                 </AnchorPane>
                                             </children>
@@ -1576,4 +1576,4 @@
             </content>
         </Tab>
     </tabs>
-</TabPane>
+</fx:root>

@@ -1,4 +1,4 @@
-package com.ubboeicke;
+package com.ubboeicke.ZZZ;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -9,19 +9,19 @@ import javafx.scene.Parent;
 public class MainController{
     @FXML private Parent embeddedCustomMenu;
     @FXML private MenuController embeddedCustomMenuController;
-    @FXML
-    private  TopController topc;
-    @FXML
-    private  CenterController centerc;
+
+
 
 public MainController(){
+
+
     test();
 }
 
 public void test() {
     System.out.println(embeddedCustomMenuController);
     System.out.println(embeddedCustomMenu);
-    embeddedCustomMenuController.save();
+embeddedCustomMenuController.save("test");
 
 }
 

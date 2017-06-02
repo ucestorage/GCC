@@ -1,4 +1,4 @@
-package com.ubboeicke;
+package com.ubboeicke.ZZZ;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,19 +9,14 @@ import javafx.scene.control.TextField;
  */
 public class CenterController {
 
-    public Label playerNameLabel;
+
     @FXML
     private TextField playerNameTextField;
     @FXML
     private TextField playerLevelTextField;
 
-    public void write(){
-    playerNameLabel.setText(playerLevelTextField.getText());
 
-    }
-    public Label getPlayerNameLabel(){
-        return playerNameLabel;
-    }
+
 
     public TextField getPlayerNameTextField() {
         return playerNameTextField;

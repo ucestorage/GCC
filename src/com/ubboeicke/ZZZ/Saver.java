@@ -1,4 +1,4 @@
-package com.ubboeicke;
+package com.ubboeicke.ZZZ;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
