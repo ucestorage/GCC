@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane  xmlns="http://javafx.com/javafx/8.0.111"
+             fx:controller="com.ubboeicke.MainController"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <VBox>
+            <fx:include fx:id="embeddedCustomMenu" source="CustomMenu.fxml"/>
+            <fx:include fx:id="topgrid" source="Top.fxml"/>
+        </VBox>
+    </top>
+    <center>
+        <fx:include fx:id="center" source="Center.fxml"/>
+    </center>
+</BorderPane>
+
