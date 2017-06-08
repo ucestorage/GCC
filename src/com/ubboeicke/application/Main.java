@@ -5,15 +5,26 @@ import com.ubboeicke.UI.TopView.TopViewController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        MainModel mainModel = new MainModel();
+        LocalObjectDB localObjectDB = new LocalObjectDB();
+        SaveAndLoadHandler saveAndLoadHandler = new SaveAndLoadHandler(localObjectDB);
+        MainModel mainModel = new MainModel(saveAndLoadHandler);
         CenterViewController centerViewController = new CenterViewController();
         TopViewController topViewController = new TopViewController();
-        Scene scene = new Scene(new MainController(mainModel, centerViewController,topViewController ));
+        MainController mainController = new MainController(mainModel, centerViewController, topViewController);
+        Scene scene = new Scene(mainController);
+
+        OnCloseRequestEventHandler closeRequestEventHandler = new OnCloseRequestEventHandler(primaryStage,mainController );
+
+        primaryStage.setOnCloseRequest(closeRequestEventHandler.confirm);
+
+
+
 
 
 
@@ -22,6 +33,13 @@ public class Main extends Application {
         primaryStage.setWidth(1920);
         primaryStage.setHeight(1080);
         primaryStage.show();
+        
+        if(mainModel.load().get(0).equals(GlobalConstants.ISSAVED)){
+            mainController.load();
+
+        }
+        //TODO else Start dialogue general information
+
 
     }
 

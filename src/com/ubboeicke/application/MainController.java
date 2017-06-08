@@ -4,9 +4,7 @@ import com.ubboeicke.UI.CenterView.CenterViewController;
 import com.ubboeicke.UI.TopView.TopViewController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
@@ -58,12 +56,14 @@ public class MainController extends BorderPane {
         System.exit(0);
     }
     public void save() {
-
+        mMainModel.save(GlobalConstants.ISSAVED);
         mMainModel.save(mCenterViewController.getPlayerNameTextField().getText());
+           Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved " + mMainModel.getSaved().size() + " entries.", ButtonType.CLOSE);
+          alert.showAndWait();
     }
     public void load(){
-        mCenterViewController.setPlayerNameTextFieldString(mMainModel.load().get(0));
-        mTopViewController.setPlayerNameLabel(mMainModel.load().get(0));
+        mCenterViewController.setPlayerNameTextFieldString(mMainModel.load().get(1));
+        mTopViewController.setPlayerNameLabel(mMainModel.load().get(1));
 
 
 

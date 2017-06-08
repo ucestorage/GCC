@@ -14,52 +14,25 @@ import java.util.List;
  * Created by Ubbo Eicke on 02.06.2017.
  */
 public class MainModel {
-    private List<String> mStringList = new ArrayList<>();
 
-    String FILENAME = "LocalObjectDB";
-    LocalObjectDB lodb = new LocalObjectDB();
+    private SaveAndLoadHandler mSaveAndLoadHandler;
+    private List<String> saved;
 
-    public MainModel() {
 
-    }
+    public MainModel(SaveAndLoadHandler saveAndLoadHandler) {
 
-    public void save(String item) {
-        mStringList.add(item);
-        System.out.println(item);
-        lodb.setList(mStringList);
-        try {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
-                oos.writeObject(lodb);
-            }
-            lodb = null;
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved " + mStringList.size() + " entries.", ButtonType.CLOSE);
-            alert.showAndWait();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public List<String> getStringList() {
-        return mStringList;
-    }
-
-    public void addStringToList(String string) {
-        mStringList.add(string);
-    }
-
-    public List<String> load() {
-        try {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
-                lodb = (LocalObjectDB) ois.readObject();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return lodb.getList();
+        this.mSaveAndLoadHandler = saveAndLoadHandler;
+        this.saved = saveAndLoadHandler.getStringList();
 
     }
+    public void save(String item){
+        mSaveAndLoadHandler.save(item);
+    }
+    public List<String> load(){
+        return mSaveAndLoadHandler.load();
+    }
 
-
-
+    public List<String> getSaved() {
+        return saved;
+    }
 }

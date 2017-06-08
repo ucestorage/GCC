@@ -14,6 +14,15 @@ public class LocalObjectDB implements Serializable{
     private static final long serialVersionUID = 1L;
     private List<String> list;
     private Map<String, String> map;
+    private static Boolean SAVEGAME_AVAILABLE;
+
+    public Boolean getSAVEGAME_AVAILABLE() {
+        return SAVEGAME_AVAILABLE;
+    }
+
+    public void setSAVEGAME_AVAILABLE(Boolean SAVEGAME_AVAILABLE) {
+        this.SAVEGAME_AVAILABLE = SAVEGAME_AVAILABLE;
+    }
 
     public List<String> getList() {
         return list;
