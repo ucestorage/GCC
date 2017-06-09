@@ -56,14 +56,21 @@ public class MainController extends BorderPane {
         System.exit(0);
     }
     public void save() {
-        mMainModel.save(GlobalConstants.ISSAVED);
-        mMainModel.save(mCenterViewController.getPlayerNameTextField().getText());
+
+        mMainModel.save(mTopViewController.getPlayerNameLabel().getText());
+        mMainModel.save(mTopViewController.getPlayerLevelLabel().getText());
+        mMainModel.save(mTopViewController.getGuildLabel().getText());
+        mMainModel.save(mTopViewController.getStartDateLabel().getText());
+        mMainModel.save(mTopViewController.getWaveCountTextField().getText());
            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved " + mMainModel.getSaved().size() + " entries.", ButtonType.CLOSE);
           alert.showAndWait();
     }
     public void load(){
-        mCenterViewController.setPlayerNameTextFieldString(mMainModel.load().get(1));
-        mTopViewController.setPlayerNameLabel(mMainModel.load().get(1));
+        mTopViewController.setPlayerNameLabel(mMainModel.load().get(0));
+        mTopViewController.setPlayerLevelLabel(mMainModel.load().get(1));
+        mTopViewController.setGuildLabel(mMainModel.load().get(2));
+        mTopViewController.setstartDateLabel(mMainModel.load().get(3));
+        mTopViewController.setWaveCountTextField(mMainModel.load().get(4));
 
 
 
@@ -75,5 +82,12 @@ public class MainController extends BorderPane {
 
         });
 
+    }
+    public void writerLabel(String string, Label label){
+        label.setText(string);
+
+    }
+    public void writerTextField(String string, TextField textField) {
+        textField.setText(string);
     }
 }

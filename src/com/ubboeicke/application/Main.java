@@ -33,12 +33,12 @@ public class Main extends Application {
         primaryStage.setWidth(1920);
         primaryStage.setHeight(1080);
         primaryStage.show();
-        
-        if(mainModel.load().get(0).equals(GlobalConstants.ISSAVED)){
-            mainController.load();
 
-        }
-        //TODO else Start dialogue general information
+
+            WelcomeDialogue welcomeDialogue = new WelcomeDialogue(mainController,topViewController);
+            welcomeDialogue.welcome();
+
+
 
 
     }

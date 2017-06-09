@@ -38,7 +38,7 @@
                     </AnchorPane>
                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                         <children>
-                            <TextField layoutX="11.0" layoutY="2.0" prefHeight="30.0" prefWidth="171.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <TextField fx:id="waveCountTextField" layoutX="11.0" layoutY="2.0" prefHeight="30.0" prefWidth="171.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </children>
                     </AnchorPane>
                     <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="2">
@@ -231,7 +231,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="eColoLabel" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -241,7 +241,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="101.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="/150" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label prefHeight="30.0" prefWidth="107.0" text="/ 204" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                 </children>
@@ -266,7 +266,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="twLabel" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -291,7 +291,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="owLabel" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -427,7 +427,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="hColoLabel" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -437,7 +437,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="101.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="/150" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label prefHeight="30.0" prefWidth="107.0" text="/ 187" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                 </children>
@@ -458,7 +458,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="oColoLabel" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -468,7 +468,7 @@
                                     </AnchorPane>
                                     <AnchorPane layoutX="101.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                                         <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="/150" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label prefHeight="30.0" prefWidth="107.0" text="/ 101" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                 </children>
