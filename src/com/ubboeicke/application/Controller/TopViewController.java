@@ -1,4 +1,4 @@
-package com.ubboeicke.UI.TopView;
+package com.ubboeicke.application.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +24,7 @@ public class TopViewController {
     @FXML private Label owLabel;
 
     public void initialize(VBox vBox)throws IOException{
-        FXMLLoader loader = new FXMLLoader(TopViewController.class.getResource("TopView.fxml"));
+        FXMLLoader loader = new FXMLLoader(TopViewController.class.getResource("../View/TopView.fxml"));
         loader.setRoot(vBox);
         loader.setController(this);
         loader.load();
@@ -70,9 +70,7 @@ public class TopViewController {
     public Label getOwLabel() {
         return owLabel;
     }
-    public void seteColoLabel(String eColoLabel) {
-        this.eColoLabel.setText(eColoLabel);
-    }
+    public void seteColoLabel(String eColoLabel) { this.eColoLabel.setText(eColoLabel); }
     public void sethColoLabel(String hColoLabel) {
         this.hColoLabel.setText(hColoLabel);
     }

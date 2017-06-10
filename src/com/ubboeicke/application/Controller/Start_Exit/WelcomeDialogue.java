@@ -1,6 +1,7 @@
-package com.ubboeicke.application;
+package com.ubboeicke.application.Controller.Start_Exit;
 
-import com.ubboeicke.UI.TopView.TopViewController;
+import com.ubboeicke.application.Controller.TopViewController;
+import com.ubboeicke.application.Controller.MainController;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -15,7 +16,7 @@ public class WelcomeDialogue {
     TopViewController mTopViewController;
     ButtonType loadBtn = new ButtonType("Load my Save!", ButtonBar.ButtonData.OK_DONE);
     ButtonType fsBtn = new ButtonType("First Start!", ButtonBar.ButtonData.CANCEL_CLOSE);
-    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Welcome to Grow Castle Calculator!\nBrought to you by bOngshotsGG.\nIf this is your first start, click the corresponding button, otherwise load your save.",loadBtn,fsBtn);
+    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Brought to you by bOngshotsGG.\nIf this is your first start,\nclick the corresponding button,\notherwise load your save.",loadBtn,fsBtn);
 
     public WelcomeDialogue (MainController mainController, TopViewController topViewController){
         this.mMainController = mainController;
@@ -23,6 +24,8 @@ public class WelcomeDialogue {
 
     }
     public void welcome() {
+        alert.setTitle("Start_Exit!");
+        alert.setHeaderText("Start_Exit to Grow Castle Calculator!");
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == loadBtn) {

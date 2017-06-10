@@ -1,7 +1,6 @@
-package com.ubboeicke.application;
+package com.ubboeicke.application.Model.Save_Load;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
+import com.ubboeicke.application.Model.GlobalConstants.GlobalConstants;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

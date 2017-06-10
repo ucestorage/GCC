@@ -1,8 +1,8 @@
-package com.ubboeicke.application;
+package com.ubboeicke.application.Controller.Start_Exit;
 
+import com.ubboeicke.application.Controller.MainController;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
@@ -20,7 +20,7 @@ public class OnCloseRequestEventHandler {
     ButtonType saveBtn = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
     ButtonType exitBtn = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
 
-    Alert exitAlert = new Alert(Alert.AlertType.WARNING, "Do you want to save before exiting?",saveBtn, exitBtn);
+    Alert exitAlert = new Alert(Alert.AlertType.WARNING, "",saveBtn, exitBtn);
 
     public OnCloseRequestEventHandler (Stage stage, MainController mainController){
         this.mStage = stage;
@@ -30,7 +30,7 @@ public class OnCloseRequestEventHandler {
     }
 
     public EventHandler<WindowEvent> confirm = event -> {
-
+        exitAlert.setTitle("Warning!");
       exitAlert.setHeaderText("Please Save before exiting.");
       exitAlert.initModality(Modality.APPLICATION_MODAL);
       exitAlert.initOwner(mStage);
