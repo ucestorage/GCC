@@ -59,6 +59,9 @@ public class MainController extends BorderPane {
     }
 
     public void save() {
+        for(String s :mCenterViewController.getItemStrings()){
+            mMainModel.saveItems(s);
+        }
 
 
         mMainModel.save(mTopViewController.getPlayerNameLabel().getText());
@@ -71,10 +74,10 @@ public class MainController extends BorderPane {
         mMainModel.save(mTopViewController.getoColoLabel().getText());
         mMainModel.save(mTopViewController.getTwLabel().getText());
         mMainModel.save(mTopViewController.getOwLabel().getText());
-        mMainModel.save(mCenterViewController.getItemStrings().get(0));
-        mMainModel.save(mCenterViewController.getItemStrings().get(1));
 
-           Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved " + mMainModel.getSaved().size() + " entries.", ButtonType.CLOSE);
+
+           Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved " + mMainModel.getSaved().size() + " textentries.\n" +
+                   "Saved "+mMainModel.getItemssaved().size()+" items.", ButtonType.CLOSE);
           alert.showAndWait();
 
     }
@@ -109,9 +112,12 @@ public class MainController extends BorderPane {
     public void load(){
         mItemObservableList = mCenterViewController.getItemObservableList();
         mItemTableView = mCenterViewController.getItemTableView();
+        for (String s : mMainModel.loadItems()){
+            mItemObservableList.add(splitItem(s));
 
-        mItemObservableList.add(splitItem(mMainModel.load().get(10)));
-        mItemObservableList.add(splitItem(mMainModel.load().get(11)));
+        }
+
+
         //TODO improve loading
         mTopViewController.setPlayerNameLabel(mMainModel.load().get(0));
         mTopViewController.setPlayerLevelLabel(mMainModel.load().get(1));

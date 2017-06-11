@@ -8,7 +8,8 @@ public class GlobalConstants {
 
     }
     public static boolean SAVEGAME_AVAILABLE;
-    public static final String FILENAME = "LocalObjectDB";
+    public static final String FILENAME_STRING = "LocalObjectDB";
+    public static final String FILENAME_ITEM = "LocalItemDB";
     public static final String ITEM_QUALITY_B = "B";
     public static final String ITEM_QUALITY_A = "A";
     public static final String ITEM_QUALITY_S = "S";
