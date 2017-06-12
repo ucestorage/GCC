@@ -1,9 +1,13 @@
 package com.ubboeicke.application.Controller;
 
-import com.ubboeicke.application.Model.ItemCreation.Item;
+import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
+import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponentParser;
+import com.ubboeicke.application.Model.Gamedata.ItemCreation.ItemParser;
+import com.ubboeicke.application.Model.Gamedata.ItemCreation.Item;
 import com.ubboeicke.application.Model.MainModel;
 
-import javafx.collections.ObservableArray;
+import com.ubboeicke.application.Model.Save_Load.SaveAndLoadHandler;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +32,9 @@ public class MainController extends BorderPane {
     private final CenterViewController mCenterViewController;
     private ObservableList<Item> mItemObservableList;
     private  TableView<Item> mItemTableView;
+    private ItemParser mItemParser;
+    private SaveAndLoadHandler mSaveAndLoadHandler;
+    private CastleComponentParser mCastleComponentParser;
 
 
 
@@ -36,16 +43,15 @@ public class MainController extends BorderPane {
         this.mCenterViewController = centerViewController;
         this.mTopViewController = topViewController;
         this.mMainModel = mainModel;
-
+        this.mSaveAndLoadHandler = new SaveAndLoadHandler(mMainModel,mCenterViewController,mTopViewController);
         FXMLLoader loader = new FXMLLoader(MainController.class.getResource("../View/MainView.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         loader.load();
        centerViewController.initialize(getCenterContainer());
        mTopViewController.initialize(getContentHolder());
-
-
-        writeValues(centerViewController.getPlayerNameTextField(),mTopViewController.getPlayerNameLabel());
+        mItemParser = new ItemParser(mCenterViewController);
+        mCastleComponentParser = new CastleComponentParser(mCenterViewController);
 
 
     }
@@ -59,63 +65,26 @@ public class MainController extends BorderPane {
     }
 
     public void save() {
-        for(String s :mCenterViewController.getItemStrings()){
-            mMainModel.saveItems(s);
-        }
+       mSaveAndLoadHandler.saveGeneralInformation();
+       mSaveAndLoadHandler.saveItems();
+       mSaveAndLoadHandler.saveCastleComponents();
+      // mSaveAndLoadHandler.showConfirmation();
 
-
-        mMainModel.save(mTopViewController.getPlayerNameLabel().getText());
-        mMainModel.save(mTopViewController.getPlayerLevelLabel().getText());
-        mMainModel.save(mTopViewController.getGuildLabel().getText());
-        mMainModel.save(mTopViewController.getStartDateLabel().getText());
-        mMainModel.save(mTopViewController.getWaveCountTextField().getText());
-        mMainModel.save(mTopViewController.geteColoLabel().getText());
-        mMainModel.save(mTopViewController.gethColoLabel().getText());
-        mMainModel.save(mTopViewController.getoColoLabel().getText());
-        mMainModel.save(mTopViewController.getTwLabel().getText());
-        mMainModel.save(mTopViewController.getOwLabel().getText());
-
-
-           Alert alert = new Alert(Alert.AlertType.INFORMATION, "Saved " + mMainModel.getSaved().size() + " textentries.\n" +
-                   "Saved "+mMainModel.getItemssaved().size()+" items.", ButtonType.CLOSE);
-          alert.showAndWait();
-
-    }
-    public Item splitItem(String string){
-        String mString = string;
-        String[]  parts = mString.split(",");
-        String p1 = parts[0];
-        String p2 = parts[1];
-        String p3 = parts[2];
-        Integer p4 = Integer.parseInt(parts[3]);
-        String p5 = parts[4];
-        Double p6 = Double.parseDouble(parts[5]);
-        String p7 = parts[6];
-        Double p8;
-        Double p10;
-        if (!parts[7].equals("null"))
-        {
-            p8 = Double.parseDouble(parts[7]);
-        } else {
-            p8 = null;
-        }
-        if (!parts[9].equals("null"))
-        {
-            p10 = Double.parseDouble(parts[9]);
-        } else {
-            p10 = null;
-        }
-
-        String p9 = parts[8];
-        return new Item(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10);
     }
     public void load(){
         mItemObservableList = mCenterViewController.getItemObservableList();
         mItemTableView = mCenterViewController.getItemTableView();
         for (String s : mMainModel.loadItems()){
-            mItemObservableList.add(splitItem(s));
+            mItemObservableList.add(mItemParser.splitItem(s));
 
         }
+        mItemTableView.setItems(mItemObservableList);
+        TableView<CastleComponent> tvcc = mCenterViewController.getCcTableView();
+        ObservableList<CastleComponent> obsv = FXCollections.observableArrayList();
+        for (String s : mMainModel.loadCC()){
+            obsv.add(mCastleComponentParser.splitCC(s));
+        }tvcc.setItems(obsv);
+
 
 
         //TODO improve loading
@@ -130,7 +99,7 @@ public class MainController extends BorderPane {
         mTopViewController.setTwLabel(mMainModel.load().get(8));
         mTopViewController.setOwLabel(mMainModel.load().get(9));
 
-        mItemTableView.setItems(mItemObservableList);
+
 
 
 

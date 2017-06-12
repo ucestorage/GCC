@@ -6,9 +6,10 @@ import com.ubboeicke.application.Controller.Start_Exit.WelcomeDialogue;
 import com.ubboeicke.application.Controller.CenterViewController;
 import com.ubboeicke.application.Controller.TopViewController;
 import com.ubboeicke.application.Model.MainModel;
+import com.ubboeicke.application.Model.Save_Load.LocalCCDB;
 import com.ubboeicke.application.Model.Save_Load.LocalItemDB;
 import com.ubboeicke.application.Model.Save_Load.LocalObjectDB;
-import com.ubboeicke.application.Model.Save_Load.SaveAndLoadHandler;
+import com.ubboeicke.application.Model.Save_Load.SaveAndLoadController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -17,10 +18,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        LocalObjectDB localObjectDB = new LocalObjectDB();
-        LocalItemDB localItemDB = new LocalItemDB();
-        SaveAndLoadHandler saveAndLoadHandler = new SaveAndLoadHandler(localObjectDB,localItemDB);
-        MainModel mainModel = new MainModel(saveAndLoadHandler);
+        SaveAndLoadController saveAndLoadController = new SaveAndLoadController( new LocalObjectDB(), new LocalItemDB(), new LocalCCDB());
+        MainModel mainModel = new MainModel(saveAndLoadController);
         CenterViewController centerViewController = new CenterViewController();
         TopViewController topViewController = new TopViewController();
         MainController mainController = new MainController(mainModel, centerViewController, topViewController);

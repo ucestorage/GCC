@@ -6,7 +6,6 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" type="TabPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" type="TabPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
     <tabs>
         <Tab fx:id="overviewTab" closable="false" text="Overview">
             <content>
@@ -889,240 +888,19 @@
                             </columnConstraints>
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
-                            <children>
-                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                                    <children>
-                                        <GridPane layoutX="338.0" layoutY="80.0" prefHeight="284.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Death Worm" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                    <children>
-                                                        <ComboBox prefHeight="57.0" prefWidth="190.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="200.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-                                                    <children>
-                                                        <GridPane prefHeight="90.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                            <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            </columnConstraints>
-                                                            <rowConstraints>
-                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            </rowConstraints>
-                                                            <children>
-                                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                                    <children>
-                                                                        <TextField layoutX="-27.0" layoutY="2.0" prefHeight="54.0" prefWidth="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                                    <children>
-                                                                        <TextField layoutX="-27.0" layoutY="2.0" prefHeight="54.0" prefWidth="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                            </children>
-                                                        </GridPane>
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="644.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-                                                    <children>
-                                                        <ComboBox prefHeight="57.0" prefWidth="190.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                            </children>
-                                        </GridPane>
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane layoutX="960.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0">
-                                    <children>
-                                        <GridPane layoutX="338.0" layoutY="80.0" prefHeight="284.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Tower" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="200.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-                                                    <children>
-                                                        <GridPane prefHeight="90.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                            <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            </columnConstraints>
-                                                            <rowConstraints>
-                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            </rowConstraints>
-                                                            <children>
-                                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                                    <children>
-                                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Level" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                                    <children>
-                                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Prestige Level" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                            </children>
-                                                        </GridPane>
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Promotion" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="644.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Attack Mode" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                            </children>
-                                        </GridPane>
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane layoutX="10.0" layoutY="64.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                    <children>
-                                        <GridPane layoutX="338.0" layoutY="80.0" prefHeight="284.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Cannon Castle" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="200.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                    <children>
-                                                        <GridPane prefHeight="90.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                            <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            </columnConstraints>
-                                                            <rowConstraints>
-                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            </rowConstraints>
-                                                            <children>
-                                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                                    <children>
-                                                                        <TextField layoutX="-27.0" layoutY="2.0" prefHeight="54.0" prefWidth="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                                    <children>
-                                                                        <TextField layoutX="-27.0" layoutY="2.0" prefHeight="54.0" prefWidth="122.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                            </children>
-                                                        </GridPane>
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="644.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-                                                    <children>
-                                                        <ComboBox prefHeight="57.0" prefWidth="190.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                            </children>
-                                        </GridPane>
-                                    </children>
-                                </AnchorPane>
-                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                    <children>
-                                        <GridPane layoutX="338.0" layoutY="80.0" prefHeight="284.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <children>
-                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Castle Component" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="200.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                    <children>
-                                                        <GridPane prefHeight="90.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                            <columnConstraints>
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                            </columnConstraints>
-                                                            <rowConstraints>
-                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                            </rowConstraints>
-                                                            <children>
-                                                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                                                    <children>
-                                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Level" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                                                    <children>
-                                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Prestige Level" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                    </children>
-                                                                </AnchorPane>
-                                                            </children>
-                                                        </GridPane>
-                                                    </children>
-                                                </AnchorPane>
-                                                <AnchorPane layoutX="644.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-                                                    <children>
-                                                        <Label layoutX="62.0" layoutY="20.0" prefHeight="57.0" prefWidth="190.0" text="Attack Mode" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                    </children>
-                                                </AnchorPane>
-                                            </children>
-                                        </GridPane>
-                                    </children>
-                                </AnchorPane>
-                            </children>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                           <children>
+                              <TableView fx:id="ccTableView" layoutX="97.0" layoutY="87.0" prefHeight="471.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="twrTableView" layoutX="214.0" layoutY="90.0" prefHeight="471.0" prefWidth="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
                         </GridPane>
                     </children>
                 </AnchorPane>

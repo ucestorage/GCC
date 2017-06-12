@@ -1,6 +1,6 @@
 package com.ubboeicke.application.Model;
 
-import com.ubboeicke.application.Model.Save_Load.SaveAndLoadHandler;
+import com.ubboeicke.application.Model.Save_Load.SaveAndLoadController;
 
 import java.util.List;
 
@@ -9,29 +9,29 @@ import java.util.List;
  */
 public class MainModel {
 
-    private SaveAndLoadHandler mSaveAndLoadHandler;
+    private SaveAndLoadController mSaveAndLoadController;
     private List<String> saved;
     private List<String> itemssaved;
 
 
-    public MainModel(SaveAndLoadHandler saveAndLoadHandler) {
+    public MainModel(SaveAndLoadController saveAndLoadController) {
 
-        this.mSaveAndLoadHandler = saveAndLoadHandler;
-        this.saved = saveAndLoadHandler.getStringList();
-        this.itemssaved = saveAndLoadHandler.getItemList();
+        this.mSaveAndLoadController = saveAndLoadController;
+        this.saved = saveAndLoadController.getStringList();
+        this.itemssaved = saveAndLoadController.getItemList();
     }
     public void saveItems(String item) {
-        mSaveAndLoadHandler.saveItem(item);
+        mSaveAndLoadController.saveItem(item);
     }
+    public void saveCC(String item) {mSaveAndLoadController.saveCC(item);}
     public void save(String item){
-        mSaveAndLoadHandler.save(item);
+        mSaveAndLoadController.save(item);
     }
     public List<String> load(){
-        return mSaveAndLoadHandler.load();
+        return mSaveAndLoadController.load();
     }
-    public List<String> loadItems() {
-        return mSaveAndLoadHandler.loadItems();
-    }
+    public List<String> loadItems() {return mSaveAndLoadController.loadItems();}
+    public List<String> loadCC() {return mSaveAndLoadController.loadCC();}
     public List<String> getItemssaved(){
         return itemssaved;
     }

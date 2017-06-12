@@ -4,7 +4,8 @@ import com.ubboeicke.application.Model.GlobalConstants.ItemAttributes;
 import com.ubboeicke.application.Model.GlobalConstants.ItemAttributesWithLegendaries;
 import com.ubboeicke.application.Model.GlobalConstants.ItemQuality;
 import com.ubboeicke.application.Model.GlobalConstants.ItemSort;
-import com.ubboeicke.application.Model.ItemCreation.Item;
+import com.ubboeicke.application.Model.Gamedata.ItemCreation.Item;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,8 +50,8 @@ public class ItemCreationController extends AnchorPane {
     @FXML
     private Button itemsaveBTN;
     private CenterViewController mCenterViewController;
-
     private ObservableList<Item> itemObservableList;
+
     private TableView<Item> itemTableView;
     private String itemName;
     private String qualityString;
@@ -74,6 +75,14 @@ public class ItemCreationController extends AnchorPane {
         comboBoxListener();
         saveItem();
     }
+
+    public ObservableList<Item> getItemObservableList() {
+        return itemObservableList;
+    }
+
+    public void setItemObservableList(ObservableList<Item> itemObservableList) {
+        this.itemObservableList = itemObservableList;
+    }
     //TODO maybe split listview into different item categories and make different item objects cuz they have different number of attributes
 
     public void saveItem() {
@@ -91,12 +100,13 @@ public class ItemCreationController extends AnchorPane {
 
 
             itemlvl = Integer.parseInt(itemLVLTF.getText());
+            att1value = Double.parseDouble(itemAV1TF.getText());
+            att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
 
 
 
-            if(qualityString.equals("B")){
-                att1value = Double.parseDouble(itemAV1TF.getText());
-                att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
+       /*     if(qualityString.equals("B")){
+
                 att2value = null;
                 att2String = "";
                 att3value = null;
@@ -123,26 +133,30 @@ public class ItemCreationController extends AnchorPane {
                 }
 
             }
-
+*/
             switch (quality) {
                 //TODO implement different item creation on switch case
                 case B:
-
-
-
-                    itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
+                    itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value));
                     break;
                 case A:
+                    att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
+                    att2value = Double.parseDouble(itemAV2TF.getText());
 
-
-                    itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
+                    itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
                     break;
                 case S:
+                    att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
+                    att2value = Double.parseDouble(itemAV2TF.getText());
 
 
-                    itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
+                    itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
                     break;
                 case L:
+                    att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
+                    att2value = Double.parseDouble(itemAV2TF.getText());
+                    att3String = itemA3CB.getSelectionModel().getSelectedItem().toString();
+                    att3value = Double.parseDouble(itemAV3TF.getText());
                     itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
                     break;
             }

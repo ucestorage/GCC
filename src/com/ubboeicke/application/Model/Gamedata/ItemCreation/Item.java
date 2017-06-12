@@ -1,4 +1,4 @@
-package com.ubboeicke.application.Model.ItemCreation;
+package com.ubboeicke.application.Model.Gamedata.ItemCreation;
 
 
 /**
@@ -30,7 +30,24 @@ public  class Item {
         mAttribute3 = attribute3;
         mAttribute3Value = attribute3Value;
     }
-
+    public Item (String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value) {
+        mItemName = itemName;
+        mItemQuality = itemQuality;
+        mSortOfItem = sortOfItem;
+        mItemLevel = itemLevel;
+        mAttribute1 = attribute1;
+        mAttribute1Value = attribute1Value;
+    }
+    public Item (String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value, String attribute2, Double attribute2Value) {
+        mItemName = itemName;
+        mItemQuality = itemQuality;
+        mSortOfItem = sortOfItem;
+        mItemLevel = itemLevel;
+        mAttribute1 = attribute1;
+        mAttribute1Value = attribute1Value;
+        mAttribute2 = attribute2;
+        mAttribute2Value = attribute2Value;
+    }
     public String getItemName() {
         return mItemName;
     }
