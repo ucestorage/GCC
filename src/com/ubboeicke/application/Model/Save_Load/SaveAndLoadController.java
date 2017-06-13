@@ -1,5 +1,6 @@
 package com.ubboeicke.application.Model.Save_Load;
-import com.ubboeicke.application.Model.GlobalConstants.GlobalConstants;
+import com.ubboeicke.application.Model.Gamedata.DataBase.*;
+import com.ubboeicke.application.Model.GlobalConstants.Filename;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -13,81 +14,117 @@ public class SaveAndLoadController {
     private List<String> mStringList = new ArrayList<>();
     private List<String> mItemList = new ArrayList<>();
     private List<String> mCCList = new ArrayList<>();
-    private LocalObjectDB mLocalObjectDB;
-    private LocalItemDB mLocalItemDB;
-    private LocalCCDB mLocalCCDB;
-    public SaveAndLoadController(LocalObjectDB localObjectDB, LocalItemDB localItemDB, LocalCCDB localCCDB) {
-        this.mLocalObjectDB = localObjectDB;
-        this.mLocalItemDB = localItemDB;
-        this.mLocalCCDB = localCCDB;
+    private List<String> mTWRList = new ArrayList<>();
+    private DB_Strings mDBStrings;
+    private DB_Items mDBItems;
+    private DB_CastleComponent mDBCastleComponent;
+    private Controller_DB mControllerDb;
+    private DB_Towers mDBTowers;
+    public SaveAndLoadController() {
+        this.mControllerDb = new Controller_DB();
+        this.mDBStrings = mControllerDb.getDBStrings();
+        this.mDBItems = mControllerDb.getDBItems();
+        this.mDBCastleComponent = mControllerDb.getDBCastleComponent();
+        this.mDBTowers = mControllerDb.getDBTowers();
+    }
+// LOAD STRINGS
+    public List<String> load() {
+        mDBStrings = null;
+        try {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.STRING))) {
+                mDBStrings = (DB_Strings) ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mDBStrings.getList();
+    }
+    // LOAD ITEMS
+    public List<String> loadItems() {
+        mDBItems = null;
+        try {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.ITEM))) {
+                mDBItems = (DB_Items) ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mDBItems.getList();
+    }
+    // LOAD CASTLE COMPONENTS
+    public List<String> loadCC() {
+        mDBCastleComponent = null;
+        try {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.CC))) {
+                mDBCastleComponent = (DB_CastleComponent) ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mDBCastleComponent.getList();
+    }
+    // LOAD TOWERS
+    public List<String> loadTWR() {
+        mDBTowers = null;
+        try {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.TWR))) {
+                mDBTowers = (DB_Towers) ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mDBTowers.getList();
     }
 
-    public List<String> load() {
-        mLocalObjectDB = null;
-        try {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(GlobalConstants.FILENAME_STRING))) {
-                mLocalObjectDB = (LocalObjectDB) ois.readObject();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mLocalObjectDB.getList();
-    }
-    public List<String> loadItems() {
-        mLocalItemDB = null;
-        try {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(GlobalConstants.FILENAME_ITEM))) {
-                mLocalItemDB = (LocalItemDB) ois.readObject();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mLocalItemDB.getList();
-    }
-    public List<String> loadCC() {
-        mLocalCCDB = null;
-        try {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(GlobalConstants.FILENAME_CC))) {
-                mLocalCCDB = (LocalCCDB) ois.readObject();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return mLocalCCDB.getList();
-    }
+//SAVE STRINGS
     public void save(String item) {
         mStringList.add(item);
-        mLocalObjectDB.setList(mStringList);
+        mDBStrings.setList(mStringList);
         try {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(GlobalConstants.FILENAME_STRING))) {
-                oos.writeObject(mLocalObjectDB);
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.STRING))) {
+                oos.writeObject(mDBStrings);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void saveItem(String item) {
+    //SAVE ITEMS
+    public void saveItems(String item) {
         mItemList.add(item);
-        mLocalItemDB.setList(mItemList);
+        mDBItems.setList(mItemList);
         try {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(GlobalConstants.FILENAME_ITEM))) {
-                oos.writeObject(mLocalItemDB);
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.ITEM))) {
+                oos.writeObject(mDBItems);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    //SAVE CASTLE COMPONENTS
     public void saveCC(String item) {
         mCCList.add(item);
-        mLocalCCDB.setList(mCCList);
+        mDBCastleComponent.setList(mCCList);
         try {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(GlobalConstants.FILENAME_CC))) {
-                oos.writeObject(mLocalCCDB);
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.CC))) {
+                oos.writeObject(mDBCastleComponent);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    //SAVE TOWERS
+    public void saveTowers(String item) {
+        mTWRList.add(item);
+        mDBTowers.setList(mTWRList);
+        try {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.TWR))) {
+                oos.writeObject(mDBTowers);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public List<String> getStringList() {
         return mStringList;
     }
@@ -95,7 +132,5 @@ public class SaveAndLoadController {
     public List<String> getItemList() {
         return mItemList;
     }
-    public List<String> getCCList() {
-        return mCCList;
-    }
+
 }

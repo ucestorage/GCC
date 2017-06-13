@@ -1,4 +1,4 @@
-package com.ubboeicke.application.Model.Save_Load;
+package com.ubboeicke.application.Model.Gamedata.DataBase;
 
 
 
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Ubbo Eicke on 30.05.2017.
  */
-public class LocalItemDB implements Serializable{
+public class DB_Items implements Serializable{
     private static final long serialVersionUID = 1L;
     private List<String> list;
 

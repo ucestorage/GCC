@@ -76,17 +76,11 @@ public class ItemCreationController extends AnchorPane {
         saveItem();
     }
 
-    public ObservableList<Item> getItemObservableList() {
-        return itemObservableList;
-    }
 
-    public void setItemObservableList(ObservableList<Item> itemObservableList) {
-        this.itemObservableList = itemObservableList;
-    }
     //TODO maybe split listview into different item categories and make different item objects cuz they have different number of attributes
 
     public void saveItem() {
-        itemObservableList = mCenterViewController.getItemObservableList();
+        itemObservableList = FXCollections.observableArrayList();
         itemTableView = mCenterViewController.getItemTableView();
 
         itemsaveBTN.setOnAction(event -> {
@@ -103,39 +97,8 @@ public class ItemCreationController extends AnchorPane {
             att1value = Double.parseDouble(itemAV1TF.getText());
             att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
 
-
-
-       /*     if(qualityString.equals("B")){
-
-                att2value = null;
-                att2String = "";
-                att3value = null;
-                att3String = "";
-
-            } else {
-                if (qualityString.equals("A") || qualityString.equals("S")){
-                    att1value = Double.parseDouble(itemAV1TF.getText());
-                    att2value = Double.parseDouble(itemAV2TF.getText());
-                    att3value = null;
-                    att3String = "";
-                    att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
-                    att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
-
-                } else {
-                    if (qualityString.equals("L")){
-                        att1value = Double.parseDouble(itemAV1TF.getText());
-                        att2value = Double.parseDouble(itemAV2TF.getText());
-                        att3value = Double.parseDouble(itemAV3TF.getText());
-                        att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
-                        att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
-                        att3String = itemA3CB.getSelectionModel().getSelectedItem().toString();
-                    }
-                }
-
-            }
-*/
             switch (quality) {
-                //TODO implement different item creation on switch case
+
                 case B:
                     itemObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value));
                     break;

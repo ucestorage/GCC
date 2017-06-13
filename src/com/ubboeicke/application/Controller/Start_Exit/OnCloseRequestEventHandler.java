@@ -1,6 +1,8 @@
 package com.ubboeicke.application.Controller.Start_Exit;
 
 import com.ubboeicke.application.Controller.MainController;
+import com.ubboeicke.application.Model.MainModel;
+import com.ubboeicke.application.Model.Save_Load.SaveAndLoadHandler;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
@@ -16,15 +18,19 @@ import java.util.Optional;
  */
 public class OnCloseRequestEventHandler {
     private Stage mStage;
+    private MainModel mMainModel;
     private MainController mMainController;
+    private SaveAndLoadHandler mSaveAndLoadHandler;
     ButtonType saveBtn = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
     ButtonType exitBtn = new ButtonType("Exit", ButtonBar.ButtonData.CANCEL_CLOSE);
 
     Alert exitAlert = new Alert(Alert.AlertType.WARNING, "",saveBtn, exitBtn);
 
     public OnCloseRequestEventHandler (Stage stage, MainController mainController){
-        this.mStage = stage;
         this.mMainController = mainController;
+        this.mStage = stage;
+        this.mMainModel = mMainController.getMainModel();
+        mSaveAndLoadHandler = mMainModel.getSaveAndLoadHandler();
 
 
     }
@@ -37,7 +43,7 @@ public class OnCloseRequestEventHandler {
         Optional<ButtonType> result = exitAlert.showAndWait();
 
         if (result.isPresent() && result.get() == saveBtn) {
-            mMainController.save();
+           mSaveAndLoadHandler.saveAll();
         }
         if (result.isPresent() && result.get() == exitBtn) {
             System.exit(0);

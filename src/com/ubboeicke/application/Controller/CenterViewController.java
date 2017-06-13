@@ -4,11 +4,14 @@ import com.ubboeicke.application.Controller.CenterSubController.Tabs.PopulateTab
 import com.ubboeicke.application.Controller.CenterSubController.Tabs.PopulateTab_TWR_CC;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.ItemCreation.Item;
+import com.ubboeicke.application.Model.Gamedata.Towers.Tower;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TabPane;
+import javafx.scene.control.TableView;
 
 import java.io.IOException;
 
@@ -22,9 +25,9 @@ public class CenterViewController {
     private TableView<Item> itemTableView;
     @FXML
     private TableView<CastleComponent> ccTableView;
-    private ObservableList<Item> mItemObservableList = FXCollections.observableArrayList();
-    private PopulateTab_Item mPopulateTab;
-    private PopulateTab_TWR_CC mPopulateTab_twr_cc;
+    @FXML
+    private TableView<Tower> twrTableView;
+
 
     //TODO split controller to controllers for single tabs
     public void initialize(TabPane tabPane) throws IOException {
@@ -32,40 +35,31 @@ public class CenterViewController {
         loader.setRoot(tabPane);
         loader.setController(this);
         loader.load();
-        mPopulateTab = new PopulateTab_Item(this);
-        mPopulateTab_twr_cc = new PopulateTab_TWR_CC(this);
+        PopulateTab_Item mPopulateTab = new PopulateTab_Item(this);
+        PopulateTab_TWR_CC mPopulateTab_twr_cc = new PopulateTab_TWR_CC(this);
 
 
     }
-    public TableView<Item> getItemTableView() {return itemTableView;}
+
+    public TableView<Tower> getTwrTableView() {
+        return twrTableView;
+    }
+
+
+    public TableView<Item> getItemTableView() {
+        return itemTableView;
+    }
+
     public TableView<CastleComponent> getCcTableView() {
         return ccTableView;
     }
 
-    public void setCcTableView(TableView<CastleComponent> ccTableView) {
-        this.ccTableView = ccTableView;
-    }
 
-    public ObservableList<Item> getItemObservableList() {
-        return mItemObservableList;
-    }
 
-    public void setItemObservableList(ObservableList<Item> itemObservableList) {
-        mItemObservableList = itemObservableList;
-    }
 
     public Button getCreateItem() {
         return createItem;
     }
-
-    public void setCreateItem(Button createItem) {
-        this.createItem = createItem;
-    }
-
-    public void setItemTableView(TableView<Item> itemTableView) {
-        this.itemTableView = itemTableView;
-    }
-
 
 
 }

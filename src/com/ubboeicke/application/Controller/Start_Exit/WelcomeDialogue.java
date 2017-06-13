@@ -2,6 +2,8 @@ package com.ubboeicke.application.Controller.Start_Exit;
 
 import com.ubboeicke.application.Controller.TopViewController;
 import com.ubboeicke.application.Controller.MainController;
+import com.ubboeicke.application.Model.MainModel;
+import com.ubboeicke.application.Model.Save_Load.SaveAndLoadHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
@@ -12,25 +14,29 @@ import java.util.Optional;
  * Created by Ubbo Eicke on 09.06.2017.
  */
 public class WelcomeDialogue {
+    private MainModel mMainModel;
+    private SaveAndLoadHandler mSaveAndLoadHandler;
     MainController mMainController;
     TopViewController mTopViewController;
     ButtonType loadBtn = new ButtonType("Load my Save!", ButtonBar.ButtonData.OK_DONE);
     ButtonType fsBtn = new ButtonType("First Start!", ButtonBar.ButtonData.CANCEL_CLOSE);
     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Brought to you by bOngshotsGG.\nIf this is your first start,\nclick the corresponding button,\notherwise load your save.",loadBtn,fsBtn);
 
-    public WelcomeDialogue (MainController mainController, TopViewController topViewController){
+    public WelcomeDialogue (MainController mainController){
         this.mMainController = mainController;
-        this.mTopViewController = topViewController;
+        this.mTopViewController = mMainController.getTopViewController();
+        this.mMainModel = mMainController.getMainModel();
+        this.mSaveAndLoadHandler = mMainModel.getSaveAndLoadHandler();
 
     }
     public void welcome() {
-        alert.setTitle("Start_Exit!");
-        alert.setHeaderText("Start_Exit to Grow Castle Calculator!");
+        alert.setTitle("Welcome!");
+        alert.setHeaderText("Welcome to Grow Castle Calculator!");
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == loadBtn) {
 
-            mMainController.load();
+            mSaveAndLoadHandler.loadAll();
 
 
         } else {

@@ -1,16 +1,12 @@
-package com.ubboeicke.application.Model.Save_Load;
-
-
+package com.ubboeicke.application.Model.Gamedata.DataBase;
 
 import java.io.Serializable;
 import java.util.List;
 
-
-
 /**
- * Created by Ubbo Eicke on 30.05.2017.
+ * Created by Ubbo Eicke on 12.06.2017.
  */
-public class LocalObjectDB implements Serializable{
+public class DB_CastleComponent implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<String> list;
 
@@ -23,6 +19,4 @@ public class LocalObjectDB implements Serializable{
     public void setList(List<String> list) {
         this.list = list;
     }
-
-
 }

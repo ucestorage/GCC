@@ -1,12 +1,12 @@
-package com.ubboeicke.application.Model.Save_Load;
+package com.ubboeicke.application.Model.Gamedata.DataBase;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by Ubbo Eicke on 12.06.2017.
+ * Created by Ubbo Eicke on 13.06.2017.
  */
-public class LocalCCDB implements Serializable {
+public class DB_Towers implements Serializable{
     private static final long serialVersionUID = 1L;
     private List<String> list;
 
@@ -19,4 +19,5 @@ public class LocalCCDB implements Serializable {
     public void setList(List<String> list) {
         this.list = list;
     }
+
 }
