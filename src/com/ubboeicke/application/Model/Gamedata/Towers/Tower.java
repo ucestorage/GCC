@@ -1,6 +1,6 @@
 package com.ubboeicke.application.Model.Gamedata.Towers;
 
-import com.ubboeicke.application.Model.GlobalConstants.AttackMode;
+import com.ubboeicke.application.Model.Enums.AttackMode;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -20,21 +20,25 @@ public class Tower {
         Level = level;
         LevelPrestige = levelPrestige;
         AttackMode = attackMode;
-        AttackMode.getItems().addAll(com.ubboeicke.application.Model.GlobalConstants.AttackMode.Mode.values());
+        AttackMode.getItems().addAll(com.ubboeicke.application.Model.Enums.AttackMode.Mode.values());
+        AttackMode.getSelectionModel().selectFirst();
+        Promotion.getSelectionModel().selectFirst();
     }
 
-    public Tower(String name, TextField level, TextField levelPrestige, ComboBox<com.ubboeicke.application.Model.GlobalConstants.AttackMode.Mode> attackMode) {
+    public Tower(String name, TextField level, TextField levelPrestige, ComboBox<com.ubboeicke.application.Model.Enums.AttackMode.Mode> attackMode) {
         Name = name;
         Level = level;
         LevelPrestige = levelPrestige;
         AttackMode = attackMode;
-        AttackMode.getItems().addAll(com.ubboeicke.application.Model.GlobalConstants.AttackMode.Mode.values());
+        AttackMode.getItems().addAll(com.ubboeicke.application.Model.Enums.AttackMode.Mode.values());
+        AttackMode.getSelectionModel().selectFirst();
     }
 
     public Tower(String name, ComboBox<String> promotion, TextField level) {
         Name = name;
         Promotion = promotion;
         Level = level;
+        Promotion.getSelectionModel().selectFirst();
     }
 
     public Tower(String name, TextField level) {
@@ -58,7 +62,7 @@ public class Tower {
         return LevelPrestige;
     }
 
-    public ComboBox<com.ubboeicke.application.Model.GlobalConstants.AttackMode.Mode> getAttackMode() {
+    public ComboBox<com.ubboeicke.application.Model.Enums.AttackMode.Mode> getAttackMode() {
         return AttackMode;
     }
 }

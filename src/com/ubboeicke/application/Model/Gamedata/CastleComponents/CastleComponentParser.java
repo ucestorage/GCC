@@ -1,12 +1,8 @@
 package com.ubboeicke.application.Model.Gamedata.CastleComponents;
 
-import com.ubboeicke.application.Controller.CenterViewController;
-import com.ubboeicke.application.Model.Gamedata.ItemCreation.Item;
-import com.ubboeicke.application.Model.GlobalConstants.AttackMode;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.ubboeicke.application.Controller.Center.CenterViewController;
+import com.ubboeicke.application.Model.Enums.AttackMode;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;

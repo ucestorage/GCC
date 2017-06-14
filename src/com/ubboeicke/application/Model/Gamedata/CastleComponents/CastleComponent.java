@@ -1,6 +1,6 @@
 package com.ubboeicke.application.Model.Gamedata.CastleComponents;
 
-import com.ubboeicke.application.Model.GlobalConstants.AttackMode;
+import com.ubboeicke.application.Model.Enums.AttackMode;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -19,7 +19,7 @@ public class CastleComponent {
         this.ccLevel = ccLevel;
         this.ccLevelP = ccLevelP;
         ccAM.getItems().setAll(AttackMode.Mode.values());
-       // ccAM.getSelectionModel().selectFirst();
+        ccAM.getSelectionModel().selectFirst();
 
     }
     public CastleComponent(String ccName, TextField ccLevel){

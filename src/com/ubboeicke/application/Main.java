@@ -1,12 +1,8 @@
 package com.ubboeicke.application;
 
-import com.ubboeicke.application.Controller.CenterViewController;
-import com.ubboeicke.application.Controller.MainController;
-import com.ubboeicke.application.Controller.Start_Exit.OnCloseRequestEventHandler;
-import com.ubboeicke.application.Controller.Start_Exit.WelcomeDialogue;
-import com.ubboeicke.application.Controller.TopViewController;
-import com.ubboeicke.application.Model.MainModel;
-import com.ubboeicke.application.Model.Save_Load.SaveAndLoadController;
+import com.ubboeicke.application.Controller.Main.MainController;
+import com.ubboeicke.application.Controller.Main.Start_Exit.OnCloseRequestEventHandler;
+import com.ubboeicke.application.Controller.Main.Start_Exit.WelcomeDialogue;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

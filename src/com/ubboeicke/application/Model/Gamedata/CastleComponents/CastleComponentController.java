@@ -1,7 +1,7 @@
 package com.ubboeicke.application.Model.Gamedata.CastleComponents;
 
-import com.ubboeicke.application.Controller.CenterViewController;
-import com.ubboeicke.application.Model.GlobalConstants.AttackMode;
+import com.ubboeicke.application.Controller.Center.CenterViewController;
+import com.ubboeicke.application.Model.Enums.AttackMode;
 import javafx.scene.control.ComboBox;
 
 /**

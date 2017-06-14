@@ -1,8 +1,8 @@
 package com.ubboeicke.application.Model;
 
-import com.ubboeicke.application.Controller.MainController;
-import com.ubboeicke.application.Model.Save_Load.SaveAndLoadController;
-import com.ubboeicke.application.Model.Save_Load.SaveAndLoadHandler;
+import com.ubboeicke.application.Controller.Main.MainController;
+import com.ubboeicke.application.Model.DB.Save_Load.SaveAndLoadController;
+import com.ubboeicke.application.Model.DB.Save_Load.SaveAndLoadHandler;
 
 /**
  * Created by Ubbo Eicke on 02.06.2017.
