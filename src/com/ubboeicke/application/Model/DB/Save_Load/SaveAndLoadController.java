@@ -12,29 +12,36 @@ import java.util.List;
  */
 public class SaveAndLoadController {
     private List<String> mStringList = new ArrayList<>();
-    private List<String> mItemList = new ArrayList<>();
+    private List<String> mItemWeaponList = new ArrayList<>();
+    private List<String> mItemAccessoriesList = new ArrayList<>();
     private List<String> mCCList = new ArrayList<>();
     private List<String> mTWRList = new ArrayList<>();
     private List<String> mLDRList = new ArrayList<>();
     private List<String> mOHeroList = new ArrayList<>();
     private List<String> mUHeroList = new ArrayList<>();
-    private DB_Strings mDBStrings;
-    private DB_Items mDBItems;
-    private DB_CastleComponent mDBCastleComponent;
+
     private Controller_DB mControllerDb;
-    private DB_Towers mDBTowers;
-    private DB_Leaders mDBLeaders;
+    private DB_CastleComponent mDBCastleComponent;
     private DB_Heroes_OH mDBHeroesOh;
     private DB_Heroes_UH mDBHeroesUh;
+    private DB_Items_Accessories mDBItemsAccessories;
+    private DB_Items_Weapons mDBItemsWeapons;
+    private DB_Leaders mDBLeaders;
+    private DB_Strings mDBStrings;
+    private DB_Towers mDBTowers;
+
+
+
     public SaveAndLoadController() {
         this.mControllerDb = new Controller_DB();
         this.mDBStrings = mControllerDb.getDBStrings();
-        this.mDBItems = mControllerDb.getDBItems();
+        this.mDBItemsWeapons = mControllerDb.getDBItemsWeapons();
+        this.mDBItemsAccessories = mControllerDb.getDBItemsAccessories();
         this.mDBCastleComponent = mControllerDb.getDBCastleComponent();
         this.mDBTowers = mControllerDb.getDBTowers();
-        mDBLeaders = mControllerDb.getDBLeaders();
-        mDBHeroesOh = mControllerDb.getDBHeroesOh();
-        mDBHeroesUh = mControllerDb.getDBHeroesUh();
+        this.mDBLeaders = mControllerDb.getDBLeaders();
+        this.mDBHeroesOh = mControllerDb.getDBHeroesOh();
+        this.mDBHeroesUh = mControllerDb.getDBHeroesUh();
     }
 // LOAD STRINGS
     public List<String> load() {
@@ -48,17 +55,29 @@ public class SaveAndLoadController {
         }
         return mDBStrings.getList();
     }
-    // LOAD ITEMS
-    public List<String> loadItems() {
-        mDBItems = null;
+    // LOAD ITEMS_WEAPONS
+    public List<String> loadItemsWeapons() {
+        mDBItemsWeapons = null;
         try {
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.ITEM))) {
-                mDBItems = (DB_Items) ois.readObject();
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.ITEM_W))) {
+                mDBItemsWeapons = (DB_Items_Weapons) ois.readObject();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return mDBItems.getList();
+        return mDBItemsWeapons.getList();
+    }
+    // LOAD ITEMS_ACCESSORIES
+    public List<String> loadItemsAccessories() {
+        mDBItemsAccessories = null;
+        try {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.ITEM_A))) {
+                mDBItemsAccessories = (DB_Items_Accessories) ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mDBItemsAccessories.getList();
     }
     // LOAD CASTLE COMPONENTS
     public List<String> loadCC() {
@@ -133,13 +152,25 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
-    //SAVE ITEMS
-    public void saveItems(String item) {
-        mItemList.add(item);
-        mDBItems.setList(mItemList);
+    //SAVE ITEMS_WEAPONS
+    public void saveItemsWeapons(String item) {
+        mItemWeaponList.add(item);
+        mDBItemsWeapons.setList(mItemWeaponList);
         try {
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.ITEM))) {
-                oos.writeObject(mDBItems);
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.ITEM_W))) {
+                oos.writeObject(mDBItemsWeapons);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //SAVE ITEMS_ACCESSORIES
+    public void saveItemsAccessories(String item) {
+        mItemAccessoriesList.add(item);
+        mDBItemsAccessories.setList(mItemAccessoriesList);
+        try {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.ITEM_A))) {
+                oos.writeObject(mDBItemsAccessories);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -38,18 +38,21 @@ public class SaveAndLoadHandler {
         this.mMainModel = mainModel;
         this.mCenterViewController = mMainController.getCenterViewController();
         this.mTopViewController = mMainController.getTopViewController();
+        this.mSaveAndLoadController = mMainModel.getSaveAndLoadController();
+
         mItemParser = new ItemParser(mCenterViewController);
         mTowerParser = new TowerParser(mCenterViewController);
         mCastleComponentParser = new CastleComponentParser(mCenterViewController);
         mLeaderParser = new LeaderParser(mCenterViewController);
         mHeroParser = new HeroParser(mCenterViewController);
-        mSaveAndLoadController = mMainModel.getSaveAndLoadController();
+
 
     }
     public void saveAll() {
         saveGeneralInformation();
         saveCastleComponents();
-        saveItems();
+        saveItemsWeapons();
+        saveItemsAccessories();
         saveTowers();
         saveLeaders();
         saveHeroes_OH();
@@ -57,7 +60,8 @@ public class SaveAndLoadHandler {
     }
     public void loadAll(){
         loadGeneralInformation();
-        loadItems();
+        loadItemsWeapons();
+        loadItemsAccessories();
         loadCastleComponents();
         loadTowers();
         loadLeaders();
@@ -77,10 +81,18 @@ public class SaveAndLoadHandler {
         mTopViewController.setTwLabel(mSaveAndLoadController.load().get(8));
         mTopViewController.setOwLabel(mSaveAndLoadController.load().get(9));
     }
-    public void loadItems(){
-         ObservableList<Item> mItemObservableList = FXCollections.observableArrayList();
-         TableView<Item> mItemTableView = mCenterViewController.getItemTableView();
-        for (String s : mSaveAndLoadController.loadItems()){
+    public void loadItemsWeapons(){
+         ObservableList<Item> mItemObservableList = mCenterViewController.getItemWeaponList();
+         TableView<Item> mItemTableView = mCenterViewController.getItemWeaponTableView();
+        for (String s : mSaveAndLoadController.loadItemsWeapons()){
+            mItemObservableList.add(mItemParser.splitItem(s));
+        }
+        mItemTableView.setItems(mItemObservableList);
+    }
+    public void loadItemsAccessories(){
+        ObservableList<Item> mItemObservableList = mCenterViewController.getItemAcccessoryList();
+        TableView<Item> mItemTableView = mCenterViewController.getItemAccessoryTableView();
+        for (String s : mSaveAndLoadController.loadItemsAccessories()){
             mItemObservableList.add(mItemParser.splitItem(s));
         }
         mItemTableView.setItems(mItemObservableList);
@@ -140,9 +152,14 @@ public class SaveAndLoadHandler {
         mSaveAndLoadController.save(mTopViewController.getTwLabel().getText());
        mSaveAndLoadController.save(mTopViewController.getOwLabel().getText());
     }
-    public void saveItems() {
-        for(String s :mItemParser.getItemStrings()){
-            mSaveAndLoadController.saveItems(s);
+    public void saveItemsWeapons() {
+        for(String s :mItemParser.getItemWeaponStringList()){
+            mSaveAndLoadController.saveItemsWeapons(s);
+        }
+    }
+    public void saveItemsAccessories() {
+        for(String s :mItemParser.getItemAccessoryStringList()){
+            mSaveAndLoadController.saveItemsAccessories(s);
         }
     }
     public void saveCastleComponents(){

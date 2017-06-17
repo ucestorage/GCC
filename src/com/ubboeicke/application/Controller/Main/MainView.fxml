@@ -21,9 +21,9 @@
                             <MenuItem mnemonicParsing="false" text="Delete" />
                         </items>
                     </Menu>
-                    <Menu mnemonicParsing="false" text="Help">
+                    <Menu mnemonicParsing="false" text="Items">
                         <items>
-                            <MenuItem mnemonicParsing="false" text="About" />
+                            <MenuItem mnemonicParsing="false" text="Make" onAction="#makeNewItem" />
                         </items>
                     </Menu>
                 </menus>

@@ -23,10 +23,11 @@ import java.io.IOException;
  * Created by Ubbo Eicke on 02.06.2017.
  */
 public class CenterViewController {
+
     @FXML
-    private Button createItem;
+    private TableView<Item> itemWeaponTableView;
     @FXML
-    private TableView<Item> itemTableView;
+    private TableView<Item> itemAccessoryTableView;
     @FXML
     private TableView<CastleComponent> ccTableView;
     @FXML
@@ -35,11 +36,12 @@ public class CenterViewController {
     @FXML private TableView<Hero> heroTableView1;
     @FXML private TableView<Hero> heroTableView2;
     @FXML private GridPane tclContainer;
+    private ObservableList<Item> mItemWeaponList;
+    private ObservableList<Item> mItemAcccessoryList;
     private PopulateTab_Item mPopulateTabItem;
     private PopulateTab_TWR_CC mPopulateTabTwrCc;
     private PopulateTab_Hero mPopulateTabHero;
-    private ObservableList<String> weaponNameList = FXCollections.observableArrayList();
-    private ObservableList<String> accessoryNameList = FXCollections.observableArrayList();
+
 
 
     //TODO split controller to controllers for single tabs
@@ -54,30 +56,37 @@ public class CenterViewController {
 
 
 
-    }
-    public void splitItemList() {
-
-        for (Item item : mPopulateTabItem.getItemList()) {
-
-            if (item.getSortOfItem().equals("Bracelet")||item.getSortOfItem().equals("Earrings")||item.getSortOfItem().equals("Necklace")||item.getSortOfItem().equals("Ring")) {
-                accessoryNameList.add(item.getItemName());
-            }
-        }
-        for (Item item : mPopulateTabItem.getItemList()) {
-
-            if (item.getSortOfItem().equals("Sword") || item.getSortOfItem().equals("Staff") || item.getSortOfItem().equals("Bow") || item.getSortOfItem().equals("Hammer")) {
-                weaponNameList.add(item.getItemName());
-            }
-        }
 
     }
 
-    public ObservableList<String> getWeaponNameList() {
-        return weaponNameList;
+    public ObservableList<Item> getItemWeaponList() {
+        mItemWeaponList = mPopulateTabItem.getItemWeaponList();
+        return mItemWeaponList;
     }
 
-    public ObservableList<String> getAccessoryNameList() {
-        return accessoryNameList;
+    public ObservableList<Item> getItemAcccessoryList() {
+        mItemAcccessoryList = mPopulateTabItem.getItemAccessoryList();
+        return mItemAcccessoryList;
+    }
+
+    public TableView<Item> getItemWeaponTableView() {
+        return itemWeaponTableView;
+    }
+
+    public TableView<Item> getItemAccessoryTableView() {
+        return itemAccessoryTableView;
+    }
+
+    public TableView<CastleComponent> getCcTableView() {
+        return ccTableView;
+    }
+
+    public TableView<Tower> getTwrTableView() {
+        return twrTableView;
+    }
+
+    public TableView<Leader> getLeaderTableView() {
+        return leaderTableView;
     }
 
     public TableView<Hero> getHeroTableView1() {
@@ -88,8 +97,8 @@ public class CenterViewController {
         return heroTableView2;
     }
 
-    public TableView<Leader> getLeaderTableView() {
-        return leaderTableView;
+    public GridPane getTclContainer() {
+        return tclContainer;
     }
 
     public PopulateTab_Item getPopulateTabItem() {
@@ -100,30 +109,8 @@ public class CenterViewController {
         return mPopulateTabTwrCc;
     }
 
-    public GridPane getTclContainer() {
-        return tclContainer;
+    public PopulateTab_Hero getPopulateTabHero() {
+        return mPopulateTabHero;
     }
-
-    public TableView<Tower> getTwrTableView() {
-        return twrTableView;
-    }
-
-
-    public TableView<Item> getItemTableView() {
-        return itemTableView;
-    }
-
-    public TableView<CastleComponent> getCcTableView() {
-        return ccTableView;
-    }
-
-
-
-
-    public Button getCreateItem() {
-        return createItem;
-    }
-
-
 }
 

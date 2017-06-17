@@ -4,6 +4,8 @@ import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.Game
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 
 import com.ubboeicke.application.Model.Enums.Promotions;
+import com.ubboeicke.application.Model.Gamedata.Items.Item;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +18,17 @@ public class HeroParser {
     private CenterViewController mCenterViewController;
     private ArrayList<String> StringList_OH= new ArrayList<>();
     private ArrayList<String> StringList_UH= new ArrayList<>();
-    private List<String> weaponList;
+    private ObservableList<Item> mWeaponList;
+    private ObservableList<Item> mAccessoryList;
+
     private GameObjectConstructor goc;
 
 
     public HeroParser(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
-        goc = new GameObjectConstructor(mCenterViewController);
-        weaponList = mCenterViewController.getWeaponNameList();
+        goc = new GameObjectConstructor();
+        mWeaponList = mCenterViewController.getItemWeaponList();
+        mAccessoryList = mCenterViewController.getItemAcccessoryList();
 
     }
     //TODO save/load Hero
@@ -32,7 +37,7 @@ public class HeroParser {
 
         for (Hero hero : mCenterViewController.getHeroTableView1().getItems()){
             String s;
-            s = String.format("%s,%s,%s,%s,%s,%s,%s",hero.getName(),hero.getPromotion().getSelectionModel().getSelectedItem(),hero.getLevel().getText(),hero.getLevelPrestige().getText(),hero.getAttackMode().getSelectionModel().getSelectedItem().getString(),hero.getWeapon().getSelectionModel().getSelectedItem().toString(),hero.getAccessory().getSelectionModel().getSelectedItem().toString());
+            s = String.format("%s,%s,%s,%s,%s,%s,%s",hero.getName(),hero.getPromotion().getSelectionModel().getSelectedItem(),hero.getLevel().getText(),hero.getLevelPrestige().getText(),hero.getAttackMode().getSelectionModel().getSelectedItem().toString(),hero.getWeapon().getSelectionModel().getSelectedItem().toString(),hero.getAccessory().getSelectionModel().getSelectedItem().toString());
             StringList_OH.add(s);
 
         }
@@ -60,7 +65,7 @@ public class HeroParser {
         String p5 = parts[5];
         String p6 = parts[6];
 
-            hero = new Hero(p0,goc.loadPromotionCB(p1, Promotions.getPromotion(p0)),goc.loadLevelTextField(p2),goc.loadLevelPrestigeTextField(p3),goc.loadAttackModeCB(p4),goc.loadWeaponCB(p5,weaponList),goc.loadAccessoryCB(p6));
+            hero = new Hero(p0,goc.loadPromotionCB(p1, Promotions.getPromotion(p0)),goc.loadLevelTextField(p2),goc.loadLevelPrestigeTextField(p3),goc.loadAttackModeCB(p4),goc.loadWeaponCB(p5,mWeaponList),goc.loadAccessoryCB(p6,mAccessoryList));
 
 
 
@@ -79,7 +84,7 @@ public class HeroParser {
         String p3 = parts[3];
         String p4 = parts[4];
 
-        hero = new Hero(p0, goc.loadPromotionCB(p1, Promotions.getPromotion(p0)),goc.loadLevelTextField(p2),goc.loadWeaponCB(p3,weaponList),goc.loadAccessoryCB(p4));
+        hero = new Hero(p0, goc.loadPromotionCB(p1, Promotions.getPromotion(p0)),goc.loadLevelTextField(p2),goc.loadWeaponCB(p3,mWeaponList),goc.loadAccessoryCB(p4,mAccessoryList));
 
 
 

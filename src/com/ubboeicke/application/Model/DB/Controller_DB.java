@@ -5,7 +5,8 @@ package com.ubboeicke.application.Model.DB;
  */
 public class Controller_DB {
     private DB_CastleComponent mDBCastleComponent;
-    private DB_Items mDBItems;
+    private DB_Items_Weapons mDBItemsWeapons;
+    private DB_Items_Accessories mDBItemsAccessories;
     private DB_Strings mDBStrings;
     private DB_Towers mDBTowers;
     private DB_Heroes_OH mDBHeroesOh;
@@ -14,7 +15,8 @@ public class Controller_DB {
 
     public Controller_DB() {
         mDBCastleComponent = new DB_CastleComponent();
-        mDBItems = new DB_Items();
+        mDBItemsWeapons = new DB_Items_Weapons();
+        mDBItemsAccessories = new DB_Items_Accessories();
         mDBStrings = new DB_Strings();
         mDBTowers = new DB_Towers();
         mDBHeroesOh = new DB_Heroes_OH();
@@ -42,8 +44,12 @@ public class Controller_DB {
         return mDBCastleComponent;
     }
 
-    public DB_Items getDBItems() {
-        return mDBItems;
+    public DB_Items_Weapons getDBItemsWeapons() {
+        return mDBItemsWeapons;
+    }
+
+    public DB_Items_Accessories getDBItemsAccessories() {
+        return mDBItemsAccessories;
     }
 
     public DB_Strings getDBStrings() {

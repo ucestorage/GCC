@@ -1,5 +1,6 @@
 package com.ubboeicke.application.Model.Gamedata.Towers;
 
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.GameObjectConstructor;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Model.Enums.AttackMode;
 import javafx.scene.control.ComboBox;
@@ -14,10 +15,12 @@ public class TowerParser {
 
     private CenterViewController mCenterViewController;
     private ArrayList<String> StringList;
+    private GameObjectConstructor goc;
 
 
     public TowerParser(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
+        goc = new GameObjectConstructor();
 
         StringList = new ArrayList<>();
 
@@ -51,8 +54,8 @@ public class TowerParser {
 
     public Tower splitStrings(String string) {
         Tower twr = null;
-        String mString = string;
-        String[] parts = mString.split(",");
+
+        String[] parts = string.split(",");
         String p0 = parts[0];
         String p1;
         String p4;
@@ -62,8 +65,7 @@ public class TowerParser {
         ComboBox amCB;
 
         if (p0.equals("Trophy")) {
-            levelTF = new TextField(parts[1]);
-            twr = new Tower(p0, levelTF);
+            twr = new Tower(p0, goc.loadLevelTextField(parts[1]));
         }
 
         if (p0.equals("Tree")) {

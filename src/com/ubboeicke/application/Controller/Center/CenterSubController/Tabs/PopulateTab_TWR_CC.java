@@ -28,6 +28,8 @@ public class PopulateTab_TWR_CC {
     private ObservableList<CastleComponent> mCastleComponents = FXCollections.observableArrayList();
     private ObservableList<Leader> mLeaders = FXCollections.observableArrayList();
     private ObservableList<Tower> mTowers = FXCollections.observableArrayList();
+    private ObservableList<Item> mWeaponList;
+    private ObservableList<Item> mAccessoryList;
     private GridPane mGridPane;
     private PopulateTab_Item mPopulateTabItem;
     private GameObjectConstructor goc;
@@ -49,7 +51,9 @@ public class PopulateTab_TWR_CC {
         mGridPane = mCenterViewController.getTclContainer();
         mLeaderTableView = mCenterViewController.getLeaderTableView();
         mPopulateTabItem = mCenterViewController.getPopulateTabItem();
-        goc = new GameObjectConstructor(mCenterViewController);
+        goc = new GameObjectConstructor();
+        mWeaponList = mCenterViewController.getItemWeaponList();
+        mAccessoryList = mCenterViewController.getItemAcccessoryList();
         setupTableView();
         addCastleComponents();
         addTowers();
@@ -151,15 +155,14 @@ public class PopulateTab_TWR_CC {
     }
 
     public void addLeaders(){
-        mCenterViewController.splitItemList();
-        List<String> weaponList = mCenterViewController.getWeaponNameList();
-        mLeaders.add(new Leader("Edward",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mLeaders.add(new Leader("Solar",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList) ,goc.accessoryCB()));
-        mLeaders.add(new Leader("Zero",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mLeaders.add(new Leader("Thor",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mLeaders.add(new Leader("Sara",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mLeaders.add(new Leader("Tony",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mLeaders.add(new Leader("Din",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
+
+        mLeaders.add(new Leader("Edward",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mLeaders.add(new Leader("Solar",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList) ,goc.accessoryCB(mAccessoryList)));
+        mLeaders.add(new Leader("Zero",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mLeaders.add(new Leader("Thor",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mLeaders.add(new Leader("Sara",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mLeaders.add(new Leader("Tony",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mLeaders.add(new Leader("Din",goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
         mLeaderTableView.setItems(mLeaders);
     }
     public void addCastleComponents(){

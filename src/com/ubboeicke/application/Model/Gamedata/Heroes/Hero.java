@@ -1,7 +1,5 @@
 package com.ubboeicke.application.Model.Gamedata.Heroes;
 
-import com.ubboeicke.application.Model.Enums.AttackMode;
-import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -10,14 +8,14 @@ import javafx.scene.control.TextField;
  */
 public class Hero {
     private String Name;
-    private ComboBox<String> Promotion;
+    private ComboBox Promotion;
     private TextField Level;
     private TextField LevelPrestige;
-    private ComboBox<AttackMode.Mode> AttackMode;
+    private ComboBox AttackMode;
     private ComboBox Weapon;
     private ComboBox Accessory;
 
-    public Hero(String name, ComboBox<String> promotion, TextField level, TextField levelPrestige, ComboBox attackMode, ComboBox weapon, ComboBox accessory) {
+    public Hero(String name, ComboBox promotion, TextField level, TextField levelPrestige, ComboBox attackMode, ComboBox weapon, ComboBox accessory) {
         Name = name;
         Promotion = promotion;
         Level = level;
@@ -28,7 +26,7 @@ public class Hero {
 
     }
 
-    public Hero(String name, ComboBox<String> promotion, TextField level, ComboBox weapon, ComboBox accessory) {
+    public Hero(String name, ComboBox promotion, TextField level, ComboBox weapon, ComboBox accessory) {
         Name = name;
         Promotion = promotion;
         Level = level;
@@ -40,7 +38,7 @@ public class Hero {
         return Name;
     }
 
-    public ComboBox<String> getPromotion() {
+    public ComboBox getPromotion() {
         return Promotion;
     }
 
@@ -52,7 +50,7 @@ public class Hero {
         return LevelPrestige;
     }
 
-    public ComboBox<com.ubboeicke.application.Model.Enums.AttackMode.Mode> getAttackMode() {
+    public ComboBox getAttackMode() {
         return AttackMode;
     }
 

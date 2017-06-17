@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Ubbo Eicke on 30.05.2017.
  */
-public class DB_Items implements Serializable{
+public class DB_Items_Weapons implements Serializable{
     private static final long serialVersionUID = 1L;
     private List<String> list;
 

@@ -3,7 +3,9 @@ package com.ubboeicke.application.Model.Gamedata.Leaders;
 import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.GameObjectConstructor;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Model.Enums.AttackMode;
+import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import com.ubboeicke.application.Model.Gamedata.Leaders.Leader;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -18,15 +20,17 @@ public class LeaderParser {
     private CenterViewController mCenterViewController;
     private ArrayList<String> StringList;
     private GameObjectConstructor goc;
-    private List<String> weaponList;
+    private ObservableList<Item> mWeaponList;
+    private ObservableList<Item> mAccessoryList;
 
 
     public LeaderParser(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
-        goc = new GameObjectConstructor(mCenterViewController);
-
+        goc = new GameObjectConstructor();
+        mWeaponList = mCenterViewController.getItemWeaponList();
+        mAccessoryList = mCenterViewController.getItemAcccessoryList();
         StringList = new ArrayList<>();
-        weaponList = mCenterViewController.getWeaponNameList();
+
     }
     //TODO save/load leader
 
@@ -53,7 +57,7 @@ public class LeaderParser {
         String p4 = parts[4];
         String p5 = parts[5];
 
-        ldr = new Leader(p0,goc.loadLevelTextField(p1),goc.loadLevelPrestigeTextField(p2),goc.loadAttackModeCB(p3),goc.loadWeaponCB(p4,weaponList),goc.loadAccessoryCB(p5));
+        ldr = new Leader(p0,goc.loadLevelTextField(p1),goc.loadLevelPrestigeTextField(p2),goc.loadAttackModeCB(p3),goc.loadWeaponCB(p4,mWeaponList),goc.loadAccessoryCB(p5,mAccessoryList));
         return ldr;
     }
 

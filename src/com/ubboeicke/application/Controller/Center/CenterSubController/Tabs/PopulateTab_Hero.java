@@ -4,6 +4,7 @@ import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Model.Enums.Promotions;
 import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 
+import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -22,12 +23,16 @@ public class PopulateTab_Hero {
     private ObservableList<Hero> mHeroes1 = FXCollections.observableArrayList();
     private ObservableList<Hero> mHeroes2 = FXCollections.observableArrayList();
     private GameObjectConstructor goc;
+    private ObservableList<Item> mWeaponList;
+    private ObservableList<Item> mAccessoryList;
     
     public PopulateTab_Hero(CenterViewController centerViewController){
         mCenterViewController = centerViewController;
         mHeroTableView1 = mCenterViewController.getHeroTableView1();
         mHeroTableView2 = mCenterViewController.getHeroTableView2();
-        goc = new GameObjectConstructor(mCenterViewController);
+        goc = new GameObjectConstructor();
+        mWeaponList = mCenterViewController.getItemWeaponList();
+        mAccessoryList = mCenterViewController.getItemAcccessoryList();
 
         setupTableView_OH();
         setuupTableView_UH();
@@ -95,38 +100,37 @@ public class PopulateTab_Hero {
 
 
     public void addHeroes(){
-        mCenterViewController.splitItemList();
-        List<String> weaponList = mCenterViewController.getWeaponNameList();
 
-        mHeroes1.add(new Hero("Archer",goc.promotionCB(Promotions.Archer),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Hunter",goc.promotionCB(Promotions.Hunter),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Elf",goc.promotionCB(Promotions.Elf),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Ice Mage",goc.promotionCB(Promotions.IceMage),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Lightning Mage",goc.promotionCB(Promotions.LightningMage),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Fire Mage",goc.promotionCB(Promotions.FireMage),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Ogre",goc.promotionCB(Promotions.Ogre),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Tiny Giant",goc.promotionCB(Promotions.TinyGiant),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Slinger",goc.promotionCB(Promotions.Slinger),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Voodoo",goc.promotionCB(Promotions.Voodoo),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Bazooka Man",goc.promotionCB(Promotions.BazookaMan),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Knight",goc.promotionCB(Promotions.Knight),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Lisa",goc.promotionCB(Promotions.Lisa),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Alice",goc.promotionCB(Promotions.Alice),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Dorothy",goc.promotionCB(Promotions.Dorothy),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Druid",goc.promotionCB(Promotions.Druid),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Assassin",goc.promotionCB(Promotions.Assassin),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Flying Orc",goc.promotionCB(Promotions.FlyingOrc),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Windy",goc.promotionCB(Promotions.Windy),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Angel",goc.promotionCB(Promotions.Angel),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes1.add(new Hero("Zeus",goc.promotionCB(Promotions.Zeus),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(weaponList),goc.accessoryCB()));
 
-        mHeroes2.add(new Hero("White Mage",goc.promotionCB(Promotions.WhiteMage),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes2.add(new Hero("Necromancer",goc.promotionCB(Promotions.Necromancer),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes2.add(new Hero("Military Band (F)",goc.promotionCB(Promotions.MBandF),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes2.add(new Hero("Military Band (M)",goc.promotionCB(Promotions.MBandM),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes2.add(new Hero("Priest",goc.promotionCB(Promotions.Priest),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes2.add(new Hero("Smith",goc.promotionCB(Promotions.Smith),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
-        mHeroes2.add(new Hero("Architect",goc.promotionCB(Promotions.Architect),goc.levelTextField(),goc.weaponCB(weaponList),goc.accessoryCB()));
+        mHeroes1.add(new Hero("Archer",goc.promotionCB(Promotions.Archer),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Hunter",goc.promotionCB(Promotions.Hunter),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Elf",goc.promotionCB(Promotions.Elf),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Ice Mage",goc.promotionCB(Promotions.IceMage),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Lightning Mage",goc.promotionCB(Promotions.LightningMage),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Fire Mage",goc.promotionCB(Promotions.FireMage),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Ogre",goc.promotionCB(Promotions.Ogre),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Tiny Giant",goc.promotionCB(Promotions.TinyGiant),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Slinger",goc.promotionCB(Promotions.Slinger),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Voodoo",goc.promotionCB(Promotions.Voodoo),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Bazooka Man",goc.promotionCB(Promotions.BazookaMan),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Knight",goc.promotionCB(Promotions.Knight),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Lisa",goc.promotionCB(Promotions.Lisa),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Alice",goc.promotionCB(Promotions.Alice),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Dorothy",goc.promotionCB(Promotions.Dorothy),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Druid",goc.promotionCB(Promotions.Druid),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Assassin",goc.promotionCB(Promotions.Assassin),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Flying Orc",goc.promotionCB(Promotions.FlyingOrc),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Windy",goc.promotionCB(Promotions.Windy),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Angel",goc.promotionCB(Promotions.Angel),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Zeus",goc.promotionCB(Promotions.Zeus),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+
+        mHeroes2.add(new Hero("White Mage",goc.promotionCB(Promotions.WhiteMage),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Necromancer",goc.promotionCB(Promotions.Necromancer),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Military Band (F)",goc.promotionCB(Promotions.MBandF),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Military Band (M)",goc.promotionCB(Promotions.MBandM),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Priest",goc.promotionCB(Promotions.Priest),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Smith",goc.promotionCB(Promotions.Smith),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Architect",goc.promotionCB(Promotions.Architect),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
         mHeroTableView1.setItems(mHeroes1);
 
         mHeroTableView2.setItems(mHeroes2);

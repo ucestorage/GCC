@@ -10,23 +10,34 @@ import java.util.ArrayList;
  */
 public class ItemParser {
     private CenterViewController mCenterViewController;
-    private ArrayList<String> itemStringList;
+    private ArrayList<String> itemWeaponStringList;
+    private ArrayList<String> itemAccessoryStringList;
 
     public ItemParser(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
 
-        itemStringList = new ArrayList<>();
+        itemWeaponStringList = new ArrayList<>();
+        itemAccessoryStringList = new ArrayList<>();
 
     }
 
-    public ArrayList<String> getItemStrings(){
+    public ArrayList<String> getItemWeaponStringList(){
 
-        for (Item item : mCenterViewController.getItemTableView().getItems()){
-            String testS = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", item.getItemName(),item.getItemQuality(), item.getSortOfItem(), item.getItemLevel(),item.getAttribute1(),item.getAttribute1Value(),item.getAttribute2(),item.getAttribute2Value(),item.getAttribute3(),item.getAttribute3Value());
-            itemStringList.add(testS);
+        for (Item item : mCenterViewController.getItemWeaponTableView().getItems()){
+            String s = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", item.getItemName(),item.getItemQuality(), item.getSortOfItem(), item.getItemLevel(),item.getAttribute1(),item.getAttribute1Value(),item.getAttribute2(),item.getAttribute2Value(),item.getAttribute3(),item.getAttribute3Value());
+            itemWeaponStringList.add(s);
 
         }
-        return itemStringList;
+        return itemWeaponStringList;
+    }
+    public ArrayList<String> getItemAccessoryStringList(){
+
+        for (Item item : mCenterViewController.getItemAccessoryTableView().getItems()){
+            String s = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", item.getItemName(),item.getItemQuality(), item.getSortOfItem(), item.getItemLevel(),item.getAttribute1(),item.getAttribute1Value(),item.getAttribute2(),item.getAttribute2Value(),item.getAttribute3(),item.getAttribute3Value());
+            itemAccessoryStringList.add(s);
+
+        }
+        return itemAccessoryStringList;
     }
     public Item splitItem(String string) {
         Item item;

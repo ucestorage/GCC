@@ -7,7 +7,8 @@ public class Filename {
 
 
     public static final String STRING = "DB_Strings";
-    public static final String ITEM = "DB_Items";
+    public static final String ITEM_W = "DB_Items_Weapons";
+    public static final String ITEM_A = "DB_Items_Accessories";
     public static final String CC = "DB_CastleComponents";
     public static final String TWR = "DB_Towers";
     public static final String LDR = "DB_Leaders";
