@@ -37,7 +37,7 @@ public class HeroParser {
 
         for (Hero hero : mCenterViewController.getHeroTableView1().getItems()){
             String s;
-            s = String.format("%s,%s,%s,%s,%s,%s,%s",hero.getName(),hero.getPromotion().getSelectionModel().getSelectedItem(),hero.getLevel().getText(),hero.getLevelPrestige().getText(),hero.getAttackMode().getSelectionModel().getSelectedItem().toString(),hero.getWeapon().getSelectionModel().getSelectedItem().toString(),hero.getAccessory().getSelectionModel().getSelectedItem().toString());
+            s = String.format("%s,%s,%s,%s,%s,%s,%s",hero.getName(),hero.getPromotion().getSelectionModel().getSelectedItem(),hero.getLevel().getText(),hero.getLevelPrestige().getText(),hero.getAttackMode().getSelectionModel().getSelectedItem().toString(),hero.getWeapon().getSelectionModel().getSelectedItem(),hero.getAccessory().getSelectionModel().getSelectedItem());
             StringList_OH.add(s);
 
         }
@@ -47,7 +47,7 @@ public class HeroParser {
 
         for (Hero hero : mCenterViewController.getHeroTableView2().getItems()){
             String s;
-            s = String.format("%s,%s,%s,%s,%s",hero.getName(),hero.getPromotion().getSelectionModel().getSelectedItem(),hero.getLevel().getText(),hero.getWeapon().getSelectionModel().getSelectedItem().toString(),hero.getAccessory().getSelectionModel().getSelectedItem().toString());
+            s = String.format("%s,%s,%s,%s,%s",hero.getName(),hero.getPromotion().getSelectionModel().getSelectedItem(),hero.getLevel().getText(),hero.getWeapon().getSelectionModel().getSelectedItem(),hero.getAccessory().getSelectionModel().getSelectedItem());
             StringList_UH.add(s);
 
         }

@@ -33,9 +33,29 @@ public class Promotions {
     public static final String[] Smith = {"Smith II", "STOS"};
     public static final String[] Architect = {"Careful Architect", "Skilled Architect","Great Architect"};
 
+    public static final String[] Tree = {"Crystal Tree", "Golden Tree"};
+    public static final String[] Worm = {"Death Worm ", "Death Worm II"};
+    public static final String[] FlameTower = {"Burning Tower", "Burning Tower II"};
+    public static final String[] FrozenTower= {"Frozen Tower II"};
+    public static final String[] LightningTower= {"Thunder Tower", "Thunder Tower II"};
+    public static final String[] Barracks= {"Offensive Barracks", "Defensive Barracks"};
     public static String[] getPromotion(String s){
         String[] strings = null;
-
+        if (s.equals("Worm")){
+            strings = Worm;
+        }
+        if (s.equals("Flame Tower")){
+            strings = FlameTower;
+        }
+        if (s.equals("Frozen Tower")){
+            strings = FrozenTower;
+        }
+        if (s.equals("Lightning Tower")){
+            strings = LightningTower;
+        }
+        if (s.equals("Barracks")){
+            strings = Barracks;
+        }
         if (s.equals("Archer")){
             strings = Archer;
         }

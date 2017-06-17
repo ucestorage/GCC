@@ -3,6 +3,7 @@ package com.ubboeicke.application.Model.Gamedata.Towers;
 import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.GameObjectConstructor;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Model.Enums.AttackMode;
+import com.ubboeicke.application.Model.Enums.Promotions;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -32,7 +33,7 @@ public class TowerParser {
             String name = twr.getName();
             String s;
             if (name.equals("Tree")) {
-                s = String.format("%s,%s,%s", twr.getName(), twr.getPromotion(), twr.getLevel().getText());
+                s = String.format("%s,%s,%s", twr.getName(), twr.getPromotion().getSelectionModel().getSelectedItem(), twr.getLevel().getText());
             } else {
                 if (twr.getName().equals("Trophy")) {
                     s = String.format("%s,%s", twr.getName(), twr.getLevel().getText());
@@ -40,7 +41,7 @@ public class TowerParser {
                     if (name.equals("Cannon") || name.equals("Thorn Worm") || name.equals("Turret")) {
                         s = String.format("%s,%s,%s,%s", twr.getName(), twr.getLevel().getText(), twr.getLevelPrestige().getText(), twr.getAttackMode().getSelectionModel().getSelectedItem().getString());
                     } else {
-                        s = String.format("%s,%s,%s,%s,%s", twr.getName(), twr.getPromotion(), twr.getLevel().getText(), twr.getLevelPrestige().getText(), twr.getAttackMode().getSelectionModel().getSelectedItem().getString());
+                        s = String.format("%s,%s,%s,%s,%s", twr.getName(), twr.getPromotion().getSelectionModel().getSelectedItem(), twr.getLevel().getText(), twr.getLevelPrestige().getText(), twr.getAttackMode().getSelectionModel().getSelectedItem().getString());
                     }
                 }
 
@@ -54,166 +55,29 @@ public class TowerParser {
 
     public Tower splitStrings(String string) {
         Tower twr = null;
-
         String[] parts = string.split(",");
         String p0 = parts[0];
-        String p1;
-        String p4;
-        TextField levelTF;
-        TextField levelPTF;
-        ComboBox promoCB;
-        ComboBox amCB;
 
         if (p0.equals("Trophy")) {
             twr = new Tower(p0, goc.loadLevelTextField(parts[1]));
         }
 
         if (p0.equals("Tree")) {
-            p1 = parts[1];
-            levelTF = new TextField(parts[2]);
-            promoCB = new ComboBox();
-            promoCB.getItems().addAll("Crystal Tree", "Golden Tree");
-            if (p1.equals("Crystal Tree")) {
-                promoCB.getSelectionModel().select(0);
-            } else {
-                promoCB.getSelectionModel().select(1);
-            }
-            twr = new Tower(p0, promoCB, levelTF);
+            twr = new Tower(p0, goc.loadPromotionCB(parts[1], Promotions.Tree),goc.loadLevelTextField(parts[2]));
         }
 
-        if (p0.equals("Worm")) {
-            p1 = parts[1];
-            p4 = parts[4];
-            levelTF = new TextField(parts[2]);
-            levelPTF = new TextField(parts[3]);
-            promoCB = new ComboBox();
-            amCB = new ComboBox<>();
-            promoCB.getItems().addAll("Death Worm ", "Death Worm II");
-            if (p1.equals("Death Worm")) {
-                promoCB.getSelectionModel().select(0);
-            } else {
-                promoCB.getSelectionModel().select(1);
-            }
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, promoCB, levelTF, levelPTF, amCB);
+        if (p0.equals("Worm")||p0.equals("Flame Tower")||p0.equals("Frozen Tower")||p0.equals("Lightning Tower")||p0.equals("Barracks")) {
+            String p1 = parts[1];
+            twr = new Tower(p0, goc.loadPromotionCB(p1,Promotions.getPromotion(p0)),goc.loadLevelTextField(parts[2]),goc.loadLevelPrestigeTextField(parts[3]),goc.loadAttackModeCB(parts[4]));
         }
-        if (p0.equals("Flame Tower")) {
-            p1 = parts[1];
-            p4 = parts[4];
-            levelTF = new TextField(parts[2]);
-            levelPTF = new TextField(parts[3]);
-            promoCB = new ComboBox();
-            amCB = new ComboBox<>();
-            promoCB.getItems().addAll("Burning Tower", "Burning Tower II");
-            if (p1.equals("Burning Tower")) {
-                promoCB.getSelectionModel().select(0);
-            } else {
-                promoCB.getSelectionModel().select(1);
-            }
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, promoCB, levelTF, levelPTF, amCB);
+        if (p0.equals("Cannon")||p0.equals("Thorn Worm")||p0.equals("Turret")) {
+            twr = new Tower(p0, goc.loadLevelTextField(parts[1]), goc.loadLevelPrestigeTextField(parts[2]), goc.loadAttackModeCB(parts[3]));
         }
-        if (p0.equals("Frozen Tower")) {
-            p1 = parts[1];
-            p4 = parts[4];
-            levelTF = new TextField(parts[2]);
-            levelPTF = new TextField(parts[3]);
-            promoCB = new ComboBox();
-            amCB = new ComboBox<>();
-            promoCB.getItems().addAll("Frozen Tower II");
-            promoCB.getSelectionModel().select(0);
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, promoCB, levelTF, levelPTF, amCB);
-        }
-        if (p0.equals("Lightning Tower")) {
-            p1 = parts[1];
-            p4 = parts[4];
-            levelTF = new TextField(parts[2]);
-            levelPTF = new TextField(parts[3]);
-            promoCB = new ComboBox();
-            amCB = new ComboBox<>();
-            promoCB.getItems().addAll("Thunder Tower", "Thunder Tower II");
-            if (p1.equals("Thunder Tower")) {
-                promoCB.getSelectionModel().select(0);
-            } else {
-                promoCB.getSelectionModel().select(1);
-            }
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, promoCB, levelTF, levelPTF, amCB);
-        }
-        if (p0.equals("Barracks")) {
-            p1 = parts[1];
-            p4 = parts[4];
-            levelTF = new TextField(parts[2]);
-            levelPTF = new TextField(parts[3]);
-            promoCB = new ComboBox();
-            amCB = new ComboBox<>();
-            promoCB.getItems().addAll("Offensive Barracks", "Defensive Barracks");
-            if (p1.equals("Offensive Barracks")) {
-                promoCB.getSelectionModel().select(0);
-            } else {
-                promoCB.getSelectionModel().select(1);
-            }
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, promoCB, levelTF, levelPTF, amCB);
-        }
-        if (p0.equals("Cannon")) {
-            p4 = parts[3];
-            levelTF = new TextField(parts[1]);
-            levelPTF = new TextField(parts[2]);
-            amCB = new ComboBox<>();
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, levelTF, levelPTF, amCB);
-        }
-        if (p0.equals("Thorn Worm")) {
-            p4 = parts[3];
-            levelTF = new TextField(parts[1]);
-            levelPTF = new TextField(parts[2]);
-            amCB = new ComboBox<>();
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, levelTF, levelPTF, amCB);
-        }
-        if (p0.equals("Turret")) {
-            p4 = parts[3];
-            levelTF = new TextField(parts[1]);
-            levelPTF = new TextField(parts[2]);
-            amCB = new ComboBox<>();
-            amCB.getItems().setAll(AttackMode.Mode.values());
-            selectorAttackMode(p4, amCB);
-            twr = new Tower(p0, levelTF, levelPTF, amCB);
-        }
-
 
         return twr;
     }
 
 
-    public void selectorAttackMode(String s, ComboBox cb) {
-        switch (s) {
-            case "Auto":
-                cb.getSelectionModel().select(0);
-                break;
-            case "Near":
-                cb.getSelectionModel().select(1);
-                break;
-            case "LowHP":
-                cb.getSelectionModel().select(2);
-                break;
-            case "Boss":
-                cb.getSelectionModel().select(3);
-                break;
-            case "Flying":
-                cb.getSelectionModel().select(4);
-        }
-
-    }
 
 
 }
