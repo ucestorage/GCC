@@ -5,8 +5,12 @@ import com.ubboeicke.application.Controller.Main.MainController;
 import com.ubboeicke.application.Controller.Top.TopViewController;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponentParser;
+import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
+import com.ubboeicke.application.Model.Gamedata.Heroes.HeroParser;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import com.ubboeicke.application.Model.Gamedata.Items.ItemParser;
+import com.ubboeicke.application.Model.Gamedata.Leaders.Leader;
+import com.ubboeicke.application.Model.Gamedata.Leaders.LeaderParser;
 import com.ubboeicke.application.Model.Gamedata.Towers.Tower;
 import com.ubboeicke.application.Model.Gamedata.Towers.TowerParser;
 import com.ubboeicke.application.Model.MainModel;
@@ -26,6 +30,8 @@ public class SaveAndLoadHandler {
     private CastleComponentParser mCastleComponentParser;
     private TowerParser mTowerParser;
     private SaveAndLoadController mSaveAndLoadController;
+    private LeaderParser mLeaderParser;
+    private HeroParser mHeroParser;
 
     public SaveAndLoadHandler(MainModel mainModel, MainController mainController) {
         this.mMainController = mainController;
@@ -35,6 +41,8 @@ public class SaveAndLoadHandler {
         mItemParser = new ItemParser(mCenterViewController);
         mTowerParser = new TowerParser(mCenterViewController);
         mCastleComponentParser = new CastleComponentParser(mCenterViewController);
+        mLeaderParser = new LeaderParser(mCenterViewController);
+        mHeroParser = new HeroParser(mCenterViewController);
         mSaveAndLoadController = mMainModel.getSaveAndLoadController();
 
     }
@@ -43,12 +51,18 @@ public class SaveAndLoadHandler {
         saveCastleComponents();
         saveItems();
         saveTowers();
+        saveLeaders();
+        saveHeroes_OH();
+        saveHeroes_UH();
     }
     public void loadAll(){
         loadGeneralInformation();
         loadItems();
         loadCastleComponents();
         loadTowers();
+        loadLeaders();
+        loadHeroes_OH();
+        loadHeroes_UH();
 
     }
     public void loadGeneralInformation(){
@@ -85,6 +99,35 @@ public class SaveAndLoadHandler {
             obst.add(mTowerParser.splitStrings(s));
         }tvt.setItems(obst);
     }
+    public void loadLeaders(){
+        TableView<Leader> tv = mCenterViewController.getLeaderTableView();
+        ObservableList<Leader> obsl = FXCollections.observableArrayList();
+        for (String s : mSaveAndLoadController.loadLDR()){
+            obsl.add(mLeaderParser.splitStrings(s));
+        }tv.setItems(obsl);
+    }
+    public void loadHeroes_OH(){
+        TableView<Hero> tv = mCenterViewController.getHeroTableView1();
+        ObservableList<Hero> obsl = FXCollections.observableArrayList();
+        for (String s : mSaveAndLoadController.loadHeroesOh()){
+            obsl.add(mHeroParser.splitStrings_OH(s));
+        }tv.setItems(obsl);
+    }
+    public void loadHeroes_UH(){
+        TableView<Hero> tv1 = mCenterViewController.getHeroTableView2();
+        ObservableList<Hero> obsl = FXCollections.observableArrayList();
+        for (String s : mSaveAndLoadController.loadHeroesUh()){
+            obsl.add(mHeroParser.splitStrings_UH(s));
+        }tv1.setItems(obsl);
+    }
+
+
+
+
+
+
+
+
     public void saveGeneralInformation() {
         mSaveAndLoadController.save(mTopViewController.getPlayerNameLabel().getText());
         mSaveAndLoadController.save(mTopViewController.getPlayerLevelLabel().getText());
@@ -112,8 +155,23 @@ public class SaveAndLoadHandler {
         for (String s : mTowerParser.getStrings()){
             mSaveAndLoadController.saveTowers(s);
         }
-
     }
+    public void saveLeaders(){
+        for (String s : mLeaderParser.getStrings()){
+            mSaveAndLoadController.saveLeaders(s);
+        }
+    }
+    public void saveHeroes_OH(){
+        for (String s : mHeroParser.getStrings_OH()){
+            mSaveAndLoadController.saveHeroesOh(s);
+        }
+    }
+    public void saveHeroes_UH(){
+        for (String s : mHeroParser.getStrings_UH()){
+            mSaveAndLoadController.saveHeroesUh(s);
+        }
+    }
+
 
 
 

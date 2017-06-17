@@ -15,7 +15,7 @@ public  class Item {
     private Double mAttribute2Value;
     private String mAttribute3;
     private Double mAttribute3Value;
-    //TODO split item into B/A/S/L cuz of different number of attributes and validation reasons
+
 
 
     public Item(String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value, String attribute2, Double attribute2Value, String attribute3, Double attribute3Value) {

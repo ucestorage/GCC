@@ -22,7 +22,8 @@ public class PopulateTab_Item {
     private CenterViewController mCenterViewController;
     private Button createitem;
     private TableView<Item> mItemTableView;
-    private ObservableList<Item> mItemList;
+    private ObservableList<Item> mItemList = FXCollections.observableArrayList();
+
     private Stage mStage;
 
     public PopulateTab_Item(CenterViewController centerViewController){
@@ -34,7 +35,7 @@ public class PopulateTab_Item {
 
     }
     public void setupTableView(){
-        mItemList = FXCollections.observableArrayList();
+
         TableColumn itemNameCol = new TableColumn("Item Name");
         itemNameCol.setCellValueFactory(new PropertyValueFactory<Item, String>("itemName"));
         itemNameCol.setPrefWidth(300);
@@ -77,13 +78,19 @@ public class PopulateTab_Item {
 
         mItemTableView.getColumns().addAll(itemNameCol,itemQualityCol,itemSortCol,itemLevelCol,itemAtt1Col,itemVal1Col,itemAtt2Col, itemVal2Col,itemAtt3Col,itemVal3Col);
         mItemTableView.setColumnResizePolicy((param -> true));
-        mItemList.add(new Item("ShowCase","L","Sword",100,"ColdDamage",25.0,"ColdDamage",25.0,"Slow",2.0));
+        mItemList.add(new Item("AccessoryShowCase","L","Bracelet",100,"FireDamage",25.0,"FireDamage",25.0,"AreaDamage",100.0));
+        mItemList.add(new Item("WeaponShowCase","L","Sword",100,"ColdDamage",25.0,"ColdDamage",25.0,"Slow",2.0));
         mItemTableView.setItems(mItemList);
+
     }
 
     public ObservableList<Item> getItemList() {
         return mItemList;
     }
+
+
+
+
 
     public Stage getStage() {
         return mStage;

@@ -1,46 +1,39 @@
-package com.ubboeicke.application.Model.Gamedata.Towers;
+package com.ubboeicke.application.Model.Gamedata.Heroes;
 
 import com.ubboeicke.application.Model.Enums.AttackMode;
+import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 /**
  * Created by Ubbo Eicke on 13.06.2017.
  */
-public class Tower {
+public class Hero {
     private String Name;
     private ComboBox<String> Promotion;
     private TextField Level;
     private TextField LevelPrestige;
     private ComboBox<AttackMode.Mode> AttackMode;
+    private ComboBox Weapon;
+    private ComboBox Accessory;
 
-    public Tower(String name, ComboBox<String> promotion, TextField level, TextField levelPrestige, ComboBox<AttackMode.Mode> attackMode) {
+    public Hero(String name, ComboBox<String> promotion, TextField level, TextField levelPrestige, ComboBox attackMode, ComboBox weapon, ComboBox accessory) {
         Name = name;
         Promotion = promotion;
         Level = level;
         LevelPrestige = levelPrestige;
         AttackMode = attackMode;
+        Weapon = weapon;
+        Accessory = accessory;
 
     }
 
-    public Tower(String name, TextField level, TextField levelPrestige, ComboBox<com.ubboeicke.application.Model.Enums.AttackMode.Mode> attackMode) {
-        Name = name;
-        Level = level;
-        LevelPrestige = levelPrestige;
-        AttackMode = attackMode;
-
-    }
-
-    public Tower(String name, ComboBox<String> promotion, TextField level) {
+    public Hero(String name, ComboBox<String> promotion, TextField level, ComboBox weapon, ComboBox accessory) {
         Name = name;
         Promotion = promotion;
         Level = level;
-
-    }
-
-    public Tower(String name, TextField level) {
-        Name = name;
-        Level = level;
+        Weapon = weapon;
+        Accessory = accessory;
     }
 
     public String getName() {
@@ -61,5 +54,13 @@ public class Tower {
 
     public ComboBox<com.ubboeicke.application.Model.Enums.AttackMode.Mode> getAttackMode() {
         return AttackMode;
+    }
+
+    public ComboBox getWeapon() {
+        return Weapon;
+    }
+
+    public ComboBox getAccessory() {
+        return Accessory;
     }
 }

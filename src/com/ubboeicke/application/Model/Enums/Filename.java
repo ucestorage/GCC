@@ -4,13 +4,14 @@ package com.ubboeicke.application.Model.Enums;
  * Created by Ubbo Eicke on 08.06.2017.
  */
 public class Filename {
-    private Filename(){
 
-    }
 
     public static final String STRING = "DB_Strings";
     public static final String ITEM = "DB_Items";
-    public static final String CC = "DB_CastleComponent";
-    public static final String TWR = "DB_Tower";
+    public static final String CC = "DB_CastleComponents";
+    public static final String TWR = "DB_Towers";
+    public static final String LDR = "DB_Leaders";
+    public static final String HERO_OH = "DB_Heroes_OH";
+    public static final String HERO_UH = "DB_Heroes_UH";
 
 }
