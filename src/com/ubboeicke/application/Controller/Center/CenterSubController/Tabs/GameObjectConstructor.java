@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
  */
 public class GameObjectConstructor {
 
+
     public ComboBox promotionCB(String[] strings) {
         ComboBox promoCB = new ComboBox<>();
         promoCB.getItems().addAll(strings);
@@ -22,11 +23,12 @@ public class GameObjectConstructor {
 
     public ComboBox loadPromotionCB(String s, String[] strings) {
         ComboBox promoCB = new ComboBox<>();
-        ObservableList<String> obs = FXCollections.observableArrayList();
+        ObservableList<String>promoName = FXCollections.observableArrayList();
 
-        obs.addAll(strings);
-        promoCB.getItems().addAll(obs);
+        promoName.addAll(strings);
+        promoCB.getItems().addAll(promoName);
         promoCB.getSelectionModel().select(s);
+       // System.out.println(promoCB.getSelectionModel().getSelectedItem());
         return promoCB;
     }
 

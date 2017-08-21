@@ -1,17 +1,16 @@
 package com.ubboeicke.application.Controller.Main;
 
 import com.ubboeicke.application.Controller.Center.CenterViewController;
+import com.ubboeicke.application.Controller.Deck.DeckCreationController;
 import com.ubboeicke.application.Controller.Item.ItemCreationController;
 import com.ubboeicke.application.Controller.Top.TopViewController;
+import com.ubboeicke.application.Model.Enums.Filename;
 import com.ubboeicke.application.Model.MainModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -28,12 +27,11 @@ public class MainController extends BorderPane {
     private VBox vboxTop;
     @FXML
     private TabPane centerContainer;
-    @FXML private MenuItem Menu_Item_Make;
     private final TopViewController mTopViewController;
     private final CenterViewController mCenterViewController;
     private MainModel mMainModel;
+    private Stage mStageDeck;
     private Stage mStage;
-
 
     public MainController() throws IOException {
         this.mCenterViewController = new CenterViewController();
@@ -47,6 +45,27 @@ public class MainController extends BorderPane {
         mTopViewController.initialize(getContentHolder());
         this.mMainModel = new MainModel(this);
 
+    }
+    public void makeNewDeck(){
+        try {
+            DeckCreationController deckCreator = new DeckCreationController(this);
+            Scene scene = new Scene(deckCreator);
+            mStageDeck = new Stage();
+            mStageDeck.setScene(scene);
+
+            mStageDeck.setTitle("Deck Creation");
+            mStageDeck.show();
+
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+    public void redditThread(){
+        Alert aler = new Alert(Alert.AlertType.INFORMATION);
+        aler.setTitle("Reddit");
+        aler.setHeaderText("Find help in the official Reddit Thread!");
+        aler.setContentText(Filename.REDDIT);
+        aler.showAndWait();
     }
 
    public void makeNewItem(){
@@ -64,6 +83,13 @@ public class MainController extends BorderPane {
                }
        }
 
+    public Stage getStage() {
+        return mStage;
+    }
+
+    public Stage getStageDeck() {
+        return mStageDeck;
+    }
 
     public MainModel getMainModel() {
         return mMainModel;

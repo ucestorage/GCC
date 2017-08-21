@@ -19,6 +19,7 @@ public class SaveAndLoadController {
     private List<String> mLDRList = new ArrayList<>();
     private List<String> mOHeroList = new ArrayList<>();
     private List<String> mUHeroList = new ArrayList<>();
+    private List<String> mDeckList = new ArrayList<>();
 
     private Controller_DB mControllerDb;
     private DB_CastleComponent mDBCastleComponent;
@@ -29,7 +30,7 @@ public class SaveAndLoadController {
     private DB_Leaders mDBLeaders;
     private DB_Strings mDBStrings;
     private DB_Towers mDBTowers;
-
+    private DB_Decks mDBDecks;
 
 
     public SaveAndLoadController() {
@@ -42,6 +43,7 @@ public class SaveAndLoadController {
         this.mDBLeaders = mControllerDb.getDBLeaders();
         this.mDBHeroesOh = mControllerDb.getDBHeroesOh();
         this.mDBHeroesUh = mControllerDb.getDBHeroesUh();
+        this.mDBDecks = mControllerDb.getDBDecks();
     }
 // LOAD STRINGS
     public List<String> load() {
@@ -139,7 +141,30 @@ public class SaveAndLoadController {
         }
         return mDBHeroesUh.getList();
     }
-
+    // LOAD DECKS
+    public List<String> loadDecks() {
+        mDBDecks= null;
+        try {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Filename.DECK))) {
+                mDBDecks = (DB_Decks) ois.readObject();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mDBDecks.getList();
+    }
+    //SAVE Decks
+    public void saveDecks(String item) {
+        mDeckList.add(item);
+        mDBDecks.setList(mDeckList);
+        try {
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.DECK))) {
+                oos.writeObject(mDBDecks);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 //SAVE STRINGS
     public void save(String item) {
         mStringList.add(item);

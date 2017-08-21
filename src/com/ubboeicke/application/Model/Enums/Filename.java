@@ -14,5 +14,9 @@ public class Filename {
     public static final String LDR = "DB_Leaders";
     public static final String HERO_OH = "DB_Heroes_OH";
     public static final String HERO_UH = "DB_Heroes_UH";
+    public static final String DECK = "DB_Decks";
+
+
+    public static final String REDDIT = "www.reddit.com";
 
 }

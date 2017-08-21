@@ -217,5 +217,15 @@ mTowerTableView.setItems(mTowers);
 }
     }
 
+    public ObservableList<Leader> getLeaders() {
+        return mLeaders;
+    }
 
+    public ObservableList<CastleComponent> getCastleComponents() {
+        return mCastleComponents;
+    }
+
+    public ObservableList<Tower> getTowers() {
+        return mTowers;
+    }
 }

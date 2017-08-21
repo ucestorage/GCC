@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" type="TabPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" type="TabPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
     <tabs>
         <Tab fx:id="overviewTab" closable="false" text="Overview">
             <content>
@@ -35,18 +35,18 @@
                             </rowConstraints>
                             <children>
                                 <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Buildings" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Building#1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Building#2" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Building#3" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                                <Label fx:id="tbL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Building#1" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Label fx:id="tbL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Building#2" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Label fx:id="tbL3" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Town Building#3" GridPane.columnIndex="3" GridPane.rowIndex="0" />
                                 <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Treasures" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Weapon" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#2" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#3" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#4" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                <Label fx:id="tL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Weapon" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="tL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Label fx:id="tL3" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#2" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <Label fx:id="tL4" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#3" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                <Label fx:id="tL5" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Accessory#4" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                                 <AnchorPane GridPane.columnIndex="7" GridPane.rowIndex="1">
                                     <children>
-                                        <ComboBox prefHeight="30.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                        <ComboBox fx:id="deckCB" prefHeight="30.0" prefWidth="212.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                     </children>
                                 </AnchorPane>
                                 <AnchorPane GridPane.columnIndex="7">
@@ -234,34 +234,32 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Hero#01" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" />
+                                        <Label fx:id="heroL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Hero#01" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" />
                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level T0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level T0 Val" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                                        <Label alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Damage" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+                                        <Label fx:id="heroLL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level T0 Val" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                        <Label fx:id="heroDmg1" alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Damage" GridPane.columnSpan="3" GridPane.rowIndex="1" />
                                         <Label alignment="CENTER" layoutX="250.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Level T1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                        <Label alignment="CENTER" layoutX="330.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Level T1 Val" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                        <Label alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                        <Label alignment="CENTER" layoutX="10.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                        <Label alignment="CENTER" layoutX="90.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #3" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                                        <Label alignment="CENTER" layoutX="170.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Item Sort" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-                                        <Label alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="30.0" prefWidth="256.0" text="Item Quality" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Attribute #1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Attribute #2" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Attribute #3" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Item Sort" GridPane.rowIndex="4" GridPane.rowSpan="2" />
-                                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Item Quality" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2" />
-                                        <Label alignment="CENTER" layoutX="142.0" layoutY="48.0" prefHeight="30.0" prefWidth="256.0" text="Att#1 Value" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                        <Label alignment="CENTER" layoutX="142.0" layoutY="67.0" prefHeight="30.0" prefWidth="256.0" text="Att#2 Value" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                        <Label alignment="CENTER" layoutX="209.0" layoutY="67.0" prefHeight="30.0" prefWidth="256.0" text="Att#3 Value" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                                        <Label alignment="CENTER" layoutX="142.0" layoutY="67.0" prefHeight="30.0" prefWidth="256.0" text="Att#1 Value" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                                        <Label fx:id="heroPL1" alignment="CENTER" layoutX="330.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Level T1 Val" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                        <Label fx:id="h1att1L1" alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                        <Label  fx:id="h1att2L1" alignment="CENTER" layoutX="10.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                        <Label  fx:id="h1att3L1" alignment="CENTER" layoutX="90.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #3" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                                        <Label fx:id="h1itemSL1" alignment="CENTER" layoutX="170.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Item Sort" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                                        <Label fx:id="h1itemQL1" alignment="CENTER" layoutX="10.0" layoutY="60.0" prefHeight="30.0" prefWidth="256.0" text="Item Quality" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" />
+                                        <Label fx:id="h1att1L2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Attribute #1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                        <Label fx:id="h1att2L2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Attribute #2" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                        <Label fx:id="h1att3L2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Attribute #3" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                                        <Label fx:id="h1itemSL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Item Sort" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+                                        <Label fx:id="h1itemQL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Item Quality" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+                                        <Label fx:id="h1attv1L1" alignment="CENTER" layoutX="142.0" layoutY="48.0" prefHeight="30.0" prefWidth="256.0" text="Att#1 Value" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                        <Label fx:id="h1attv2L1" alignment="CENTER" layoutX="142.0" layoutY="67.0" prefHeight="30.0" prefWidth="256.0" text="Att#2 Value" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                        <Label fx:id="h1attv3L1" alignment="CENTER" layoutX="209.0" layoutY="67.0" prefHeight="30.0" prefWidth="256.0" text="Att#3 Value" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                                        <Label fx:id="h1attv1L2" alignment="CENTER" layoutX="142.0" layoutY="67.0" prefHeight="30.0" prefWidth="256.0" text="Att#1 Value" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                                         <Label alignment="CENTER" layoutX="276.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Mana Cost" GridPane.columnIndex="5" />
-                                        <Label alignment="CENTER" layoutX="343.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Mana Cost Val" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                        <Label fx:id="h1ManaL" alignment="CENTER" layoutX="343.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Mana Cost Val" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                                         <Label alignment="CENTER" layoutX="343.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="CD" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                                        <Label alignment="CENTER" layoutX="343.0" layoutY="60.0" prefHeight="30.0" prefWidth="256.0" text="CD Val" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                                        <Label alignment="CENTER" layoutX="343.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="ATK Speed" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                                        <Label alignment="CENTER" layoutX="343.0" layoutY="111.0" prefHeight="30.0" prefWidth="256.0" text="ATK Speed Val" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                                        <Label alignment="CENTER" layoutX="209.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Att#2 Value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                                        <Label alignment="CENTER" layoutX="276.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Att#3 Value" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                                        <Label fx:id="h1CDL" alignment="CENTER" layoutX="343.0" layoutY="60.0" prefHeight="30.0" prefWidth="256.0" text="CD Val" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                                        <Label fx:id="h1attv2L2" alignment="CENTER" layoutX="209.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Att#2 Value" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                                        <Label fx:id="h1attv3L2" alignment="CENTER" layoutX="276.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Att#3 Value" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                                     </children>
                                 </GridPane>
                                 <GridPane alignment="CENTER" layoutX="10.0" layoutY="469.0" prefHeight="30.0" prefWidth="256.0" GridPane.columnIndex="1">
@@ -668,23 +666,23 @@
                             </rowConstraints>
                             <children>
                                 <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Towers" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Top#1" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Top#2" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Bottom#1" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Bottom#2" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                <Label fx:id="twrL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Top#1" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <Label fx:id="twrL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Top#2" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <Label fx:id="twrL3" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Bottom#1" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                <Label fx:id="twrL4" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Bottom#2" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                                <Label fx:id="twrLL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Label fx:id="twrLL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Label fx:id="twrLL3" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                <Label fx:id="twrLL4" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                                 <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Castle Components" GridPane.columnIndex="2" GridPane.columnSpan="2" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Top" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Middle" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Bottom" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Base" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                                <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                                <Label fx:id="ccL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Top" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Label fx:id="ccLL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                <Label fx:id="ccL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Middle" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                <Label fx:id="ccLL2" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                                <Label fx:id="ccL3" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Bottom" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                <Label fx:id="ccLL3" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                                <Label fx:id="ccL4" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Base" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                                <Label fx:id="ccLL4" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level" GridPane.columnIndex="3" GridPane.rowIndex="4" />
 
                             </children>
                         </GridPane>
@@ -780,6 +778,15 @@
                 </AnchorPane>
             </content>
         </Tab>
+      <Tab text="Decks">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="deckTableView" prefHeight="471.0" prefWidth="1900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
         <Tab text="Gold Calculations">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">

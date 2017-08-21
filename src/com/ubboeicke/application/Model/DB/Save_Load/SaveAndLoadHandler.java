@@ -1,10 +1,13 @@
 package com.ubboeicke.application.Model.DB.Save_Load;
 
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.OverviewController;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Controller.Main.MainController;
 import com.ubboeicke.application.Controller.Top.TopViewController;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponentParser;
+import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
+import com.ubboeicke.application.Model.Gamedata.Decks.DeckParser;
 import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 import com.ubboeicke.application.Model.Gamedata.Heroes.HeroParser;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
@@ -32,6 +35,13 @@ public class SaveAndLoadHandler {
     private SaveAndLoadController mSaveAndLoadController;
     private LeaderParser mLeaderParser;
     private HeroParser mHeroParser;
+    private DeckParser mDeckParser;
+    private ObservableList<Leader> LDRList = FXCollections.observableArrayList();
+    private ObservableList<Tower> TWRList = FXCollections.observableArrayList();
+    private ObservableList<CastleComponent> CCList = FXCollections.observableArrayList();
+    private ObservableList<Hero> HeroList = FXCollections.observableArrayList();
+    private  ObservableList<Deck> DeckList = FXCollections.observableArrayList();
+    private OverviewController mOverviewController;
 
     public SaveAndLoadHandler(MainModel mainModel, MainController mainController) {
         this.mMainController = mainController;
@@ -45,9 +55,14 @@ public class SaveAndLoadHandler {
         mCastleComponentParser = new CastleComponentParser(mCenterViewController);
         mLeaderParser = new LeaderParser(mCenterViewController);
         mHeroParser = new HeroParser(mCenterViewController);
+        mDeckParser = new DeckParser(mCenterViewController);
+        mOverviewController = new OverviewController(mCenterViewController);
 
 
     }
+
+
+
     public void saveAll() {
         saveGeneralInformation();
         saveCastleComponents();
@@ -57,6 +72,7 @@ public class SaveAndLoadHandler {
         saveLeaders();
         saveHeroes_OH();
         saveHeroes_UH();
+        saveDecks();
     }
     public void loadAll(){
         loadGeneralInformation();
@@ -67,6 +83,8 @@ public class SaveAndLoadHandler {
         loadLeaders();
         loadHeroes_OH();
         loadHeroes_UH();
+        loadDecks();
+        mOverviewController.populateDeckCB();
 
     }
     public void loadGeneralInformation(){
@@ -99,30 +117,31 @@ public class SaveAndLoadHandler {
     }
     public void loadCastleComponents(){
         TableView<CastleComponent> tvcc = mCenterViewController.getCcTableView();
-        ObservableList<CastleComponent> obsv = FXCollections.observableArrayList();
+
         for (String s : mSaveAndLoadController.loadCC()){
-            obsv.add(mCastleComponentParser.splitCC(s));
-        }tvcc.setItems(obsv);
+            CCList.add(mCastleComponentParser.splitCC(s));
+        }tvcc.setItems(CCList);
     }
     public void loadTowers(){
         TableView<Tower> tvt = mCenterViewController.getTwrTableView();
-        ObservableList<Tower> obst = FXCollections.observableArrayList();
+
         for (String s : mSaveAndLoadController.loadTWR()){
-            obst.add(mTowerParser.splitStrings(s));
-        }tvt.setItems(obst);
+            TWRList.add(mTowerParser.splitStrings(s));
+        }tvt.setItems(TWRList);
     }
     public void loadLeaders(){
         TableView<Leader> tv = mCenterViewController.getLeaderTableView();
-        ObservableList<Leader> obsl = FXCollections.observableArrayList();
+
         for (String s : mSaveAndLoadController.loadLDR()){
-            obsl.add(mLeaderParser.splitStrings(s));
-        }tv.setItems(obsl);
+            LDRList.add(mLeaderParser.splitStrings(s));
+        }tv.setItems(LDRList);
     }
     public void loadHeroes_OH(){
         TableView<Hero> tv = mCenterViewController.getHeroTableView1();
         ObservableList<Hero> obsl = FXCollections.observableArrayList();
         for (String s : mSaveAndLoadController.loadHeroesOh()){
             obsl.add(mHeroParser.splitStrings_OH(s));
+            HeroList.add(mHeroParser.splitStrings_OH(s));
         }tv.setItems(obsl);
     }
     public void loadHeroes_UH(){
@@ -130,7 +149,18 @@ public class SaveAndLoadHandler {
         ObservableList<Hero> obsl = FXCollections.observableArrayList();
         for (String s : mSaveAndLoadController.loadHeroesUh()){
             obsl.add(mHeroParser.splitStrings_UH(s));
+            HeroList.add(mHeroParser.splitStrings_UH(s));
+
         }tv1.setItems(obsl);
+    }
+    public void loadDecks(){
+        TableView<Deck> tv1 = mCenterViewController.getDeckTableView();
+
+        for (String s : mSaveAndLoadController.loadDecks()){
+
+            DeckList.add(mDeckParser.splitStrings(s));
+
+        }tv1.setItems(DeckList);
     }
 
 
@@ -188,8 +218,29 @@ public class SaveAndLoadHandler {
             mSaveAndLoadController.saveHeroesUh(s);
         }
     }
+    public void saveDecks(){
+        for (String s:mDeckParser.getDeckStrings()){
+            mSaveAndLoadController.saveDecks(s);
+        }
+    }
 
+    public ObservableList<Deck> getDeckList() {
+        return DeckList;
+    }
 
+    public ObservableList<Tower> getTWRList() {
+        return TWRList;
+    }
 
+    public ObservableList<Leader> getLDRList() {
+        return LDRList;
+    }
 
+    public ObservableList<CastleComponent> getCCList() {
+        return CCList;
+    }
+
+    public ObservableList<Hero> getHeroList() {
+        return HeroList;
+    }
 }

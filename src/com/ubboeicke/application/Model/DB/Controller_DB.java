@@ -12,6 +12,7 @@ public class Controller_DB {
     private DB_Heroes_OH mDBHeroesOh;
     private DB_Heroes_UH mDBHeroesUh;
     private DB_Leaders mDBLeaders;
+    private DB_Decks mDBDecks;
 
     public Controller_DB() {
         mDBCastleComponent = new DB_CastleComponent();
@@ -22,6 +23,7 @@ public class Controller_DB {
         mDBHeroesOh = new DB_Heroes_OH();
         mDBHeroesUh = new DB_Heroes_UH();
         mDBLeaders = new DB_Leaders();
+        mDBDecks = new DB_Decks();
     }
 
     public DB_Heroes_UH getDBHeroesUh() {
@@ -56,5 +58,7 @@ public class Controller_DB {
         return mDBStrings;
     }
 
-
+    public DB_Decks getDBDecks() {
+        return mDBDecks;
+    }
 }
