@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
+import java.io.FileNotFoundException;
 import java.util.Optional;
 
 /**
@@ -35,9 +36,14 @@ public class WelcomeDialogue {
         Optional<ButtonType> result = alert.showAndWait();
 
         if (result.isPresent() && result.get() == loadBtn) {
+try {
+    mSaveAndLoadHandler.loadAll();
+} catch (Exception fnfe){
+    fnfe.printStackTrace();
+    Alert error = new Alert(Alert.AlertType.WARNING,"Error on Loading!");
+    error.showAndWait();
 
-            mSaveAndLoadHandler.loadAll();
-
+}
 
         } else {
            giveBasicInformation();
