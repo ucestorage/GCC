@@ -100,6 +100,8 @@ public class DeckCreationController extends AnchorPane {
         mMainController = mainController;
         mCenterViewController = mMainController.getCenterViewController();
         mPopulateTabDeck = mCenterViewController.getPopulateTabDeck();
+        mDeckObservableList = mCenterViewController.getDeckTableView().getItems();
+        mDeckTableView = mCenterViewController.getDeckTableView();
 
         FXMLLoader loader = new FXMLLoader(DeckCreationController.class.getResource("DeckCreation.fxml"));
         loader.setRoot(this);
@@ -116,9 +118,10 @@ public class DeckCreationController extends AnchorPane {
     }
 
     public void btnListener() {
+      /*  mDeckTableView = mCenterViewController.getDeckTableView();
+       // mDeckObservableList= mDeckTableView.getItems();
+        mDeckObservableList= mPopulateTabDeck.getDecks();*/
 
-        mDeckObservableList = mPopulateTabDeck.getDecks();
-        mDeckTableView = mCenterViewController.getDeckTableView();
         saveBTN.setOnAction(event -> {
             s1 = nameTF.getText();
             Deck d = new Deck(s1, tbCB1.getSelectionModel().getSelectedItem().toString(), tbCB2.getSelectionModel().getSelectedItem().toString(), tbCB3.getSelectionModel().getSelectedItem().toString(), ldrCB.getSelectionModel().getSelectedItem().toString(), tCB1.getSelectionModel().getSelectedItem().toString(), tCB2.getSelectionModel().getSelectedItem().toString(), tCB3.getSelectionModel().getSelectedItem().toString(), tCB4.getSelectionModel().getSelectedItem().toString(), tCB5.getSelectionModel().getSelectedItem().toString(), twrCB1.getSelectionModel().getSelectedItem().toString(), twrCB2.getSelectionModel().getSelectedItem().toString(), twrCB3.getSelectionModel().getSelectedItem().toString(), twrCB4.getSelectionModel().getSelectedItem().toString(), ccCB1.getSelectionModel().getSelectedItem().toString(), ccCB2.getSelectionModel().getSelectedItem().toString(), ccCB3.getSelectionModel().getSelectedItem().toString(), ccCB4.getSelectionModel().getSelectedItem().toString(), h1CB.getSelectionModel().getSelectedItem().toString(), h2CB.getSelectionModel().getSelectedItem().toString(), h3CB.getSelectionModel().getSelectedItem().toString(), h4CB.getSelectionModel().getSelectedItem().toString(), h5CB.getSelectionModel().getSelectedItem().toString(), h6CB.getSelectionModel().getSelectedItem().toString(), h7CB.getSelectionModel().getSelectedItem().toString(), h8CB.getSelectionModel().getSelectedItem().toString(), h9CB.getSelectionModel().getSelectedItem().toString(), h10CB.getSelectionModel().getSelectedItem().toString(), h11CB.getSelectionModel().getSelectedItem().toString(), h12CB.getSelectionModel().getSelectedItem().toString());

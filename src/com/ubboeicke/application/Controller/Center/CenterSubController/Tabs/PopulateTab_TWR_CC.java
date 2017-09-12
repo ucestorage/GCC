@@ -40,7 +40,7 @@ public class PopulateTab_TWR_CC {
     ComboBox<String> c4 = new ComboBox<>();
     ComboBox<String> c5= new ComboBox<>();
     ComboBox<String> c6 = new ComboBox<>();
-    ComboBox<String> test = new ComboBox<>();
+
 
 
 
@@ -196,8 +196,15 @@ public class PopulateTab_TWR_CC {
         mTowers.add(new Tower("Thorn Worm", goc.levelTextField(),goc.levelPrestigeTextField(), goc.attackModeCB()));
         mTowers.add(new Tower("Barracks", c6, goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB()));
         mTowers.add(new Tower("Turret",goc.levelTextField(),goc.levelPrestigeTextField(), goc.attackModeCB()));
+        c1.getSelectionModel().selectFirst();
+        c2.getSelectionModel().selectFirst();
+        c3.getSelectionModel().selectFirst();
+        c4.getSelectionModel().selectFirst();
+        c5.getSelectionModel().selectFirst();
+        c6.getSelectionModel().selectFirst();
 
-mTowerTableView.setItems(mTowers);
+
+        mTowerTableView.setItems(mTowers);
     }
 
     public void validatePrestige(){

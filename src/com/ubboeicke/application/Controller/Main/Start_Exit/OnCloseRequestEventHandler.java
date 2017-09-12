@@ -44,6 +44,7 @@ public class OnCloseRequestEventHandler {
 
         if (result.isPresent() && result.get() == saveBtn) {
            mSaveAndLoadHandler.saveAll();
+
         }
         if (result.isPresent() && result.get() == exitBtn) {
             System.exit(0);

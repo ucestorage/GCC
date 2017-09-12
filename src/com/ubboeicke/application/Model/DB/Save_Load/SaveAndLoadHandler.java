@@ -219,7 +219,8 @@ public class SaveAndLoadHandler {
         }
     }
     public void saveDecks(){
-        for (String s:mDeckParser.getDeckStrings()){
+        for (String s : mDeckParser.getDeckStrings()){
+
             mSaveAndLoadController.saveDecks(s);
         }
     }

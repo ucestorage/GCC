@@ -101,7 +101,12 @@ public class PopulateTab_Deck {
         Col30.setCellValueFactory(new PropertyValueFactory<Deck, String>("h12"));
         mDeckTableView.getColumns().addAll(Col1,Col2,Col3,Col4,Col6,Col7,Col8,Col9,Col10,Col5,Col11,Col12,Col13,Col14,Col15,Col16,Col17,Col18,Col19,Col20,Col21,Col22,Col23,Col24,Col25,Col26,Col27,Col28,Col29,Col30);
         mDeckTableView.setColumnResizePolicy((param -> true));
+     /*   mDecks.add(new Deck("DeckShowCase","Forge","Archer Guild","Hero Guild","Solar","Flame Bow","Bronze Shield",
+                "Gold bar", "Gold Nugget","Old Coin","Golden Tree","Thunder Tower II", "Frozen Tower II", "Defensive Barracks","Cannon",
+                "Minigun","Lightning","Poision CastleBase","Military Band (M) II","Lisa","Dorothy","Dark Nec.","Pure Wizard","Alice","Smith II","Dark Elf",
+                "Dark Ranger", "Fire Ogre","Dark Lightning Sorcerer", "Dark Ice Sorcerer"));*/
         mDeckTableView.setItems(mDecks);
+
     }
 
     public ObservableList<Deck> getDecks() {

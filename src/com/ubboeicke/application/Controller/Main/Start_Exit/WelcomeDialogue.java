@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class WelcomeDialogue {
     TopViewController mTopViewController;
     ButtonType loadBtn = new ButtonType("Load my Save!", ButtonBar.ButtonData.OK_DONE);
     ButtonType fsBtn = new ButtonType("First Start!", ButtonBar.ButtonData.CANCEL_CLOSE);
-    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Brought to you by bOngshotsGG.\nIf this is your first start,\nclick the corresponding button,\notherwise load your save.",loadBtn,fsBtn);
+    Alert alert = new Alert(Alert.AlertType.INFORMATION, "\nIf this is your first start,\nclick the corresponding button,\notherwise load your save.",loadBtn,fsBtn);
 
     public WelcomeDialogue (MainController mainController){
         this.mMainController = mainController;
@@ -34,6 +35,14 @@ public class WelcomeDialogue {
         alert.setTitle("Welcome!");
         alert.setHeaderText("Welcome to Grow Castle Calculator!");
         Optional<ButtonType> result = alert.showAndWait();
+        if (new File("DB_Strings").isFile()){
+            System.out.println("File exists");
+//TODO if savefile is there, loadbtn disable false
+        } else {
+            alert.getDialogPane().lookupButton(loadBtn).setDisable(true);
+            //TODO if no savefile disable loadbtn
+
+        }
 
         if (result.isPresent() && result.get() == loadBtn) {
 try {

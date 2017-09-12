@@ -79,8 +79,7 @@ public class PopulateTab_Item {
 
         mItemWeaponTableView.getColumns().addAll(itemNameCol,itemQualityCol,itemSortCol,itemLevelCol,itemAtt1Col,itemVal1Col,itemAtt2Col, itemVal2Col,itemAtt3Col,itemVal3Col);
         mItemWeaponTableView.setColumnResizePolicy((param -> true));
-
-       // mItemWeaponList.add(new Item("WeaponShowCase","L","Sword",100,"ColdDamage",25.0,"ColdDamage",25.0,"Slow",2.0));
+        //mItemWeaponList.add(new Item("WeaponShowCase","L","Sword",100,"ColdDamage",25.0,"ColdDamage",25.0,"Slow",2.0));
         mItemWeaponTableView.setItems(mItemWeaponList);
 
     }
@@ -128,7 +127,7 @@ public class PopulateTab_Item {
 
         mItemAccessoryTableView.getColumns().addAll(itemNameCol,itemQualityCol,itemSortCol,itemLevelCol,itemAtt1Col,itemVal1Col,itemAtt2Col, itemVal2Col,itemAtt3Col,itemVal3Col);
         mItemAccessoryTableView.setColumnResizePolicy((param -> true));
-      //  mItemAccessoryList.add(new Item("AccessoryShowCase","L","Bracelet",100,"FireDamage",25.0,"FireDamage",25.0,"AreaDamage",100.0));
+       // mItemAccessoryList.add(new Item("AccessoryShowCase","L","Bracelet",100,"FireDamage",25.0,"FireDamage",25.0,"AreaDamage",100.0));
         mItemAccessoryTableView.setItems(mItemAccessoryList);
 
     }

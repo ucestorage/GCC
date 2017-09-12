@@ -16,15 +16,17 @@ public class DeckParser {
 
     public DeckParser(CenterViewController centerViewController){
         mCenterViewController = centerViewController;
-        mDeckList = mCenterViewController.getDeckTableView().getItems();
+
 
     }
     public ArrayList<String> getDeckStrings(){
-        for (Deck d :mDeckList){
+        mDeckList = mCenterViewController.getDeckTableView().getItems();
+        for (Deck d : mDeckList){
             String s = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",d.getName(),d.getTownBuilding1(),d.getTownBuilding2(),d.getTownBuilding3(),d.getLeader(),d.getTreasure1(),d.getTreasure2(),d.getTreasure3(),d.getTreasure4(),d.getTreasure5(),d.getTower1(),d.getTower2(),d.getTower3(),d.getTower4(),d.getCC1(),d.getCC2(),d.getCC3(),d.getCC4(),d.getH1(),d.getH2(),d.getH3(),d.getH4(),d.getH5(),d.getH6(),d.getH7(),d.getH8(),d.getH9(),d.getH10(),d.getH11(),d.getH12());
             mDeckStringList.add(s);
-        }
 
+        }
+        System.out.println(mDeckStringList);
         return  mDeckStringList;
     }
     public Deck splitStrings(String s){
