@@ -19,6 +19,7 @@ import java.io.IOException;
  * Created by Ubbo Eicke on 11.06.2017.
  */
 public class PopulateTab_Item {
+    //TODO make it possible to modify items e.g. delete / alter
     private CenterViewController mCenterViewController;
     private TableView<Item> mItemWeaponTableView;
     private TableView<Item> mItemAccessoryTableView;

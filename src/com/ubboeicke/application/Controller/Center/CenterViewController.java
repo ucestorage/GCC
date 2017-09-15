@@ -7,7 +7,6 @@ import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import com.ubboeicke.application.Model.Gamedata.Leaders.Leader;
 import com.ubboeicke.application.Model.Gamedata.Towers.Tower;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,10 +43,10 @@ public class CenterViewController {
     @FXML private Label ccLL2;
     @FXML private Label ccLL3;
     @FXML private Label ccLL4;
-    @FXML private Label heroL1;
-    @FXML private Label heroLL1;
-    @FXML private Label heroDmg1;
-    @FXML private Label heroPL1;
+    @FXML private Label h1NameL;
+    @FXML private Label h1LvlL;
+    @FXML private Label h1DmgL;
+    @FXML private Label h1PLvlL;
     @FXML private Label h1itemSL1;
     @FXML private Label h1itemSL2;
     @FXML private Label h1itemQL1;
@@ -141,8 +140,8 @@ public class CenterViewController {
         return h1att3L2;
     }
 
-    public Label getHeroL1() {
-        return heroL1;
+    public Label getH1NameL() {
+        return h1NameL;
     }
 
     public Label getH1itemSL1() {
@@ -185,16 +184,16 @@ public class CenterViewController {
         return h1attv3L2;
     }
 
-    public Label getHeroLL1() {
-        return heroLL1;
+    public Label getH1LvlL() {
+        return h1LvlL;
     }
 
-    public Label getHeroDmg1() {
-        return heroDmg1;
+    public Label getH1DmgL() {
+        return h1DmgL;
     }
 
-    public Label getHeroPL1() {
-        return heroPL1;
+    public Label getH1PLvlL() {
+        return h1PLvlL;
     }
 
     public Label getCcL1() {

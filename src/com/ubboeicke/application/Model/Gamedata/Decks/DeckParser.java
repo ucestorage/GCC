@@ -26,7 +26,6 @@ public class DeckParser {
             mDeckStringList.add(s);
 
         }
-        System.out.println(mDeckStringList);
         return  mDeckStringList;
     }
     public Deck splitStrings(String s){

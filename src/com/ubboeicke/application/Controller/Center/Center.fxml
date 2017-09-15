@@ -234,12 +234,12 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <Label fx:id="heroL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Hero#01" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" />
+                                        <Label fx:id="h1NameL" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Hero#01" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" />
                                         <Label alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level T0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
-                                        <Label fx:id="heroLL1" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level T0 Val" GridPane.columnIndex="4" GridPane.rowIndex="0" />
-                                        <Label fx:id="heroDmg1" alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Damage" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+                                        <Label fx:id="h1LvlL" alignment="CENTER" prefHeight="30.0" prefWidth="256.0" text="Level T0 Val" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+                                        <Label fx:id="h1DmgL" alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Damage" GridPane.columnSpan="3" GridPane.rowIndex="1" />
                                         <Label alignment="CENTER" layoutX="250.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Level T1" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                        <Label fx:id="heroPL1" alignment="CENTER" layoutX="330.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Level T1 Val" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                        <Label fx:id="h1PLvlL" alignment="CENTER" layoutX="330.0" layoutY="10.0" prefHeight="30.0" prefWidth="256.0" text="Level T1 Val" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                         <Label fx:id="h1att1L1" alignment="CENTER" layoutX="10.0" layoutY="35.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #1" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                         <Label  fx:id="h1att2L1" alignment="CENTER" layoutX="10.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #2" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                         <Label  fx:id="h1att3L1" alignment="CENTER" layoutX="90.0" layoutY="85.0" prefHeight="30.0" prefWidth="256.0" text="Attribute #3" GridPane.columnIndex="4" GridPane.rowIndex="2" />
