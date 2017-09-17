@@ -62,45 +62,53 @@ try {
     }
         private void giveBasicInformation(){
         int i = 1;
-            InputDialogue Input1 = new InputDialogue("Ok", "Basic Informations", "Please enter Player Name", "Step "+i++ +" / 10","PlayerName");
+        int ii = 12;
+            InputDialogue Input1 = new InputDialogue("Ok", "Basic Informations", "Please enter Player Name", "Step "+i++ +" / "+ii,"PlayerName");
             Input1.dialogueHandler();
             mMainController.writerLabel(Input1.getInput(), mTopViewController.getPlayerNameLabel());
 
-            InputDialogue Input2 = new InputDialogue("Ok", "Basic Informations", "Please enter Player Level", "Step "+i++ +" / 10","401");
+            InputDialogue Input2 = new InputDialogue("Ok", "Basic Informations", "Please enter Player Level", "Step "+i++ +" / "+ii,"401");
             Input2.dialogueHandler();
             mMainController.writerLabel(Input2.getInput(), mTopViewController.getPlayerLevelLabel());
 
-            InputDialogue Input3 = new InputDialogue("Ok", "Basic Informations", "Please enter Guild Name", "Step "+i++ +" / 10","GuildName");
+            InputDialogue Input3 = new InputDialogue("Ok", "Basic Informations", "Please enter Guild Name", "Step "+i++ +" / "+ii,"GuildName");
             Input3.dialogueHandler();
             mMainController.writerLabel(Input3.getInput(), mTopViewController.getGuildLabel());
 
-            InputDialogue Input4 = new InputDialogue("Ok", "Basic Informations", "Please enter Start Date", "Step "+i++ +" / 10","24.04.2016");
+            InputDialogue Input4 = new InputDialogue("Ok", "Basic Informations", "Please enter Start Date", "Step "+i++ +" / "+ii,"24.04.2016");
             Input4.dialogueHandler();
             mMainController.writerLabel(Input4.getInput(), mTopViewController.getStartDateLabel());
 
-            InputDialogue Input5 = new InputDialogue("Ok", "Basic Informations", "Please enter current Wave Count", "Step "+i++ +" / 10","1");
+            InputDialogue Input5 = new InputDialogue("Ok", "Basic Informations", "Please enter current Wave Count", "Step "+i++ +" / "+ii,"1");
             Input5.dialogueHandler();
             mMainController.writerTextField(Input5.getInput(), mTopViewController.getWaveCountTextField());
 
-            InputDialogue Input6 = new InputDialogue("Ok", "Basic Informations", "Please enter  beaten Earth Colonies\nMAX: 204", "Step "+i++ +" / 10","204");
+            InputDialogue Input6 = new InputDialogue("Ok", "Basic Informations", "Please enter  beaten Earth Colonies\nMAX: 204", "Step "+i++ +" / "+ii,"204");
             Input6.dialogueHandler();
             mMainController.writerLabel(Input6.getInput(), mTopViewController.geteColoLabel());
 
-            InputDialogue Input7 = new InputDialogue("Ok", "Basic Informations", "Please enter  beaten Hell Colonies\nMAX: 187", "Step "+i++ +" / 10","187");
+            InputDialogue Input7 = new InputDialogue("Ok", "Basic Informations", "Please enter  beaten Hell Colonies\nMAX: 187", "Step "+i++ +" / "+ii,"187");
             Input7.dialogueHandler();
             mMainController.writerLabel(Input7.getInput(), mTopViewController.gethColoLabel());
 
-            InputDialogue Input8 = new InputDialogue("Ok", "Basic Informations", "Please enter  beaten Orc Colonies\nMAX: 101", "Step "+i++ +" / 10","101");
+            InputDialogue Input8 = new InputDialogue("Ok", "Basic Informations", "Please enter  beaten Orc Colonies\nMAX: 101", "Step "+i++ +" / "+ii,"101");
             Input8.dialogueHandler();
             mMainController.writerLabel(Input8.getInput(), mTopViewController.getoColoLabel());
 
-            InputDialogue Input9 = new InputDialogue("Ok", "Basic Informations", "Please enter current Town Worker Level", "Step "+i++ +" / 10","1000(MAX)");
+            InputDialogue Input9 = new InputDialogue("Ok", "Basic Informations", "Please enter current Town Worker Level", "Step "+i++ +" / "+ii,"1000(MAX)");
             Input9.dialogueHandler();
             mMainController.writerLabel(Input9.getInput(), mTopViewController.getTwLabel());
 
-            InputDialogue Input10 = new InputDialogue("Ok", "Basic Informations", "Please enter current Orc Worker Level", "Step "+i++ +" / 10","1000(MAX)");
+            InputDialogue Input10 = new InputDialogue("Ok", "Basic Informations", "Please enter current Orc Worker Level", "Step "+i++ +" / "+ii,"1000(MAX)");
             Input10.dialogueHandler();
             mMainController.writerLabel(Input10.getInput(), mTopViewController.getOwLabel());
+
+            InputDialogue Input11 = new InputDialogue("Ok", "Basic Informations", "Please enter current Castle Level", "Step "+i++ +" / "+ii,"0");
+            Input11.dialogueHandler();
+            mMainController.writerTextField(Input11.getInput(), mTopViewController.getCastleLvlVTF());
+            InputDialogue Input12 = new InputDialogue("Ok", "Basic Informations", "Please enter current Town Archer Level", "Step "+i++ +" / "+ii,"0");
+            Input12.dialogueHandler();
+            mMainController.writerTextField(Input12.getInput(), mTopViewController.getTALvlVTF());
 
 
 

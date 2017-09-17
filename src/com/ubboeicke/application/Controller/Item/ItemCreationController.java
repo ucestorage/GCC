@@ -69,7 +69,7 @@ public class ItemCreationController extends AnchorPane {
 
     public ItemCreationController(CenterViewController centerViewController) throws IOException {
         this.mCenterViewController = centerViewController;
-        this.mPopulateTabItem = mCenterViewController.getPopulateTabItem();
+        this.mPopulateTabItem = mCenterViewController.getmPopulateTabItem();
         FXMLLoader loader = new FXMLLoader(ItemCreationController.class.getResource("ItemCreation.fxml"));
         loader.setRoot(this);
         loader.setController(this);

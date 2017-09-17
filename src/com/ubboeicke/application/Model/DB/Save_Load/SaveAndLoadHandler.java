@@ -98,9 +98,11 @@ public class SaveAndLoadHandler {
         mTopViewController.setoColoLabel(mSaveAndLoadController.load().get(7));
         mTopViewController.setTwLabel(mSaveAndLoadController.load().get(8));
         mTopViewController.setOwLabel(mSaveAndLoadController.load().get(9));
+        mTopViewController.setCastleLvlVTF(mSaveAndLoadController.load().get(10));
+        mTopViewController.setTALvlVTF(mSaveAndLoadController.load().get(11));
     }
     public void loadItemsWeapons(){
-         ObservableList<Item> mItemObservableList = mCenterViewController.getItemWeaponList();
+         ObservableList<Item> mItemObservableList = mCenterViewController.getItemWeaponTableView().getItems();
          TableView<Item> mItemTableView = mCenterViewController.getItemWeaponTableView();
         for (String s : mSaveAndLoadController.loadItemsWeapons()){
             mItemObservableList.add(mItemParser.splitItem(s));
@@ -108,7 +110,7 @@ public class SaveAndLoadHandler {
         mItemTableView.setItems(mItemObservableList);
     }
     public void loadItemsAccessories(){
-        ObservableList<Item> mItemObservableList = mCenterViewController.getItemAcccessoryList();
+        ObservableList<Item> mItemObservableList = mCenterViewController.getItemAccessoryTableView().getItems();
         TableView<Item> mItemTableView = mCenterViewController.getItemAccessoryTableView();
         for (String s : mSaveAndLoadController.loadItemsAccessories()){
             mItemObservableList.add(mItemParser.splitItem(s));
@@ -181,6 +183,8 @@ public class SaveAndLoadHandler {
         mSaveAndLoadController.save(mTopViewController.getoColoLabel().getText());
         mSaveAndLoadController.save(mTopViewController.getTwLabel().getText());
        mSaveAndLoadController.save(mTopViewController.getOwLabel().getText());
+       mSaveAndLoadController.save(mTopViewController.getCastleLvlVTF().getText());
+       mSaveAndLoadController.save(mTopViewController.getTALvlVTF().getText());
     }
     public void saveItemsWeapons() {
         for(String s :mItemParser.getItemWeaponStringList()){

@@ -27,11 +27,11 @@ public class HeroParser {
     public HeroParser(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
         goc = new GameObjectConstructor();
-        mWeaponList = mCenterViewController.getItemWeaponList();
-        mAccessoryList = mCenterViewController.getItemAcccessoryList();
+        mWeaponList = mCenterViewController.getItemWeaponTableView().getItems();
+        mAccessoryList = mCenterViewController.getItemAccessoryTableView().getItems();
 
     }
-    //TODO save/load Hero
+
 
     public ArrayList<String> getStrings_OH(){
 

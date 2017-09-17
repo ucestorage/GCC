@@ -27,12 +27,12 @@ public class LeaderParser {
     public LeaderParser(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
         goc = new GameObjectConstructor();
-        mWeaponList = mCenterViewController.getItemWeaponList();
-        mAccessoryList = mCenterViewController.getItemAcccessoryList();
+        mWeaponList = mCenterViewController.getItemWeaponTableView().getItems();
+        mAccessoryList = mCenterViewController.getItemAccessoryTableView().getItems();
         StringList = new ArrayList<>();
 
     }
-    //TODO save/load leader
+
 
     public ArrayList<String> getStrings(){
 

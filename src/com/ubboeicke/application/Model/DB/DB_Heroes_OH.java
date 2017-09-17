@@ -21,5 +21,3 @@ public class DB_Heroes_OH implements Serializable{
     }
 
 }
-//TODO have a look at h2 DB implementation hsq...
-//TODO presentation 30.06.2017 6407 9:45

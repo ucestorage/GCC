@@ -10,11 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-
-import java.util.List;
 
 /**
  * Created by Ubbo Eicke on 11.06.2017.
@@ -48,12 +45,12 @@ public class PopulateTab_TWR_CC {
         mCenterViewController = centerViewController;
         mCastleComponentTableView = mCenterViewController.getCcTableView();
         mTowerTableView = mCenterViewController.getTwrTableView();
-        mGridPane = mCenterViewController.getTclContainer();
+        mGridPane = mCenterViewController.getTclCOntainer();
         mLeaderTableView = mCenterViewController.getLeaderTableView();
-        mPopulateTabItem = mCenterViewController.getPopulateTabItem();
+        mPopulateTabItem = mCenterViewController.getmPopulateTabItem();
         goc = new GameObjectConstructor();
-        mWeaponList = mCenterViewController.getItemWeaponList();
-        mAccessoryList = mCenterViewController.getItemAcccessoryList();
+        mWeaponList = mCenterViewController.getItemWeaponTableView().getItems();
+        mAccessoryList = mCenterViewController.getItemAccessoryTableView().getItems();
         setupTableView();
         addCastleComponents();
         addTowers();
@@ -148,8 +145,14 @@ public class PopulateTab_TWR_CC {
         mCastleComponentTableView.getColumns().addAll(ccCol);
         mCastleComponentTableView.setColumnResizePolicy((param -> true));
         mCastleComponentTableView.setOnKeyReleased(event -> {
-            validatePrestige();
+            validatePrestigeCC();
                 });
+        mTowerTableView.setOnKeyReleased(event -> {
+            validatePrestigeTWR();
+        });
+        mLeaderTableView.setOnKeyReleased(event -> {
+            validatePrestigeLDR();
+        });
         mTowerTableView.getColumns().addAll(twrCol);
         mTowerTableView.setColumnResizePolicy(param -> true);
     }
@@ -207,14 +210,17 @@ public class PopulateTab_TWR_CC {
         mTowerTableView.setItems(mTowers);
     }
 
-    public void validatePrestige(){
+    public void validatePrestigeCC(){
         for(CastleComponent cc : mCastleComponentTableView.getItems()){
 
 
             if(cc.getCcName().equals("Gold Castle") || cc.getCcName().equals("Shield Castle") || cc.getCcName().equals("Fire CastleBase") || cc.getCcName().equals("Lightning CastleBase") || cc.getCcName().equals("Frozen CastleBase")){
-
+                if (cc.getCcLevel().equals("99")){
+                    cc.getCcLevel().setText("99(MAX)");
+                }
             } else {
                 if (!cc.getCcLevel().getText().equals("9999")) {
+                    cc.getCcLevelP().setText("0");
                     cc.getCcLevelP().setDisable(true);
                 } else {
                     cc.getCcLevelP().setDisable(false);
@@ -223,6 +229,41 @@ public class PopulateTab_TWR_CC {
             }
 }
     }
+    public void validatePrestigeTWR(){
+        for(Tower twr : mTowerTableView.getItems()){
+
+
+            if(twr.getName().equals("Tree") || twr.getName().equals("Trophy")){
+                if (twr.getLevel().equals("21")){
+                    twr.getLevel().setText("21(MAX)");
+                }
+            } else {
+                if (!twr.getLevel().getText().equals("9999")) {
+                    twr.getLevelPrestige().setText("0");
+                    twr.getLevelPrestige().setDisable(true);
+                } else {
+                    twr.getLevelPrestige().setDisable(false);
+                }
+
+            }
+        }
+    }
+    public void validatePrestigeLDR(){
+        for(Leader ldr : mLeaderTableView.getItems()){
+
+
+
+                if (!ldr.getLevel().getText().equals("9999")) {
+                    ldr.getLevelPrestige().setText("0");
+                    ldr.getLevelPrestige().setDisable(true);
+
+                } else {
+                    ldr.getLevelPrestige().setDisable(false);
+                }
+
+            }
+        }
+
 
     public ObservableList<Leader> getLeaders() {
         return mLeaders;

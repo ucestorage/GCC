@@ -67,6 +67,7 @@ public class MainController extends BorderPane {
         aler.setContentText(Filename.REDDIT);
         aler.showAndWait();
     }
+    //TODO setter für welcomedialogue labels
 
    public void makeNewItem(){
                try {
@@ -82,6 +83,7 @@ public class MainController extends BorderPane {
                    ioe.printStackTrace();
                }
        }
+
 
     public Stage getStage() {
         return mStage;

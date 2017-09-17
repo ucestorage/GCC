@@ -31,8 +31,8 @@ public class PopulateTab_Hero {
         mHeroTableView1 = mCenterViewController.getHeroTableView1();
         mHeroTableView2 = mCenterViewController.getHeroTableView2();
         goc = new GameObjectConstructor();
-        mWeaponList = mCenterViewController.getItemWeaponList();
-        mAccessoryList = mCenterViewController.getItemAcccessoryList();
+        mWeaponList = mCenterViewController.getItemWeaponTableView().getItems();
+        mAccessoryList = mCenterViewController.getItemAccessoryTableView().getItems();
 
         setupTableView_OH();
         setuupTableView_UH();
@@ -70,6 +70,7 @@ public class PopulateTab_Hero {
         heroAccCol.setPrefWidth(114.28);
         heroCol.getColumns().addAll(heroNameCol,heroPromotionCol,heroLevelCol,heroLevelPCol,heroAMCol,heroWeaponCol,heroAccCol);
         mHeroTableView1.getColumns().addAll(heroCol);
+
     }
 
     public void setuupTableView_UH(){
@@ -134,5 +135,19 @@ public class PopulateTab_Hero {
         mHeroTableView1.setItems(mHeroes1);
 
         mHeroTableView2.setItems(mHeroes2);
+        mHeroTableView1.setOnKeyReleased(event -> {
+            validatePrestige();
+        });
+    }
+    private void validatePrestige(){
+        for (Hero h : mCenterViewController.getHeroTableView1().getItems()){
+
+            if (!h.getLevel().getText().equals("9999")) {
+                h.getLevelPrestige().setText("0");
+                h.getLevelPrestige().setDisable(true);
+            } else {
+                h.getLevelPrestige().setDisable(false);
+            }
+        }
     }
 }

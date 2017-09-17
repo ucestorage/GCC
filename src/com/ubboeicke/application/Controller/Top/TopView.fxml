@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<fx:root type="VBox" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefWidth="1900.0" type="VBox" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
 <GridPane fx:id="header" hgap="5.0" vgap="5.0" xmlns:fx="http://javafx.com/fxml/1">
                 <columnConstraints>
                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.6666564941406" minWidth="0.0" prefWidth="50.0" />
@@ -48,7 +47,7 @@
                     </AnchorPane>
                     <AnchorPane GridPane.columnIndex="3" GridPane.rowIndex="3">
                         <children>
-                            <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="221.0" text="Toggle On/Off" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <ToggleButton fx:id="speedTB" mnemonicParsing="false" prefHeight="50.0" prefWidth="221.0" text="Toggle On/Off" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </children>
                     </AnchorPane>
                     <AnchorPane GridPane.columnIndex="4">
@@ -172,20 +171,14 @@
                             <GridPane prefHeight="90.0" prefWidth="213.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                 <children>
-                                    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                        <children>
-                                            <ComboBox prefHeight="30.0" prefWidth="170.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        </children>
-                                    </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                         <children>
-                                            <TextField prefHeight="30.0" prefWidth="171.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <TextField fx:id="goldVTF" prefHeight="30.0" prefWidth="171.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                 </children>
@@ -197,17 +190,11 @@
                             <GridPane prefHeight="90.0" prefWidth="213.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columnConstraints>
                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                 </columnConstraints>
                                 <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                 <children>
-                                    <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                        <children>
-                                            <Label prefHeight="30.0" prefWidth="107.0" text="Multiplicator" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        </children>
-                                    </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                         <children>
                                             <Label prefHeight="30.0" prefWidth="107.0" text="Gold" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -310,7 +297,7 @@
                     </AnchorPane>
                     <AnchorPane layoutX="613.0" layoutY="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                         <children>
-                            <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="221.0" text="Toggle On/Off" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            <ToggleButton fx:id="hornOnOffTB" mnemonicParsing="false" prefHeight="50.0" prefWidth="221.0" text="Toggle On/Off" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                         </children>
                     </AnchorPane>
                     <AnchorPane layoutX="178.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="6">
@@ -326,7 +313,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label fx:id="playerNameLabel1" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           <TextField fx:id="castleLvlVTF" prefHeight="30.0" prefWidth="149.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -350,9 +337,9 @@
                                 </rowConstraints>
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-                                        <children>
-                                            <Label fx:id="playerNameLabel11" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                        </children>
+                        <children>
+                           <TextField fx:id="TALvlVTF" prefHeight="30.0" prefWidth="149.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                         <children>
@@ -376,7 +363,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label fx:id="playerNameLabel12" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="HPVL" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
@@ -401,7 +388,7 @@
                                 <children>
                                     <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                         <children>
-                                            <Label fx:id="playerNameLabel121" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            <Label fx:id="MPVL" prefHeight="30.0" prefWidth="107.0" text="here" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                         </children>
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">

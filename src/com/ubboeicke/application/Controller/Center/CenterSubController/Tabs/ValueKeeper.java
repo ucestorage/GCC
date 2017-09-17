@@ -24,18 +24,10 @@ public class ValueKeeper {
     Double treasureDmg = 0.0;
     Integer finalHP = 0;
     Integer finalMP = 0;
+    Double skillDmg = 0.5;
     public ValueKeeper(){
 
     }
-
-    public Double getTreasureDmg() {
-        return treasureDmg;
-    }
-
-    public void setTreasureDmg(Double treasureDmg) {
-        this.treasureDmg = treasureDmg;
-    }
-
     public void reset() {
         summonedUnitDmg = 0.0;
         fireDmg = 10.0;
@@ -46,22 +38,40 @@ public class ValueKeeper {
         manaRec = 0.0;
         archerDmg = 0.0;
         heroDmg = 0.0;
-       goldBonus = 0.0;
-       towerDmg = 0.0;
-       cdr = 0.0;
-       humanSummons = 0.0;
-       humanSummonDmg = 0.0;
-       archerCrit = 0.0;
-       heroCrit = 0.0;
-       archerAS = 0.0;
-       defense = 0.0;
-       siegeDef = 0.0;
-       finalHP = 0;
-       finalMP = 0;
+        goldBonus = 0.0;
+        towerDmg = 0.0;
+        cdr = 0.0;
+        humanSummons = 0.0;
+        humanSummonDmg = 0.0;
+        archerCrit = 0.0;
+        heroCrit = 0.0;
+        archerAS = 0.0;
+        defense = 0.0;
+        siegeDef = 0.0;
+        finalHP = 0;
+        finalMP = 0;
         tbDmg = 0.0;
         treasureDmg = 0.0;
 
     }
+
+    public Double getSkillDmg() {
+        return skillDmg;
+    }
+
+    public void setSkillDmg(Double skillDmg) {
+        this.skillDmg = skillDmg;
+    }
+
+    public Double getTreasureDmg() {
+        return treasureDmg;
+    }
+
+    public void setTreasureDmg(Double treasureDmg) {
+        this.treasureDmg = treasureDmg;
+    }
+
+
 
     public Double getTbDmg() {
         return tbDmg;

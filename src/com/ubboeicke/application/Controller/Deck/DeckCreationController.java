@@ -99,7 +99,7 @@ public class DeckCreationController extends AnchorPane {
     public DeckCreationController(MainController mainController) throws IOException {
         mMainController = mainController;
         mCenterViewController = mMainController.getCenterViewController();
-        mPopulateTabDeck = mCenterViewController.getPopulateTabDeck();
+        mPopulateTabDeck = mCenterViewController.getmPopulateTabDeck();
         mDeckObservableList = mCenterViewController.getDeckTableView().getItems();
         mDeckTableView = mCenterViewController.getDeckTableView();
 
