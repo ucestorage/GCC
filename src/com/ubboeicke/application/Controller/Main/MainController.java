@@ -3,6 +3,7 @@ package com.ubboeicke.application.Controller.Main;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Controller.Deck.DeckCreationController;
 import com.ubboeicke.application.Controller.Item.ItemCreationController;
+import com.ubboeicke.application.Controller.Main.Start_Exit.InputDialogue;
 import com.ubboeicke.application.Controller.Top.TopViewController;
 import com.ubboeicke.application.Model.Enums.Filename;
 import com.ubboeicke.application.Model.MainModel;
@@ -67,7 +68,52 @@ public class MainController extends BorderPane {
         aler.setContentText(Filename.REDDIT);
         aler.showAndWait();
     }
-    //TODO setter für welcomedialogue labels
+
+    public void setPlayerName(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your desired Name.","Change Playername","");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getPlayerNameLabel());
+    }
+    public void setPlayerLevel(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your Level.","Change PlayerLevel","401(MAX)");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getPlayerLevelLabel());
+    }
+    public void setGuildLabel(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your Guild.","Change Guild","");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getGuildLabel());
+    }
+    public void setStartDate(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your start Date.","Change StartDate","");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getStartDateLabel());
+    }
+    public void setEarthColo(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter beaten Earth Colonies.","Earth Colonies","204 (MAX)");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.geteColoLabel());
+    }
+    public void setHellColo(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter beaten Hell Colonies.","Hell Colonies","187 (MAX)");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.gethColoLabel());
+    }
+    public void setOrcColo(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter beaten Orc Colonies.","Orc Colonies","101 (MAX)");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getoColoLabel());
+    }
+    public void setTownWorker(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your Town Worker Level.","Change Town Worker Level","1000 (MAX)");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getTwLabel());
+    }
+    public void setOrcWOrker(){
+        InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your Orc Worker Level.","Change Orc Worker Level","1000 (MAX)");
+        pnid.dialogueHandler();
+        this.writerLabel(pnid.getInput(),mTopViewController.getOwLabel());
+    }
 
    public void makeNewItem(){
                try {

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.CheckMenuItem?>
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111"
 
          xmlns:fx="http://javafx.com/fxml/1">
@@ -22,13 +23,37 @@
                     </Menu>
                     <Menu mnemonicParsing="=false" text="Decks">
                         <MenuItem mnemonicParsing="false" text="Make new Deck" onAction="#makeNewDeck" />
-                        <SeparatorMenuItem/>
+
                             </Menu>
+                    <Menu mnemonicParsing="false" text="Guild">
+                        <items>
+                            <CheckMenuItem mnemonicParsing="false" text="Tower Damage 20%" />
+                        </items> 
+                    </Menu>
+
+                    <Menu mnemonicParsing="false" text="Options">
+                        <items>
+                            <Menu mnemonicParsing="false" text="Basic Information" >
+                                <items>
+                                <MenuItem mnemonicParsing="false" text="Player Name" onAction="#setPlayerName"/>
+                                    <MenuItem mnemonicParsing="false" text="Player Level" onAction="#setPlayerLevel"/>
+                                    <MenuItem mnemonicParsing="false" text="Guild" onAction="#setGuildLevel"/>
+                                    <MenuItem mnemonicParsing="false" text="Start Date" onAction="#setStartDate"/>
+                                    <MenuItem mnemonicParsing="false" text="Earth Colonies" onAction="#setEarthColo"/>
+                                    <MenuItem mnemonicParsing="false" text="Hell Colonies" onAction="#setHellColo"/>
+                                    <MenuItem mnemonicParsing="false" text="Orc Colonies" onAction="#setOrcColo"/>
+                                    <MenuItem mnemonicParsing="false" text="Town Worker" onAction="#setTownWorker"/>
+                                    <MenuItem mnemonicParsing="false" text="Orc Worker" onAction="#setOrcWorker"/>
+                                </items>
+                            </Menu>
+                        </items>
+                    </Menu>
                     <Menu mnemonicParsing="false" text="Help">
                         <items>
                             <MenuItem mnemonicParsing="false" text="Reddit" onAction="#redditThread" />
                         </items>
                     </Menu>
+
                 </menus>
             </MenuBar>
 

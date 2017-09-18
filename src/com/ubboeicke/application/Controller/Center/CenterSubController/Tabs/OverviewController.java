@@ -1,6 +1,8 @@
 package com.ubboeicke.application.Controller.Center.CenterSubController.Tabs;
 
 import com.ubboeicke.application.Controller.Center.CenterViewController;
+import com.ubboeicke.application.Controller.Main.MainController;
+import com.ubboeicke.application.Controller.Top.TopViewController;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
 import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
@@ -28,7 +30,9 @@ public class OverviewController {
     private ObservableList<Item> mWeaponList = FXCollections.observableArrayList();
     private ObservableList<Item> mAccessoryList = FXCollections.observableArrayList();
     private ObservableList<Leader> mLeaderList = FXCollections.observableArrayList();
+    private MainController mMainController;
     private CenterViewController mCenterViewController;
+    private TopViewController mTopViewController;
     private ValueKeeper vk = new ValueKeeper();
 
 
@@ -48,8 +52,10 @@ public class OverviewController {
     Integer finalHP = 0;
     Integer finalMP = 0;
 
-    public OverviewController(CenterViewController centerViewController) {
-        mCenterViewController = centerViewController;
+    public OverviewController(MainController mainController) {
+        mMainController = mainController;
+        mCenterViewController = mainController.getCenterViewController();
+        mTopViewController = mainController.getTopViewController();
     }
 
     public void populateDeckCB() {
@@ -119,6 +125,9 @@ public class OverviewController {
                                                  deck.getTreasure3(), deck.getTreasure4(), deck.getTreasure5(),
                                                  deck.getTower1(), deck.getTower2(), deck.getTower3(),
                                                  deck.getTower4());
+                            mTopViewController.setHPVL(calcHP(mTopViewController.getCastleLvlVTF().getText()));
+                            mTopViewController.setMPVL(calcMP(mTopViewController.getCastleLvlVTF().getText()));
+
 
 
                             mCenterViewController.getNameLH().setText(deck.getH1());
@@ -689,7 +698,7 @@ public class OverviewController {
         }
 
         if (hero.equals("Alice Fire I") || hero.equals("Alice Fire II")) {
-            finaldmg = finalDMG(15.0, 0.0, lvl,
+            finaldmg = finalDMG(15.0, 0.1, lvl,
                                 itemAttDmg("Damage", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
                                            aAtt2v, aAtt3, aAtt3v) + itemAttDmg("FireDamage", wAtt1, wAtt1v, wAtt2,
                                                                                wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v,
@@ -828,6 +837,16 @@ public class OverviewController {
                                 baseDmg("DamagePlus", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
                                         aAtt2v, aAtt3, aAtt3v));
         }
+        if (hero.equals("Zero")) {
+            finaldmg = finalDMG(40.0, 0.1, lvl,
+                    itemAttDmg("Damage", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
+                            aAtt2v, aAtt3, aAtt3v) + itemAttDmg("ColdDamage", wAtt1, wAtt1v, wAtt2,
+                            wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v,
+                            aAtt2, aAtt2v, aAtt3, aAtt3v),
+                    baseDmg("DamagePlus", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
+                            aAtt2v, aAtt3, aAtt3v));
+        }
+    //dmg leader
 
         DecimalFormat df = new DecimalFormat("#");
         manaCost.setText(String.valueOf(df.format(Double.parseDouble(lvl) * baseManaCost)));
@@ -837,17 +856,77 @@ public class OverviewController {
         return finaldmg;
     }
 
-    private String finalDMG(Double dmgOnLvl1, Double skillAttDmg, String lvl, Double itemValue, Double baseDmg) {
+    private String finalDMG(Double dmgOnLvl1, Double skillAttDmg, String lvl, Double itemValue, Double dmgPlus) {
 
         DecimalFormat df = new DecimalFormat("#");
-        baseDmg = baseDmg + (dmgOnLvl1 * (1 + Double.parseDouble(lvl) * 0.1));
-        Double finalDmg = (baseDmg + baseDmg * itemValue) * (1 + skillAttDmg) * (1 + vk.getSkillDmg() * (1 + vk.getTbDmg()) * (1 + 0.5) * (1 + vk.getTreasureDmg()));
+       // Double baseDmg = (dmgOnLvl1 * (1 + Double.parseDouble(lvl) * 0.1));
+       // Double finalDmg = (baseDmg + baseDmg * itemValue) * (1 + skillAttDmg) * (1 + vk.getSkillDmg() * (1 + vk.getTbDmg()) * (1 + 0.5) * (1 + vk.getTreasureDmg()));
+        Double finalDmg = (dmgOnLvl1*(1+Double.parseDouble(lvl)*0.1)+dmgPlus)*(1+vk.getSkillDmg())*(1+vk.getTbDmg())*(1+vk.getTreasureDmg())*(1+skillAttDmg)*(1+itemValue);
         //System.out.println(
         //       "(" + baseDmg + "+" + baseDmg + "*" + itemValue + ")*(1+" + skillAttDmg + ")*(1+" + vk.getSkillDmg() + ")*(1+" + vk.getTbDmg() + ")*(1+" + vk.getTreasureDmg() + ")=" + finalDmg);
 
         return "Dmg~: " + String.valueOf(df.format(finalDmg));
     }
+private String twrCCDmg (String name,String lvl, String lvlP) {
+    DecimalFormat df = new DecimalFormat("#");
+    Double dmgOnLvl1 = 0.0;
+    Double skillAtt= 0.0;
+    if (name.equals("Death Worm")||name.equals("Death Worm II")){
+       dmgOnLvl1 = 100.0;
+    }
+    if (name.equals("Burning Tower")||name.equals("Burning Tower II")|| name.equals("Flame Tower")){
+        dmgOnLvl1 = 100.0;
+        skillAtt = 0.1;
+    }
+    if (name.equals("Frozen Tower")||name.equals("Frozen Tower II")){
+        dmgOnLvl1 = 5.0;
+        skillAtt = 0.1;
+    }
+    if (name.equals("Thunder Tower")||name.equals("Thunder Tower II")||name.equals("Lightning Tower")){
+        dmgOnLvl1 = 40.0;
+        skillAtt = 0.1;
+    }
+    if(name.equals("Cannon")){
+        dmgOnLvl1 = 40.0;
+        skillAtt = 0.1;
+    }
+    if(name.equals("Thorn Worm")){
+        dmgOnLvl1 = 30.0;
+    }
+    if (name.equals("Offensive Barracks")||name.equals("Defensive Barracks")||name.equals("Barracks")){
+        dmgOnLvl1 = 40.0;
+    }
+    if(name.equals("Turret")){
+        dmgOnLvl1 = 30.0;
+    }
+    if (name.equals("Cannon Castle")){
+        dmgOnLvl1 = 44.0;
+        skillAtt = 0.1;
+    }
+    if (name.equals("Minigun Castle")){
+        dmgOnLvl1 = 33.0;
+        skillAtt = 0.0;
+    }
+    if (name.equals("Poison Castle")){
+        dmgOnLvl1 = 44.0;
+        skillAtt = 0.1;
+    }
+    if (name.equals("Lightning Castle")){
+        dmgOnLvl1 = 33.0;
+        skillAtt = 0.1;
+    }
+    if (name.equals("Ballista Castle")){
+        dmgOnLvl1 = 55.0;
+        skillAtt = 0.0;
+}
+    if (name.equals("Poison CastleBase")){
+        dmgOnLvl1 = 33.0;
+        skillAtt = 0.1;
+    }
+    Double finalV = (dmgOnLvl1*(1+(Double.parseDouble(lvl)+Double.parseDouble(lvlP))*0.1))*(1+skillAtt)*(1+vk.getTowerDmg());
+    return "Dmg~: "+String.valueOf(df.format(finalV));
 
+}
 
     private Double baseDmg(String s, String wAtt1, String wAtt1v, String wAtt2, String wAtt2v, String wAtt3, String wAtt3v, String aAtt1, String aAtt1v, String aAtt2, String aAtt2v, String aAtt3, String aAtt3v) {
         Double baseDmg = 0.0;
@@ -910,7 +989,22 @@ public class OverviewController {
 
     }
 
+    private String calcHP (String s) {
+        DecimalFormat df = new DecimalFormat("#");
 
+        Double baseHP = 100.0;
+        Double incPerLvl = 50.0;
+        return  String.valueOf(df.format((baseHP+(Double.parseDouble(s)*incPerLvl)*(1+vk.getHp()))));
+
+    }
+    private String calcMP (String s) {
+        DecimalFormat df = new DecimalFormat("#");
+
+        Double baseMP = 50.0;
+        Double incPerLvl = 10.0;
+        return  String.valueOf(df.format((baseMP+(Double.parseDouble(s)*incPerLvl)*(1+vk.getMp()))));
+
+    }
     private void fillOverviewData(Deck deck, Label tb1, Label tb2, Label tb3, Label t1, Label t2, Label t3, Label t4, Label t5, Label twr1, Label twr2, Label twr3, Label twr4, ObservableList<Tower> towers, Label cc1, Label cc2, Label cc3, Label cc4, ObservableList<CastleComponent> castleComponents, Label ldr, ObservableList<Leader> ldrList) {
         tb1.setText(deck.getTownBuilding1());
         tb2.setText(deck.getTownBuilding2());
@@ -924,8 +1018,8 @@ public class OverviewController {
         twr2.setText(deck.getTower2());
         twr3.setText(deck.getTower3());
         twr4.setText(deck.getTower4());
-        //TODO HP CALC
-        //TODO dmg calc ldr/twr/cc
+
+        //TODO dmg calc /cc
         for (Tower twr : towers) {
             try {
                 if (deck.getTower1().equals(twr.getName()) || deck.getTower2().equals(
@@ -933,23 +1027,35 @@ public class OverviewController {
                         twr.getName())) {
                     if (deck.getTower1().equals(twr.getName())) {
                         mCenterViewController.getTwrLL().setText(twr.getLevel().getText());
+                        mCenterViewController.getTwrAML().setText("");
+                        mCenterViewController.getTwrDmgL().setText("");
                         mCenterViewController.getTwrAML().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                        mCenterViewController.getTwrDmgL().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                     }
                     if (deck.getTower2().equals(twr.getName())) {
                         mCenterViewController.getTwrLL1().setText(twr.getLevel().getText());
+                        mCenterViewController.getTwrAML1().setText("");
+                        mCenterViewController.getTwrDmgL1().setText("");
                         mCenterViewController.getTwrAML1().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                        mCenterViewController.getTwrDmgL1().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                     }
                     if (deck.getTower3().equals(twr.getName())) {
                         mCenterViewController.getTwrLL2().setText(twr.getLevel().getText());
+                        mCenterViewController.getTwrAML2().setText("");
+                        mCenterViewController.getTwrDmgL2().setText("");
                         mCenterViewController.getTwrAML2().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                        mCenterViewController.getTwrDmgL2().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                     }
                     if (deck.getTower4().equals(twr.getName())) {
                         mCenterViewController.getTwrLL3().setText(twr.getLevel().getText());
+                        mCenterViewController.getTwrAML3().setText("");
+                        mCenterViewController.getTwrDmgL3().setText("");
                         mCenterViewController.getTwrAML3().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                        mCenterViewController.getTwrDmgL3().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                     }
                 } else {
 
@@ -960,23 +1066,35 @@ public class OverviewController {
                             twr.getPromotion().getSelectionModel().getSelectedItem())) {
                         if (deck.getTower1().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL().setText(twr.getLevel().getText());
+                            mCenterViewController.getTwrAML().setText("");
+                            mCenterViewController.getTwrDmgL().setText("");
                             mCenterViewController.getTwrAML().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                            mCenterViewController.getTwrDmgL().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                         }
                         if (deck.getTower2().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL1().setText(twr.getLevel().getText());
+                            mCenterViewController.getTwrAML1().setText("");
+                            mCenterViewController.getTwrDmgL1().setText("");
                             mCenterViewController.getTwrAML1().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                            mCenterViewController.getTwrDmgL1().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                         }
                         if (deck.getTower3().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL2().setText(twr.getLevel().getText());
+                            mCenterViewController.getTwrAML2().setText("");
+                            mCenterViewController.getTwrDmgL2().setText("");
                             mCenterViewController.getTwrAML2().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                            mCenterViewController.getTwrDmgL2().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                         }
                         if (deck.getTower4().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL3().setText(twr.getLevel().getText());
+                            mCenterViewController.getTwrAML3().setText("");
+                            mCenterViewController.getTwrDmgL3().setText("");
                             mCenterViewController.getTwrAML3().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                            mCenterViewController.getTwrDmgL3().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
                         }
                     }
 
@@ -984,6 +1102,7 @@ public class OverviewController {
             } catch (NullPointerException npe) {
 
             }
+
         }
         cc1.setText(deck.getCC1());
         cc2.setText(deck.getCC2());
@@ -993,48 +1112,105 @@ public class OverviewController {
             try {
                 if (deck.getCC1().equals(cc.getCcName())) {
                     mCenterViewController.getCcLL().setText(cc.getCcLevel().getText());
+                    mCenterViewController.getCcAML().setText("");
+                    mCenterViewController.getCcDmgL().setText("");
                     mCenterViewController.getCcAML().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
+                    mCenterViewController.getCcDmgL().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
+
+
                 }
-            } catch (NullPointerException npe) {
-                mCenterViewController.getCcAML().setText("");
-            }
-            try {
+
+
                 if (deck.getCC2().equals(cc.getCcName())) {
                     mCenterViewController.getCcLL1().setText(cc.getCcLevel().getText());
+                    mCenterViewController.getCcAML1().setText("");
+                    mCenterViewController.getCcDmgL1().setText("");
                     mCenterViewController.getCcAML1().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
+                    mCenterViewController.getCcDmgL1().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
                 }
-            } catch (NullPointerException npe) {
-                mCenterViewController.getCcAML().setText("");
-            }
-            try {
+
+
                 if (deck.getCC3().equals(cc.getCcName())) {
                     mCenterViewController.getCcLL2().setText(cc.getCcLevel().getText());
+                    mCenterViewController.getCcAML2().setText("");
+                    mCenterViewController.getCcDmgL2().setText("");
                     mCenterViewController.getCcAML2().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
+                    mCenterViewController.getCcDmgL2().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
                 }
-            } catch (NullPointerException npe) {
-                mCenterViewController.getCcAML().setText("");
-            }
-            try {
+
+
                 if (deck.getCC4().equals(cc.getCcName())) {
                     mCenterViewController.getCcLL3().setText(cc.getCcLevel().getText());
+                    mCenterViewController.getCcAML3().setText("");
+                    mCenterViewController.getCcDmgL3().setText("");
                     mCenterViewController.getCcAML3().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
+                    mCenterViewController.getCcDmgL3().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
                 }
             } catch (NullPointerException npe) {
-                mCenterViewController.getCcAML().setText("");
+
             }
 
         }
         ldr.setText(deck.getLeader());
+        String wAtt1 = "";
+        String wAtt2 = "";
+        String wAtt3 = "";
+        String wAttV1 = "";
+        String wAttV2 = "";
+        String wAttV3 = "";
+        String aAtt1 = "";
+        String aAtt2 = "";
+        String aAtt3 = "";
+        String aAttV1 = "";
+        String aAttV2 = "";
+        String aAttV3 = "";
+        Label cd = new Label("");
+        Label manal = new Label("");
         for (Leader ldrs : ldrList) {
             if (deck.getLeader().equals(ldrs.getName())) {
                 mCenterViewController.getLdrL().setText(ldrs.getName());
                 mCenterViewController.getLdrLvlL().setText(ldrs.getLevel().getText());
                 mCenterViewController.getLdrAML().setText(
                         ldrs.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                for (Item i : mWeaponList) {
+                    try {
+                        if (ldrs.getWeapon().getSelectionModel().getSelectedItem().toString().equals(i.getItemName())) {
+                          //  wItemS.setText(i.getSortOfItem());
+                        //    wItemQ.setText(i.getItemQuality());
+                            wAtt1 =i.getAttribute1();
+                            wAtt2 =(i.getAttribute2());
+                            wAtt3=(i.getAttribute3());
+                            wAttV1=(i.getAttribute1Value().toString());
+                            wAttV2=(i.getAttribute2Value().toString());
+                            wAttV3=(i.getAttribute3Value().toString());
+                        }
+                    } catch (NullPointerException npe) {
+                    }
+                }
+                for (Item i : mAccessoryList) {
+                    try {
+                        if (ldrs.getAccessory().getSelectionModel().getSelectedItem().toString().equals(i.getItemName())) {
+                            //aItemS.setText(i.getSortOfItem());
+                           // aItemQ.setText(i.getItemQuality());
+                            aAtt1=(i.getAttribute1());
+                            aAtt2=(i.getAttribute2());
+                            aAtt3=(i.getAttribute3());
+                            aAttV1=(i.getAttribute1Value().toString());
+                            aAttV2=(i.getAttribute2Value().toString());
+                            aAttV3=(i.getAttribute3Value().toString());
+                        }
+                    } catch (NullPointerException npe) {
+                    }
+                }
+
+                mCenterViewController.getLdrDmgL().setText(
+                        dmgHero(ldrs.getName(), ldrs.getLevel().getText(), ldrs.getLevelPrestige().getText(),wAtt1, wAttV1, wAtt2,
+                                wAttV2, wAtt3, wAttV3, aAtt1, aAttV1,
+                                aAtt2, aAttV2, aAtt3, aAttV3, cd, manal));
             }
         }
     }

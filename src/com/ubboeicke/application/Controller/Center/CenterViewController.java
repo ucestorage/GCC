@@ -10,6 +10,7 @@ import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import com.ubboeicke.application.Model.Gamedata.Leaders.Leader;
 import com.ubboeicke.application.Model.Gamedata.Towers.Tower;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -1212,7 +1213,12 @@ public class CenterViewController {
         mPopulateTabHero = new PopulateTab_Hero(this);
         mPopulateTabDeck = new PopulateTab_Deck(this);
     }
-
+    public ObservableList<Hero> getHeroes(){
+        ObservableList<Hero> heroList = FXCollections.observableArrayList();
+        heroList.addAll(this.getHeroTableView1().getItems());
+        heroList.addAll(this.getHeroTableView2().getItems());
+        return heroList;
+    }
     public PopulateTab_Item getmPopulateTabItem() {
         return mPopulateTabItem;
     }

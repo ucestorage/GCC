@@ -7,6 +7,7 @@ public class ValueKeeper {
     Double lightningDmg = 10.0;
     Double coldDmg = 10.0;
     Double hp = 0.0;
+    Double mp = 0.0;
     Double manaRec = 0.0;
     Double archerDmg = 0.0;
     Double heroDmg = 0.0;
@@ -52,6 +53,7 @@ public class ValueKeeper {
         finalMP = 0;
         tbDmg = 0.0;
         treasureDmg = 0.0;
+        mp = 0.0;
 
     }
 
@@ -71,7 +73,13 @@ public class ValueKeeper {
         this.treasureDmg = treasureDmg;
     }
 
+    public Double getMp() {
+        return mp;
+    }
 
+    public void setMp(Double mp) {
+        this.mp = mp;
+    }
 
     public Double getTbDmg() {
         return tbDmg;

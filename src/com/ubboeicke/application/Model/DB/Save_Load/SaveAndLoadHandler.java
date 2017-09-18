@@ -56,7 +56,7 @@ public class SaveAndLoadHandler {
         mLeaderParser = new LeaderParser(mCenterViewController);
         mHeroParser = new HeroParser(mCenterViewController);
         mDeckParser = new DeckParser(mCenterViewController);
-        mOverviewController = new OverviewController(mCenterViewController);
+        mOverviewController = new OverviewController(mMainController);
 
 
     }

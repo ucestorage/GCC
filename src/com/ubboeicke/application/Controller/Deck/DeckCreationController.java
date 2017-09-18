@@ -147,7 +147,7 @@ public class DeckCreationController extends AnchorPane {
 
     public void populateLDR_CB() {
         ObservableList<String> ldrName = FXCollections.observableArrayList();
-        for (Leader ldr : mMainController.getMainModel().getSaveAndLoadHandler().getLDRList()) {
+        for (Leader ldr : mCenterViewController.getLeaderTableView().getItems()) {
             ldrName.add(ldr.getName());
         }
         ldrCB.getItems().setAll(ldrName);
@@ -171,7 +171,7 @@ public class DeckCreationController extends AnchorPane {
     public void populateTWR_CB() {
         ObservableList<String> twrName = FXCollections.observableArrayList();
 
-        for (Tower twr : mMainController.getMainModel().getSaveAndLoadHandler().getTWRList()) {
+        for (Tower twr : mCenterViewController.getTwrTableView().getItems()) {
             if (twr.getName().equals("Trophy") || twr.getName().equals("Cannon") || twr.getName().equals("Thorn Worm") || twr.getName().equals("Turret")) {
                 twrName.add(twr.getName());
             } else {
@@ -191,7 +191,7 @@ public class DeckCreationController extends AnchorPane {
 
     public void populateCC_CB() {
         ObservableList<String> ccName = FXCollections.observableArrayList();
-        for (CastleComponent cc : mMainController.getMainModel().getSaveAndLoadHandler().getCCList()) {
+        for (CastleComponent cc : mCenterViewController.getCcTableView().getItems()) {
             ccName.add(cc.getCcName());
         }
         ccCB1.getItems().setAll(ccName);
@@ -206,7 +206,7 @@ public class DeckCreationController extends AnchorPane {
 
     public void populateHero_CB() {
         ObservableList<String> heroName = FXCollections.observableArrayList();
-        for (Hero h : mMainController.getMainModel().getSaveAndLoadHandler().getHeroList()) {
+        for (Hero h : mCenterViewController.getHeroes()) {
             if (h.getName().equals("Angel")) {
                 heroName.add(h.getName());
             } else {
