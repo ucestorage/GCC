@@ -60,7 +60,7 @@ public class OverviewController {
 
     public void populateDeckCB() {
         deckList = mCenterViewController.getDeckTableView().getItems();
-        ComboBox<String> cb = mCenterViewController.getDeckCB();
+        ComboBox<String> cb = mTopViewController.getDeckCB();
         for (Deck d : deckList) {
             deckStringList.add(d.getName());
         }
@@ -106,7 +106,7 @@ public class OverviewController {
         mAccessoryList.addAll(mCenterViewController.getItemAccessoryTableView().getItems());
         mLeaderList.addAll(mCenterViewController.getLeaderTableView().getItems());
 
-        mCenterViewController.getDeckCB().getSelectionModel().selectedItemProperty().addListener(
+        mTopViewController.getDeckCB().getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     for (Deck deck : mCenterViewController.getDeckTableView().getItems()) {
                         if (newValue.equals(deck.getName())) {
@@ -1176,12 +1176,22 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                 mCenterViewController.getLdrLvlL().setText(ldrs.getLevel().getText());
                 mCenterViewController.getLdrAML().setText(
                         ldrs.getAttackMode().getSelectionModel().getSelectedItem().toString());
+                mCenterViewController.getLdrwAtt1().setText("");
+                mCenterViewController.getLdrwAtt2().setText("");
+                mCenterViewController.getLdrwAtt3().setText("");
+                mCenterViewController.getLdraAtt1().setText("");
+                mCenterViewController.getLdraAtt2().setText("");
+                mCenterViewController.getLdraAtt3().setText("");
                 for (Item i : mWeaponList) {
                     try {
                         if (ldrs.getWeapon().getSelectionModel().getSelectedItem().toString().equals(i.getItemName())) {
                           //  wItemS.setText(i.getSortOfItem());
                         //    wItemQ.setText(i.getItemQuality());
-                            wAtt1 =i.getAttribute1();
+
+                            mCenterViewController.getLdrwAtt1().setText(i.getAttribute1()+"  "+i.getAttribute1Value().toString());
+                            mCenterViewController.getLdrwAtt2().setText(i.getAttribute2()+"  "+i.getAttribute2Value().toString());
+                            mCenterViewController.getLdrwAtt3().setText(i.getAttribute3()+"  "+i.getAttribute3Value().toString());
+                            wAtt1 = i.getAttribute1();
                             wAtt2 =(i.getAttribute2());
                             wAtt3=(i.getAttribute3());
                             wAttV1=(i.getAttribute1Value().toString());
@@ -1196,6 +1206,10 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                         if (ldrs.getAccessory().getSelectionModel().getSelectedItem().toString().equals(i.getItemName())) {
                             //aItemS.setText(i.getSortOfItem());
                            // aItemQ.setText(i.getItemQuality());
+
+                            mCenterViewController.getLdraAtt1().setText(i.getAttribute1()+"  "+i.getAttribute1Value().toString());
+                            mCenterViewController.getLdraAtt2().setText(i.getAttribute2()+"  "+i.getAttribute2Value().toString());
+                            mCenterViewController.getLdraAtt3().setText(i.getAttribute3()+"  "+i.getAttribute3Value().toString());
                             aAtt1=(i.getAttribute1());
                             aAtt2=(i.getAttribute2());
                             aAtt3=(i.getAttribute3());

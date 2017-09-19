@@ -1,9 +1,6 @@
 package com.ubboeicke.application.Controller.Center;
 
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Deck;
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Hero;
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Item;
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_TWR_CC;
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.*;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
 import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
@@ -23,6 +20,25 @@ import java.io.IOException;
  * Created by Ubbo Eicke on 02.06.2017.
  */
 public class CenterViewController {
+
+    @FXML
+    private Label ldrwAtt1;
+
+    @FXML
+    private Label ldraAtt1;
+
+    @FXML
+    private Label ldrwAtt2;
+
+    @FXML
+    private Label ldraAtt2;
+
+    @FXML
+    private Label ldrwAtt3;
+
+    @FXML
+    private Label ldraAtt3;
+
     @FXML
     private Tab overviewTab;
 
@@ -1196,11 +1212,18 @@ public class CenterViewController {
     @FXML
     private TableView<Deck> deckTableView;
 
+    @FXML
+    private TableView<Hero> goldHeroesTV;
+
+    @FXML
+    private TitledPane goldHeroesPane;
+
 
     private PopulateTab_Item mPopulateTabItem;
     private PopulateTab_TWR_CC mPopulateTabTwrCc;
     private PopulateTab_Hero mPopulateTabHero;
     private PopulateTab_Deck mPopulateTabDeck;
+    private PopulateTab_Goldcalc mPopulateGold;
 
     //TODO split controller to controllers for single tabs
     public void initialize(TabPane tabPane) throws IOException {
@@ -1212,6 +1235,7 @@ public class CenterViewController {
         mPopulateTabTwrCc = new PopulateTab_TWR_CC(this);
         mPopulateTabHero = new PopulateTab_Hero(this);
         mPopulateTabDeck = new PopulateTab_Deck(this);
+        mPopulateGold = new PopulateTab_Goldcalc(this);
     }
     public ObservableList<Hero> getHeroes(){
         ObservableList<Hero> heroList = FXCollections.observableArrayList();
@@ -1235,8 +1259,44 @@ public class CenterViewController {
         return mPopulateTabDeck;
     }
 
+    public TableView<Hero> getGoldHeroesTV() {
+        return goldHeroesTV;
+    }
+
+    public TitledPane getGoldHeroesPane() {
+        return goldHeroesPane;
+    }
+
+    public PopulateTab_Goldcalc getmPopulateGold() {
+        return mPopulateGold;
+    }
+
     public Tab getOverviewTab() {
         return overviewTab;
+    }
+
+    public Label getLdrwAtt1() {
+        return ldrwAtt1;
+    }
+
+    public Label getLdraAtt1() {
+        return ldraAtt1;
+    }
+
+    public Label getLdrwAtt2() {
+        return ldrwAtt2;
+    }
+
+    public Label getLdraAtt2() {
+        return ldraAtt2;
+    }
+
+    public Label getLdrwAtt3() {
+        return ldrwAtt3;
+    }
+
+    public Label getLdraAtt3() {
+        return ldraAtt3;
     }
 
     public Label gettL1() {

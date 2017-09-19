@@ -2,6 +2,7 @@ package com.ubboeicke.application.Controller.Top;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
@@ -14,6 +15,8 @@ import java.io.IOException;
  */
 public class TopViewController {
 
+    @FXML
+    private ComboBox<String> deckCB;
 
     @FXML
     private TextField waveCountTextField;
@@ -72,6 +75,10 @@ public class TopViewController {
         loader.setController(this);
         loader.load();
 
+    }
+
+    public ComboBox<String> getDeckCB() {
+        return deckCB;
     }
 
     public Label getGuildLabel() {
@@ -149,7 +156,10 @@ public class TopViewController {
     public void setstartDateLabel(String startDateLabel) {
         this.startDateLabel.setText(startDateLabel);
     }
-    public void setWaveCountTextField(String waveCountTextField){this.waveCountTextField.setText(waveCountTextField);}
+
+    public void setWaveCountTextField(String waveCountTextField) {
+        this.waveCountTextField.setText(waveCountTextField);
+    }
 
     public void setCastleLvlVTF(String castleLvlVTF) {
         this.castleLvlVTF.setText(castleLvlVTF);
@@ -158,12 +168,15 @@ public class TopViewController {
     public void setTALvlVTF(String taLvlVTF) {
         this.TALvlVTF.setText(taLvlVTF);
     }
+
     public void setGoldVTF(String goldVTF) {
         this.goldVTF.setText(goldVTF);
     }
+
     public void setHPVL(String hpvl) {
         this.HPVL.setText(hpvl);
     }
+
     public void setMPVL(String mpvl) {
         this.MPVL.setText(mpvl);
     }

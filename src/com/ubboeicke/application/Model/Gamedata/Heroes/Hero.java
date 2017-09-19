@@ -1,6 +1,7 @@
 package com.ubboeicke.application.Model.Gamedata.Heroes;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -14,6 +15,10 @@ public class Hero {
     private ComboBox AttackMode;
     private ComboBox Weapon;
     private ComboBox Accessory;
+    private Label goldLvl;
+    private TextField wantLvl;
+    private Label UpgCost;
+    private Label GoldDmg;
 
     public Hero(String name, ComboBox promotion, TextField level, TextField levelPrestige, ComboBox attackMode, ComboBox weapon, ComboBox accessory) {
         Name = name;
@@ -32,6 +37,16 @@ public class Hero {
         Level = level;
         Weapon = weapon;
         Accessory = accessory;
+    }
+    public Hero(String name, TextField level,TextField wantLevel,Label upgCost, Label goldDmg){
+        Name = name;
+        Level = level;
+        wantLvl = wantLevel;
+        UpgCost = upgCost;
+        GoldDmg = goldDmg;
+
+
+
     }
 
     public String getName() {
@@ -60,5 +75,21 @@ public class Hero {
 
     public ComboBox getAccessory() {
         return Accessory;
+    }
+
+    public Label getGoldLvl() {
+        return goldLvl;
+    }
+
+    public TextField getWantLvl() {
+        return wantLvl;
+    }
+
+    public Label getUpgCost() {
+        return UpgCost;
+    }
+
+    public Label getGoldDmg() {
+        return GoldDmg;
     }
 }

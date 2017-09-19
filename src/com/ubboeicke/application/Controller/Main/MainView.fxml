@@ -28,7 +28,7 @@
                     <Menu mnemonicParsing="false" text="Guild">
                         <items>
                             <CheckMenuItem mnemonicParsing="false" text="Tower Damage 20%" />
-                        </items> 
+                        </items>
                     </Menu>
 
                     <Menu mnemonicParsing="false" text="Options">
@@ -37,7 +37,7 @@
                                 <items>
                                 <MenuItem mnemonicParsing="false" text="Player Name" onAction="#setPlayerName"/>
                                     <MenuItem mnemonicParsing="false" text="Player Level" onAction="#setPlayerLevel"/>
-                                    <MenuItem mnemonicParsing="false" text="Guild" onAction="#setGuildLevel"/>
+                                    <MenuItem mnemonicParsing="false" text="Guild" onAction="#setGuildLabel"/>
                                     <MenuItem mnemonicParsing="false" text="Start Date" onAction="#setStartDate"/>
                                     <MenuItem mnemonicParsing="false" text="Earth Colonies" onAction="#setEarthColo"/>
                                     <MenuItem mnemonicParsing="false" text="Hell Colonies" onAction="#setHellColo"/>

@@ -109,7 +109,7 @@ public class MainController extends BorderPane {
         pnid.dialogueHandler();
         this.writerLabel(pnid.getInput(),mTopViewController.getTwLabel());
     }
-    public void setOrcWOrker(){
+    public void setOrcWorker(){
         InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your Orc Worker Level.","Change Orc Worker Level","1000 (MAX)");
         pnid.dialogueHandler();
         this.writerLabel(pnid.getInput(),mTopViewController.getOwLabel());

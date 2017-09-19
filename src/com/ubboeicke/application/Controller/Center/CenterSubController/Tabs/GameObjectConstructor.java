@@ -6,6 +6,7 @@ import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 /**
@@ -19,6 +20,15 @@ public class GameObjectConstructor {
         promoCB.getItems().addAll(strings);
         promoCB.getSelectionModel().selectFirst();
         return promoCB;
+    }
+    public Label lvlLabel(String s){
+        Label txt = new Label(s);
+        return  txt;
+
+    }
+    public Label Label(){
+        Label l = new Label("");
+        return l;
     }
 
     public ComboBox loadPromotionCB(String s, String[] strings) {
