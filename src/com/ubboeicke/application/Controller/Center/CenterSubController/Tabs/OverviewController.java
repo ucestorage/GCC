@@ -66,6 +66,7 @@ public class OverviewController {
         }
         cb.getItems().addAll(deckStringList);
         onChangeDeckCB();
+        mCenterViewController.getmPopulateGold().addHeroes();
 
     }
 

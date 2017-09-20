@@ -17,8 +17,9 @@ public class Hero {
     private ComboBox Accessory;
     private Label goldLvl;
     private TextField wantLvl;
-    private Label UpgCost;
+    private TextField UpgCost;
     private Label GoldDmg;
+    private Label TotalGold;
 
     public Hero(String name, ComboBox promotion, TextField level, TextField levelPrestige, ComboBox attackMode, ComboBox weapon, ComboBox accessory) {
         Name = name;
@@ -38,11 +39,25 @@ public class Hero {
         Weapon = weapon;
         Accessory = accessory;
     }
-    public Hero(String name, TextField level,TextField wantLevel,Label upgCost, Label goldDmg){
+
+    public void setGoldDmg(Label goldDmg) {
+        GoldDmg = goldDmg;
+    }
+
+    public void setTotalGold(Label totalGold) {
+        TotalGold = totalGold;
+    }
+
+    public Label getTotalGold() {
+        return TotalGold;
+    }
+
+    public Hero(String name, Label level, TextField wantLevel, TextField upgCost, Label totalGold, Label goldDmg){
         Name = name;
-        Level = level;
+        goldLvl = level;
         wantLvl = wantLevel;
         UpgCost = upgCost;
+        TotalGold = totalGold;
         GoldDmg = goldDmg;
 
 
@@ -85,7 +100,7 @@ public class Hero {
         return wantLvl;
     }
 
-    public Label getUpgCost() {
+    public TextField getUpgCost() {
         return UpgCost;
     }
 

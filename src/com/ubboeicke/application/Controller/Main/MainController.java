@@ -1,11 +1,13 @@
 package com.ubboeicke.application.Controller.Main;
 
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Goldcalc;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Controller.Deck.DeckCreationController;
 import com.ubboeicke.application.Controller.Item.ItemCreationController;
 import com.ubboeicke.application.Controller.Main.Start_Exit.InputDialogue;
 import com.ubboeicke.application.Controller.Top.TopViewController;
 import com.ubboeicke.application.Model.Enums.Filename;
+import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 import com.ubboeicke.application.Model.MainModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -68,7 +70,11 @@ public class MainController extends BorderPane {
         aler.setContentText(Filename.REDDIT);
         aler.showAndWait();
     }
+public void calcGold(){
+    PopulateTab_Goldcalc popGold = mCenterViewController.getmPopulateGold();
+      popGold.goldCalc();
 
+}
     public void setPlayerName(){
         InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your desired Name.","Change Playername","");
         pnid.dialogueHandler();

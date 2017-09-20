@@ -26,8 +26,13 @@ public class GameObjectConstructor {
         return  txt;
 
     }
+
     public Label Label(){
         Label l = new Label("");
+        return l;
+    }
+    public Label Label(String s){
+        Label l = new Label(s);
         return l;
     }
 
