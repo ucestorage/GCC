@@ -48,17 +48,9 @@
                             </Menu>
                         </items>
                     </Menu>
-                    <Menu mnemonicParsing="false" text="Gold">
-                        <items>
-                            <MenuItem mnemonicParsing="false" text="Calculate" onAction="#calcGold" />
-                        </items>
-                    </Menu>
 
-                    <Menu mnemonicParsing="false" text="Help">
-                        <items>
-                            <MenuItem mnemonicParsing="false" text="Reddit" onAction="#redditThread" />
-                        </items>
-                    </Menu>
+
+
 
                 </menus>
             </MenuBar>

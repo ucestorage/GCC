@@ -36,6 +36,8 @@ public class MainController extends BorderPane {
     private Stage mStageDeck;
     private Stage mStage;
 
+
+
     public MainController() throws IOException {
         this.mCenterViewController = new CenterViewController();
         this.mTopViewController = new TopViewController();
@@ -63,18 +65,9 @@ public class MainController extends BorderPane {
             ioe.printStackTrace();
         }
     }
-    public void redditThread(){
-        Alert aler = new Alert(Alert.AlertType.INFORMATION);
-        aler.setTitle("Reddit");
-        aler.setHeaderText("Find help in the official Reddit Thread!");
-        aler.setContentText(Filename.REDDIT);
-        aler.showAndWait();
-    }
-public void calcGold(){
-    PopulateTab_Goldcalc popGold = mCenterViewController.getmPopulateGold();
-      popGold.goldCalc();
 
-}
+
+
     public void setPlayerName(){
         InputDialogue pnid = new InputDialogue("Ok","Edit Basic Information","Enter your desired Name.","Change Playername","");
         pnid.dialogueHandler();

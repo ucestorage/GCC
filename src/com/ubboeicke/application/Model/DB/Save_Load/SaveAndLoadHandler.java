@@ -1,6 +1,7 @@
 package com.ubboeicke.application.Model.DB.Save_Load;
 
 import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.OverviewController;
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Goldcalc;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Controller.Main.MainController;
 import com.ubboeicke.application.Controller.Top.TopViewController;
@@ -43,6 +44,7 @@ public class SaveAndLoadHandler {
     private  ObservableList<Deck> DeckList = FXCollections.observableArrayList();
     private OverviewController mOverviewController;
 
+
     public SaveAndLoadHandler(MainModel mainModel, MainController mainController) {
         this.mMainController = mainController;
         this.mMainModel = mainModel;
@@ -57,6 +59,7 @@ public class SaveAndLoadHandler {
         mHeroParser = new HeroParser(mCenterViewController);
         mDeckParser = new DeckParser(mCenterViewController);
         mOverviewController = new OverviewController(mMainController);
+
 
 
     }

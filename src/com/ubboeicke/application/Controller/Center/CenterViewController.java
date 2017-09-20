@@ -3,6 +3,7 @@ package com.ubboeicke.application.Controller.Center;
 import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.*;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
+import com.ubboeicke.application.Model.Gamedata.GoldCalc.Gold;
 import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import com.ubboeicke.application.Model.Gamedata.Leaders.Leader;
@@ -1213,17 +1214,20 @@ public class CenterViewController {
     private TableView<Deck> deckTableView;
 
     @FXML
-    private TableView<Hero> goldHeroesTV;
+    private TableView<Gold> goldHeroesTV;
 
     @FXML
     private TitledPane goldHeroesPane;
+
+    @FXML
+    private Button calcBtn;
 
 
     private PopulateTab_Item mPopulateTabItem;
     private PopulateTab_TWR_CC mPopulateTabTwrCc;
     private PopulateTab_Hero mPopulateTabHero;
     private PopulateTab_Deck mPopulateTabDeck;
-    private PopulateTab_Goldcalc mPopulateGold;
+
 
     //TODO split controller to controllers for single tabs
     public void initialize(TabPane tabPane) throws IOException {
@@ -1235,7 +1239,7 @@ public class CenterViewController {
         mPopulateTabTwrCc = new PopulateTab_TWR_CC(this);
         mPopulateTabHero = new PopulateTab_Hero(this);
         mPopulateTabDeck = new PopulateTab_Deck(this);
-        mPopulateGold = new PopulateTab_Goldcalc(this);
+
     }
     public ObservableList<Hero> getHeroes(){
         ObservableList<Hero> heroList = FXCollections.observableArrayList();
@@ -1243,6 +1247,11 @@ public class CenterViewController {
         heroList.addAll(this.getHeroTableView2().getItems());
         return heroList;
     }
+
+    public Button getCalcBtn() {
+        return calcBtn;
+    }
+
     public PopulateTab_Item getmPopulateTabItem() {
         return mPopulateTabItem;
     }
@@ -1259,7 +1268,7 @@ public class CenterViewController {
         return mPopulateTabDeck;
     }
 
-    public TableView<Hero> getGoldHeroesTV() {
+    public TableView<Gold> getGoldHeroesTV() {
         return goldHeroesTV;
     }
 
@@ -1267,9 +1276,6 @@ public class CenterViewController {
         return goldHeroesPane;
     }
 
-    public PopulateTab_Goldcalc getmPopulateGold() {
-        return mPopulateGold;
-    }
 
     public Tab getOverviewTab() {
         return overviewTab;

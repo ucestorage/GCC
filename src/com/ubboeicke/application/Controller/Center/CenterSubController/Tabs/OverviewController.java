@@ -5,16 +5,21 @@ import com.ubboeicke.application.Controller.Main.MainController;
 import com.ubboeicke.application.Controller.Top.TopViewController;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
+import com.ubboeicke.application.Model.Gamedata.GoldCalc.Gold;
 import com.ubboeicke.application.Model.Gamedata.Heroes.Hero;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import com.ubboeicke.application.Model.Gamedata.Leaders.Leader;
 import com.ubboeicke.application.Model.Gamedata.Towers.Tower;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * Created by Ubbo Eicke on 24.06.2017.
@@ -51,11 +56,18 @@ public class OverviewController {
     Double siegeDef = 0.0;
     Integer finalHP = 0;
     Integer finalMP = 0;
+    private PopulateTab_Goldcalc populateTabGoldcalc;
+    private ObservableList<Gold> selectedGold = FXCollections.observableArrayList();
+    private ObservableList<Gold> goldTableItems = FXCollections.observableArrayList();
+    private Button btn;
+    private DecimalFormat df = new DecimalFormat("#");
 
     public OverviewController(MainController mainController) {
         mMainController = mainController;
         mCenterViewController = mainController.getCenterViewController();
         mTopViewController = mainController.getTopViewController();
+
+
     }
 
     public void populateDeckCB() {
@@ -65,10 +77,12 @@ public class OverviewController {
             deckStringList.add(d.getName());
         }
         cb.getItems().addAll(deckStringList);
+        populateTabGoldcalc = new PopulateTab_Goldcalc(mMainController);
         onChangeDeckCB();
-        mCenterViewController.getmPopulateGold().addHeroes();
+
 
     }
+
 
     private void calculateBasicValues(String leader, String tb1, String tb2, String tb3, String t1, String t2, String t3, String t4, String t5, String twr1, String twr2, String twr3, String twr4) {
 
@@ -99,6 +113,7 @@ public class OverviewController {
     }
 
     private void onChangeDeckCB() {
+
         mCastleComponents = mCenterViewController.getCcTableView().getItems();
         mTowers = mCenterViewController.getTwrTableView().getItems();
         mHeroList.addAll(mCenterViewController.getHeroTableView1().getItems());
@@ -109,8 +124,10 @@ public class OverviewController {
 
         mTopViewController.getDeckCB().getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
+                    selectedGold.clear();
                     for (Deck deck : mCenterViewController.getDeckTableView().getItems()) {
                         if (newValue.equals(deck.getName())) {
+
                             vk.reset();
                             fillOverviewData(deck, mCenterViewController.getTbL1(), mCenterViewController.getTbL2(),
                                              mCenterViewController.getTbL3(), mCenterViewController.gettL1(),
@@ -130,7 +147,6 @@ public class OverviewController {
                             mTopViewController.setMPVL(calcMP(mTopViewController.getCastleLvlVTF().getText()));
 
 
-
                             mCenterViewController.getNameLH().setText(deck.getH1());
                             fillHeroData(deck.getH1(), mCenterViewController.getDmgLH(),
                                          mCenterViewController.getItemSWLH(), mCenterViewController.getItemQWLH(),
@@ -144,6 +160,22 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH(), mCenterViewController.getLvlPVLH(),
                                          mCenterViewController.getCdVLH(), mCenterViewController.getManaVLH(),
                                          mCenterViewController.getAmVLH(), mCenterViewController.getAmLH());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH().getText(),
+                                                      mCenterViewController.getLvlVLH().getText(),
+                                                      mCenterViewController.getLvlPVLH().getText(),
+                                                      mCenterViewController.getAtt1WLH().getText(),
+                                                      mCenterViewController.getAtt2WLH().getText(),
+                                                      mCenterViewController.getAtt3WLH().getText(),
+                                                      mCenterViewController.getAtt1VWLH().getText(),
+                                                      mCenterViewController.getAtt2VWLH().getText(),
+                                                      mCenterViewController.getAtt3VWLH().getText(),
+                                                      mCenterViewController.getAtt1ALH().getText(),
+                                                      mCenterViewController.getAtt2ALH().getText(),
+                                                      mCenterViewController.getAtt3ALH().getText(),
+                                                      mCenterViewController.getAtt1VALH().getText(),
+                                                      mCenterViewController.getAtt2VALH().getText(),
+                                                      mCenterViewController.getAtt3VALH().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH())));
                             mCenterViewController.getNameLH1().setText(deck.getH2());
                             fillHeroData(deck.getH2(), mCenterViewController.getDmgLH1(),
                                          mCenterViewController.getItemSWLH1(), mCenterViewController.getItemQWLH1(),
@@ -157,6 +189,23 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH1(), mCenterViewController.getLvlPVLH1(),
                                          mCenterViewController.getCdVLH1(), mCenterViewController.getManaVLH1(),
                                          mCenterViewController.getAmVLH1(), mCenterViewController.getAmLH1());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH1().getText(),
+                                                      mCenterViewController.getLvlVLH1().getText(),
+                                                      mCenterViewController.getLvlPVLH1().getText(),
+                                                      mCenterViewController.getAtt1WLH1().getText(),
+                                                      mCenterViewController.getAtt2WLH1().getText(),
+                                                      mCenterViewController.getAtt3WLH1().getText(),
+                                                      mCenterViewController.getAtt1VWLH1().getText(),
+                                                      mCenterViewController.getAtt2VWLH1().getText(),
+                                                      mCenterViewController.getAtt3VWLH1().getText(),
+                                                      mCenterViewController.getAtt1ALH1().getText(),
+                                                      mCenterViewController.getAtt2ALH1().getText(),
+                                                      mCenterViewController.getAtt3ALH1().getText(),
+                                                      mCenterViewController.getAtt1VALH1().getText(),
+                                                      mCenterViewController.getAtt2VALH1().getText(),
+                                                      mCenterViewController.getAtt3VALH1().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH1())));
+
                             mCenterViewController.getNameLH2().setText(deck.getH3());
                             fillHeroData(deck.getH3(), mCenterViewController.getDmgLH2(),
                                          mCenterViewController.getItemSWLH2(), mCenterViewController.getItemQWLH2(),
@@ -170,6 +219,23 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH2(), mCenterViewController.getLvlPVLH2(),
                                          mCenterViewController.getCdVLH2(), mCenterViewController.getManaVLH2(),
                                          mCenterViewController.getAmVLH2(), mCenterViewController.getAmLH2());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH2().getText(),
+                                                      mCenterViewController.getLvlVLH2().getText(),
+                                                      mCenterViewController.getLvlPVLH2().getText(),
+                                                      mCenterViewController.getAtt1WLH2().getText(),
+                                                      mCenterViewController.getAtt2WLH2().getText(),
+                                                      mCenterViewController.getAtt3WLH2().getText(),
+                                                      mCenterViewController.getAtt1VWLH2().getText(),
+                                                      mCenterViewController.getAtt2VWLH2().getText(),
+                                                      mCenterViewController.getAtt3VWLH2().getText(),
+                                                      mCenterViewController.getAtt1ALH2().getText(),
+                                                      mCenterViewController.getAtt2ALH2().getText(),
+                                                      mCenterViewController.getAtt3ALH2().getText(),
+                                                      mCenterViewController.getAtt1VALH2().getText(),
+                                                      mCenterViewController.getAtt2VALH2().getText(),
+                                                      mCenterViewController.getAtt3VALH2().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH2())));
+
                             mCenterViewController.getNameLH3().setText(deck.getH4());
                             fillHeroData(deck.getH4(), mCenterViewController.getDmgLH3(),
                                          mCenterViewController.getItemSWLH3(), mCenterViewController.getItemQWLH3(),
@@ -183,6 +249,23 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH3(), mCenterViewController.getLvlPVLH3(),
                                          mCenterViewController.getCdVLH3(), mCenterViewController.getManaVLH3(),
                                          mCenterViewController.getAmVLH3(), mCenterViewController.getAmLH3());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH3().getText(),
+                                                      mCenterViewController.getLvlVLH3().getText(),
+                                                      mCenterViewController.getLvlPVLH3().getText(),
+                                                      mCenterViewController.getAtt1WLH3().getText(),
+                                                      mCenterViewController.getAtt2WLH3().getText(),
+                                                      mCenterViewController.getAtt3WLH3().getText(),
+                                                      mCenterViewController.getAtt1VWLH3().getText(),
+                                                      mCenterViewController.getAtt2VWLH3().getText(),
+                                                      mCenterViewController.getAtt3VWLH3().getText(),
+                                                      mCenterViewController.getAtt1ALH3().getText(),
+                                                      mCenterViewController.getAtt2ALH3().getText(),
+                                                      mCenterViewController.getAtt3ALH3().getText(),
+                                                      mCenterViewController.getAtt1VALH3().getText(),
+                                                      mCenterViewController.getAtt2VALH3().getText(),
+                                                      mCenterViewController.getAtt3VALH3().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH3())));
+
                             mCenterViewController.getNameLH4().setText(deck.getH5());
                             fillHeroData(deck.getH5(), mCenterViewController.getDmgLH4(),
                                          mCenterViewController.getItemSWLH4(), mCenterViewController.getItemQWLH4(),
@@ -196,6 +279,23 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH4(), mCenterViewController.getLvlPVLH4(),
                                          mCenterViewController.getCdVLH4(), mCenterViewController.getManaVLH4(),
                                          mCenterViewController.getAmVLH4(), mCenterViewController.getAmLH4());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH4().getText(),
+                                                      mCenterViewController.getLvlVLH4().getText(),
+                                                      mCenterViewController.getLvlPVLH4().getText(),
+                                                      mCenterViewController.getAtt1WLH4().getText(),
+                                                      mCenterViewController.getAtt2WLH4().getText(),
+                                                      mCenterViewController.getAtt3WLH4().getText(),
+                                                      mCenterViewController.getAtt1VWLH4().getText(),
+                                                      mCenterViewController.getAtt2VWLH4().getText(),
+                                                      mCenterViewController.getAtt3VWLH4().getText(),
+                                                      mCenterViewController.getAtt1ALH4().getText(),
+                                                      mCenterViewController.getAtt2ALH4().getText(),
+                                                      mCenterViewController.getAtt3ALH4().getText(),
+                                                      mCenterViewController.getAtt1VALH4().getText(),
+                                                      mCenterViewController.getAtt2VALH4().getText(),
+                                                      mCenterViewController.getAtt3VALH4().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH4())));
+
 
                             mCenterViewController.getNameLH5().setText(deck.getH6());
                             fillHeroData(deck.getH6(), mCenterViewController.getDmgLH5(),
@@ -210,6 +310,23 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH5(), mCenterViewController.getLvlPVLH5(),
                                          mCenterViewController.getCdVLH5(), mCenterViewController.getManaVLH5(),
                                          mCenterViewController.getAmVLH5(), mCenterViewController.getAmLH5());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH5().getText(),
+                                                      mCenterViewController.getLvlVLH5().getText(),
+                                                      mCenterViewController.getLvlPVLH5().getText(),
+                                                      mCenterViewController.getAtt1WLH5().getText(),
+                                                      mCenterViewController.getAtt2WLH5().getText(),
+                                                      mCenterViewController.getAtt3WLH5().getText(),
+                                                      mCenterViewController.getAtt1VWLH5().getText(),
+                                                      mCenterViewController.getAtt2VWLH5().getText(),
+                                                      mCenterViewController.getAtt3VWLH5().getText(),
+                                                      mCenterViewController.getAtt1ALH5().getText(),
+                                                      mCenterViewController.getAtt2ALH5().getText(),
+                                                      mCenterViewController.getAtt3ALH5().getText(),
+                                                      mCenterViewController.getAtt1VALH5().getText(),
+                                                      mCenterViewController.getAtt2VALH5().getText(),
+                                                      mCenterViewController.getAtt3VALH5().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH5())));
+
                             mCenterViewController.getNameLH6().setText(deck.getH7());
                             fillHeroData(deck.getH7(), mCenterViewController.getDmgLH6(),
                                          mCenterViewController.getItemSWLH6(), mCenterViewController.getItemQWLH6(),
@@ -223,6 +340,23 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH6(), mCenterViewController.getLvlPVLH6(),
                                          mCenterViewController.getCdVLH6(), mCenterViewController.getManaVLH6(),
                                          mCenterViewController.getAmVLH6(), mCenterViewController.getAmLH6());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH6().getText(),
+                                                      mCenterViewController.getLvlVLH6().getText(),
+                                                      mCenterViewController.getLvlPVLH6().getText(),
+                                                      mCenterViewController.getAtt1WLH6().getText(),
+                                                      mCenterViewController.getAtt2WLH6().getText(),
+                                                      mCenterViewController.getAtt3WLH6().getText(),
+                                                      mCenterViewController.getAtt1VWLH6().getText(),
+                                                      mCenterViewController.getAtt2VWLH6().getText(),
+                                                      mCenterViewController.getAtt3VWLH6().getText(),
+                                                      mCenterViewController.getAtt1ALH6().getText(),
+                                                      mCenterViewController.getAtt2ALH6().getText(),
+                                                      mCenterViewController.getAtt3ALH6().getText(),
+                                                      mCenterViewController.getAtt1VALH6().getText(),
+                                                      mCenterViewController.getAtt2VALH6().getText(),
+                                                      mCenterViewController.getAtt3VALH6().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH6())));
+
                             mCenterViewController.getNameLH7().setText(deck.getH8());
                             fillHeroData(deck.getH8(), mCenterViewController.getDmgLH7(),
                                          mCenterViewController.getItemSWLH7(), mCenterViewController.getItemQWLH7(),
@@ -236,6 +370,22 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH7(), mCenterViewController.getLvlPVLH7(),
                                          mCenterViewController.getCdVLH7(), mCenterViewController.getManaVLH7(),
                                          mCenterViewController.getAmVLH7(), mCenterViewController.getAmLH7());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH7().getText(),
+                                                      mCenterViewController.getLvlVLH7().getText(),
+                                                      mCenterViewController.getLvlPVLH7().getText(),
+                                                      mCenterViewController.getAtt1WLH7().getText(),
+                                                      mCenterViewController.getAtt2WLH7().getText(),
+                                                      mCenterViewController.getAtt3WLH7().getText(),
+                                                      mCenterViewController.getAtt1VWLH7().getText(),
+                                                      mCenterViewController.getAtt2VWLH7().getText(),
+                                                      mCenterViewController.getAtt3VWLH7().getText(),
+                                                      mCenterViewController.getAtt1ALH7().getText(),
+                                                      mCenterViewController.getAtt2ALH7().getText(),
+                                                      mCenterViewController.getAtt3ALH7().getText(),
+                                                      mCenterViewController.getAtt1VALH7().getText(),
+                                                      mCenterViewController.getAtt2VALH7().getText(),
+                                                      mCenterViewController.getAtt3VALH7().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH7())));
                             mCenterViewController.getNameLH8().setText(deck.getH9());
                             fillHeroData(deck.getH9(), mCenterViewController.getDmgLH8(),
                                          mCenterViewController.getItemSWLH8(), mCenterViewController.getItemQWLH8(),
@@ -249,6 +399,22 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH8(), mCenterViewController.getLvlPVLH8(),
                                          mCenterViewController.getCdVLH8(), mCenterViewController.getManaVLH8(),
                                          mCenterViewController.getAmVLH8(), mCenterViewController.getAmLH8());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH8().getText(),
+                                                      mCenterViewController.getLvlVLH8().getText(),
+                                                      mCenterViewController.getLvlPVLH8().getText(),
+                                                      mCenterViewController.getAtt1WLH8().getText(),
+                                                      mCenterViewController.getAtt2WLH8().getText(),
+                                                      mCenterViewController.getAtt3WLH8().getText(),
+                                                      mCenterViewController.getAtt1VWLH8().getText(),
+                                                      mCenterViewController.getAtt2VWLH8().getText(),
+                                                      mCenterViewController.getAtt3VWLH8().getText(),
+                                                      mCenterViewController.getAtt1ALH8().getText(),
+                                                      mCenterViewController.getAtt2ALH8().getText(),
+                                                      mCenterViewController.getAtt3ALH8().getText(),
+                                                      mCenterViewController.getAtt1VALH8().getText(),
+                                                      mCenterViewController.getAtt2VALH8().getText(),
+                                                      mCenterViewController.getAtt3VALH8().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH8())));
                             mCenterViewController.getNameLH9().setText(deck.getH10());
                             fillHeroData(deck.getH10(), mCenterViewController.getDmgLH9(),
                                          mCenterViewController.getItemSWLH9(), mCenterViewController.getItemQWLH9(),
@@ -262,6 +428,22 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH9(), mCenterViewController.getLvlPVLH9(),
                                          mCenterViewController.getCdVLH9(), mCenterViewController.getManaVLH9(),
                                          mCenterViewController.getAmVLH9(), mCenterViewController.getAmLH9());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH9().getText(),
+                                                      mCenterViewController.getLvlVLH9().getText(),
+                                                      mCenterViewController.getLvlPVLH9().getText(),
+                                                      mCenterViewController.getAtt1WLH9().getText(),
+                                                      mCenterViewController.getAtt2WLH9().getText(),
+                                                      mCenterViewController.getAtt3WLH9().getText(),
+                                                      mCenterViewController.getAtt1VWLH9().getText(),
+                                                      mCenterViewController.getAtt2VWLH9().getText(),
+                                                      mCenterViewController.getAtt3VWLH9().getText(),
+                                                      mCenterViewController.getAtt1ALH9().getText(),
+                                                      mCenterViewController.getAtt2ALH9().getText(),
+                                                      mCenterViewController.getAtt3ALH9().getText(),
+                                                      mCenterViewController.getAtt1VALH9().getText(),
+                                                      mCenterViewController.getAtt2VALH9().getText(),
+                                                      mCenterViewController.getAtt3VALH9().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH9())));
                             mCenterViewController.getNameLH10().setText(deck.getH11());
                             fillHeroData(deck.getH11(), mCenterViewController.getDmgLH10(),
                                          mCenterViewController.getItemSWLH10(), mCenterViewController.getItemQWLH10(),
@@ -275,6 +457,22 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH10(), mCenterViewController.getLvlPVLH10(),
                                          mCenterViewController.getCdVLH10(), mCenterViewController.getManaVLH10(),
                                          mCenterViewController.getAmVLH10(), mCenterViewController.getAmLH10());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH10().getText(),
+                                                      mCenterViewController.getLvlVLH10().getText(),
+                                                      mCenterViewController.getLvlPVLH10().getText(),
+                                                      mCenterViewController.getAtt1WLH10().getText(),
+                                                      mCenterViewController.getAtt2WLH10().getText(),
+                                                      mCenterViewController.getAtt3WLH10().getText(),
+                                                      mCenterViewController.getAtt1VWLH10().getText(),
+                                                      mCenterViewController.getAtt2VWLH10().getText(),
+                                                      mCenterViewController.getAtt3VWLH10().getText(),
+                                                      mCenterViewController.getAtt1ALH10().getText(),
+                                                      mCenterViewController.getAtt2ALH10().getText(),
+                                                      mCenterViewController.getAtt3ALH10().getText(),
+                                                      mCenterViewController.getAtt1VALH10().getText(),
+                                                      mCenterViewController.getAtt2VALH10().getText(),
+                                                      mCenterViewController.getAtt3VALH10().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH10())));
                             mCenterViewController.getNameLH11().setText(deck.getH12());
                             fillHeroData(deck.getH12(), mCenterViewController.getDmgLH11(),
                                          mCenterViewController.getItemSWLH11(), mCenterViewController.getItemQWLH11(),
@@ -288,6 +486,25 @@ public class OverviewController {
                                          mCenterViewController.getLvlVLH11(), mCenterViewController.getLvlPVLH11(),
                                          mCenterViewController.getCdVLH11(), mCenterViewController.getManaVLH11(),
                                          mCenterViewController.getAmVLH11(), mCenterViewController.getAmLH11());
+                            selectedGold.add(new Gold(mCenterViewController.getNameLH11().getText(),
+                                                      mCenterViewController.getLvlVLH11().getText(),
+                                                      mCenterViewController.getLvlPVLH11().getText(),
+                                                      mCenterViewController.getAtt1WLH11().getText(),
+                                                      mCenterViewController.getAtt2WLH11().getText(),
+                                                      mCenterViewController.getAtt3WLH11().getText(),
+                                                      mCenterViewController.getAtt1VWLH11().getText(),
+                                                      mCenterViewController.getAtt2VWLH11().getText(),
+                                                      mCenterViewController.getAtt3VWLH11().getText(),
+                                                      mCenterViewController.getAtt1ALH11().getText(),
+                                                      mCenterViewController.getAtt2ALH11().getText(),
+                                                      mCenterViewController.getAtt3ALH11().getText(),
+                                                      mCenterViewController.getAtt1VALH11().getText(),
+                                                      mCenterViewController.getAtt2VALH11().getText(),
+                                                      mCenterViewController.getAtt3VALH11().getText(),
+                                                      giveDmg(mCenterViewController.getDmgLH11())));
+
+
+                            fillGoldCalc();
 
                         }
 
@@ -295,6 +512,110 @@ public class OverviewController {
 
 
                 });
+        btnListener();
+    }
+
+    private void btnListener() {
+        GameObjectConstructor goc = new GameObjectConstructor();
+        btn = mCenterViewController.getCalcBtn();
+        btn.setOnAction(event -> {
+
+            for (Gold g : populateTabGoldcalc.getmTableView().getItems()) {
+                try {
+                    g.getFutDmgL().setText(
+                            dmgHero(g.getNameL().getText(), g.getWantedL().getText(), g.getLevelPS(), g.getwAtt1(), g.getwAttV1(), g.getwAtt2(), g.getwAttV2(), g.getwAtt3(), g.getwAttV3(),
+                                    g.getaAtt1(), g.getaAttV1(), g.getaAtt2(), g.getaAttV2(), g.getaAtt3(), g.getaAttV3(), goc.Label(),
+                                    goc.Label()
+
+                            ).substring(5));
+                    g.getDmgDiff().setText(dmgDiff(g.getFutDmgL().getText(), g.getDmgL().getText()));
+                    g.getTotalCost().setText(
+                            totalUpgCost(g.getNameL().getText(), g.getLevelL().getText(), g.getWantedL().getText(), g.getUpgCost().getText()));
+                    g.getGoldPerDmg().setText(goldPerDmg(g.getTotalCost().getText(), g.getDmgDiff().getText()));
+                } catch (Exception e){
+
+                }
+            }
+        });
+
+    }
+
+    private String dmgDiff(String l, String s) {
+
+        return String.valueOf(df.format(Double.parseDouble(l) - Double.parseDouble(s)));
+
+    }
+
+    private String goldPerDmg(String s, String s1) {
+        s = s.replaceAll(",", "");
+        BigDecimal bd = new BigDecimal(Double.parseDouble(s) / Double.parseDouble(s1));
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en_US"));
+        return nf.format(bd.longValue());
+    }
+
+    private String totalUpgCost(String name, String lvl, String wlvl, String upgCost) {
+        Double fixCost;
+        if (name.equals("Bow Master") || name.equals("Ranger") || name.equals("Dark Bow Master") || name.equals(
+                "Dark Ranger") || name.equals("Lightning Wizard") || name.equals("Lightning Sorcerer") || name.equals(
+                "Dark Lightning Wizard") || name.equals("Dark Lightning Sorcerer") || name.equals(
+                "Fire Wizard") || name.equals("Fire Sorcerer") || name.equals("Dark Fire Wizard") || name.equals(
+                "Dark Fire Sorcerer") || name.equals("Deep Assassin") || name.equals("Dark Assassin")) {
+            fixCost = 5500.0;
+        } else {
+            if (name.equals("Edward") || name.equals("Solar") || name.equals("Zero") || name.equals(
+                    "Thor") || name.equals("Sara") || name.equals("Tony") || name.equals("Din")) {
+                fixCost = 11000.0;
+            } else {
+                fixCost = 6500.0;
+            }
+        }
+        Double lvlrange;
+        Double finalCost;
+
+        lvlrange = Double.parseDouble(wlvl) - Double.parseDouble(lvl);
+
+        Double upgCostd = Double.parseDouble(upgCost);
+        finalCost = lvlrange * ((fixCost / 2) * (lvlrange - 1.0) + upgCostd);
+        BigDecimal bd = new BigDecimal(finalCost);
+        NumberFormat nf = NumberFormat.getInstance(new Locale("en_US"));
+        return nf.format(bd.longValue());
+    }
+
+    private void fillGoldCalc() {
+        GameObjectConstructor goc = new GameObjectConstructor();
+        DecimalFormat df = new DecimalFormat("#");
+        goldTableItems.clear();
+        for (Gold g : selectedGold) {
+            if (g.getDmg().equals("0")) {
+
+            } else {
+                goldTableItems.add(new Gold(goc.Label(g.getNameS()), goc.Label(String.valueOf(
+                        df.format(Double.parseDouble(g.getLevelS()) + Double.parseDouble(g.getLevelPS())))),
+                                            goc.Label(g.getDmg()), goc.loadLevelTextField(String.valueOf(
+                        df.format(Double.parseDouble(g.getLevelS()) + Double.parseDouble(g.getLevelPS())))),
+                                            goc.levelTextField(), goc.Label(), goc.Label(), goc.Label(), goc.Label(),
+                                            g.getwAtt1(), g.getwAtt2(), g.getwAtt3(), g.getwAttV1(), g.getwAttV2(),
+                                            g.getwAttV3(), g.getaAtt1(), g.getaAtt2(), g.getaAtt3(), g.getaAttV1(),
+                                            g.getaAttV2(), g.getaAttV3(), "0"
+
+
+                ));
+            }
+            populateTabGoldcalc.getmTableView().setItems(goldTableItems);
+
+        }
+
+    }
+
+    private String giveDmg(Label l) {
+        try {
+            String s = l.getText();
+            s = s.substring(5);
+
+            return s;
+        } catch (Exception npe) {
+            return "0";
+        }
     }
 
     private void findValuesTb(String s) {
@@ -370,7 +691,7 @@ public class OverviewController {
 
     }
 
-    public void findValuesTreasuresWeapons(String s) {
+    private void findValuesTreasuresWeapons(String s) {
         if (s.equals("Sling")) {
             archerDmg = archerDmg + 25.0;
         }
@@ -840,14 +1161,14 @@ public class OverviewController {
         }
         if (hero.equals("Zero")) {
             finaldmg = finalDMG(40.0, 0.1, lvl,
-                    itemAttDmg("Damage", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
-                            aAtt2v, aAtt3, aAtt3v) + itemAttDmg("ColdDamage", wAtt1, wAtt1v, wAtt2,
-                            wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v,
-                            aAtt2, aAtt2v, aAtt3, aAtt3v),
-                    baseDmg("DamagePlus", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
-                            aAtt2v, aAtt3, aAtt3v));
+                                itemAttDmg("Damage", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
+                                           aAtt2v, aAtt3, aAtt3v) + itemAttDmg("ColdDamage", wAtt1, wAtt1v, wAtt2,
+                                                                               wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v,
+                                                                               aAtt2, aAtt2v, aAtt3, aAtt3v),
+                                baseDmg("DamagePlus", wAtt1, wAtt1v, wAtt2, wAtt2v, wAtt3, wAtt3v, aAtt1, aAtt1v, aAtt2,
+                                        aAtt2v, aAtt3, aAtt3v));
         }
-    //dmg leader
+        //dmg leader
 
         DecimalFormat df = new DecimalFormat("#");
         manaCost.setText(String.valueOf(df.format(Double.parseDouble(lvl) * baseManaCost)));
@@ -860,74 +1181,77 @@ public class OverviewController {
     private String finalDMG(Double dmgOnLvl1, Double skillAttDmg, String lvl, Double itemValue, Double dmgPlus) {
 
         DecimalFormat df = new DecimalFormat("#");
-       // Double baseDmg = (dmgOnLvl1 * (1 + Double.parseDouble(lvl) * 0.1));
-       // Double finalDmg = (baseDmg + baseDmg * itemValue) * (1 + skillAttDmg) * (1 + vk.getSkillDmg() * (1 + vk.getTbDmg()) * (1 + 0.5) * (1 + vk.getTreasureDmg()));
-        Double finalDmg = (dmgOnLvl1*(1+Double.parseDouble(lvl)*0.1)+dmgPlus)*(1+vk.getSkillDmg())*(1+vk.getTbDmg())*(1+vk.getTreasureDmg())*(1+skillAttDmg)*(1+itemValue);
+        // Double baseDmg = (dmgOnLvl1 * (1 + Double.parseDouble(lvl) * 0.1));
+        // Double finalDmg = (baseDmg + baseDmg * itemValue) * (1 + skillAttDmg) * (1 + vk.getSkillDmg() * (1 + vk.getTbDmg()) * (1 + 0.5) * (1 + vk.getTreasureDmg()));
+        Double finalDmg = (dmgOnLvl1 * (1 + Double.parseDouble(
+                lvl) * 0.1) + dmgPlus) * (1 + vk.getSkillDmg()) * (1 + vk.getTbDmg()) * (1 + vk.getTreasureDmg()) * (1 + skillAttDmg) * (1 + itemValue);
         //System.out.println(
         //       "(" + baseDmg + "+" + baseDmg + "*" + itemValue + ")*(1+" + skillAttDmg + ")*(1+" + vk.getSkillDmg() + ")*(1+" + vk.getTbDmg() + ")*(1+" + vk.getTreasureDmg() + ")=" + finalDmg);
 
         return "Dmg~: " + String.valueOf(df.format(finalDmg));
     }
-private String twrCCDmg (String name,String lvl, String lvlP) {
-    DecimalFormat df = new DecimalFormat("#");
-    Double dmgOnLvl1 = 0.0;
-    Double skillAtt= 0.0;
-    if (name.equals("Death Worm")||name.equals("Death Worm II")){
-       dmgOnLvl1 = 100.0;
-    }
-    if (name.equals("Burning Tower")||name.equals("Burning Tower II")|| name.equals("Flame Tower")){
-        dmgOnLvl1 = 100.0;
-        skillAtt = 0.1;
-    }
-    if (name.equals("Frozen Tower")||name.equals("Frozen Tower II")){
-        dmgOnLvl1 = 5.0;
-        skillAtt = 0.1;
-    }
-    if (name.equals("Thunder Tower")||name.equals("Thunder Tower II")||name.equals("Lightning Tower")){
-        dmgOnLvl1 = 40.0;
-        skillAtt = 0.1;
-    }
-    if(name.equals("Cannon")){
-        dmgOnLvl1 = 40.0;
-        skillAtt = 0.1;
-    }
-    if(name.equals("Thorn Worm")){
-        dmgOnLvl1 = 30.0;
-    }
-    if (name.equals("Offensive Barracks")||name.equals("Defensive Barracks")||name.equals("Barracks")){
-        dmgOnLvl1 = 40.0;
-    }
-    if(name.equals("Turret")){
-        dmgOnLvl1 = 30.0;
-    }
-    if (name.equals("Cannon Castle")){
-        dmgOnLvl1 = 44.0;
-        skillAtt = 0.1;
-    }
-    if (name.equals("Minigun Castle")){
-        dmgOnLvl1 = 33.0;
-        skillAtt = 0.0;
-    }
-    if (name.equals("Poison Castle")){
-        dmgOnLvl1 = 44.0;
-        skillAtt = 0.1;
-    }
-    if (name.equals("Lightning Castle")){
-        dmgOnLvl1 = 33.0;
-        skillAtt = 0.1;
-    }
-    if (name.equals("Ballista Castle")){
-        dmgOnLvl1 = 55.0;
-        skillAtt = 0.0;
-}
-    if (name.equals("Poison CastleBase")){
-        dmgOnLvl1 = 33.0;
-        skillAtt = 0.1;
-    }
-    Double finalV = (dmgOnLvl1*(1+(Double.parseDouble(lvl)+Double.parseDouble(lvlP))*0.1))*(1+skillAtt)*(1+vk.getTowerDmg());
-    return "Dmg~: "+String.valueOf(df.format(finalV));
 
-}
+    private String twrCCDmg(String name, String lvl, String lvlP) {
+        DecimalFormat df = new DecimalFormat("#");
+        Double dmgOnLvl1 = 0.0;
+        Double skillAtt = 0.0;
+        if (name.equals("Death Worm") || name.equals("Death Worm II")) {
+            dmgOnLvl1 = 100.0;
+        }
+        if (name.equals("Burning Tower") || name.equals("Burning Tower II") || name.equals("Flame Tower")) {
+            dmgOnLvl1 = 100.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Frozen Tower") || name.equals("Frozen Tower II")) {
+            dmgOnLvl1 = 5.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Thunder Tower") || name.equals("Thunder Tower II") || name.equals("Lightning Tower")) {
+            dmgOnLvl1 = 40.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Cannon")) {
+            dmgOnLvl1 = 40.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Thorn Worm")) {
+            dmgOnLvl1 = 30.0;
+        }
+        if (name.equals("Offensive Barracks") || name.equals("Defensive Barracks") || name.equals("Barracks")) {
+            dmgOnLvl1 = 40.0;
+        }
+        if (name.equals("Turret")) {
+            dmgOnLvl1 = 30.0;
+        }
+        if (name.equals("Cannon Castle")) {
+            dmgOnLvl1 = 44.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Minigun Castle")) {
+            dmgOnLvl1 = 33.0;
+            skillAtt = 0.0;
+        }
+        if (name.equals("Poison Castle")) {
+            dmgOnLvl1 = 44.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Lightning Castle")) {
+            dmgOnLvl1 = 33.0;
+            skillAtt = 0.1;
+        }
+        if (name.equals("Ballista Castle")) {
+            dmgOnLvl1 = 55.0;
+            skillAtt = 0.0;
+        }
+        if (name.equals("Poison CastleBase")) {
+            dmgOnLvl1 = 33.0;
+            skillAtt = 0.1;
+        }
+        Double finalV = (dmgOnLvl1 * (1 + (Double.parseDouble(lvl) + Double.parseDouble(
+                lvlP)) * 0.1)) * (1 + skillAtt) * (1 + vk.getTowerDmg());
+        return "Dmg~: " + String.valueOf(df.format(finalV));
+
+    }
 
     private Double baseDmg(String s, String wAtt1, String wAtt1v, String wAtt2, String wAtt2v, String wAtt3, String wAtt3v, String aAtt1, String aAtt1v, String aAtt2, String aAtt2v, String aAtt3, String aAtt3v) {
         Double baseDmg = 0.0;
@@ -990,22 +1314,24 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
 
     }
 
-    private String calcHP (String s) {
+    private String calcHP(String s) {
         DecimalFormat df = new DecimalFormat("#");
 
         Double baseHP = 100.0;
         Double incPerLvl = 50.0;
-        return  String.valueOf(df.format((baseHP+(Double.parseDouble(s)*incPerLvl)*(1+vk.getHp()))));
+        return String.valueOf(df.format((baseHP + (Double.parseDouble(s) * incPerLvl) * (1 + vk.getHp()))));
 
     }
-    private String calcMP (String s) {
+
+    private String calcMP(String s) {
         DecimalFormat df = new DecimalFormat("#");
 
         Double baseMP = 50.0;
         Double incPerLvl = 10.0;
-        return  String.valueOf(df.format((baseMP+(Double.parseDouble(s)*incPerLvl)*(1+vk.getMp()))));
+        return String.valueOf(df.format((baseMP + (Double.parseDouble(s) * incPerLvl) * (1 + vk.getMp()))));
 
     }
+
     private void fillOverviewData(Deck deck, Label tb1, Label tb2, Label tb3, Label t1, Label t2, Label t3, Label t4, Label t5, Label twr1, Label twr2, Label twr3, Label twr4, ObservableList<Tower> towers, Label cc1, Label cc2, Label cc3, Label cc4, ObservableList<CastleComponent> castleComponents, Label ldr, ObservableList<Leader> ldrList) {
         tb1.setText(deck.getTownBuilding1());
         tb2.setText(deck.getTownBuilding2());
@@ -1032,7 +1358,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                         mCenterViewController.getTwrDmgL().setText("");
                         mCenterViewController.getTwrAML().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                        mCenterViewController.getTwrDmgL().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                        mCenterViewController.getTwrDmgL().setText(
+                                twrCCDmg(twr.getName(), twr.getLevel().getText(), twr.getLevelPrestige().getText()));
                     }
                     if (deck.getTower2().equals(twr.getName())) {
                         mCenterViewController.getTwrLL1().setText(twr.getLevel().getText());
@@ -1040,7 +1367,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                         mCenterViewController.getTwrDmgL1().setText("");
                         mCenterViewController.getTwrAML1().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                        mCenterViewController.getTwrDmgL1().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                        mCenterViewController.getTwrDmgL1().setText(
+                                twrCCDmg(twr.getName(), twr.getLevel().getText(), twr.getLevelPrestige().getText()));
                     }
                     if (deck.getTower3().equals(twr.getName())) {
                         mCenterViewController.getTwrLL2().setText(twr.getLevel().getText());
@@ -1048,7 +1376,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                         mCenterViewController.getTwrDmgL2().setText("");
                         mCenterViewController.getTwrAML2().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                        mCenterViewController.getTwrDmgL2().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                        mCenterViewController.getTwrDmgL2().setText(
+                                twrCCDmg(twr.getName(), twr.getLevel().getText(), twr.getLevelPrestige().getText()));
                     }
                     if (deck.getTower4().equals(twr.getName())) {
                         mCenterViewController.getTwrLL3().setText(twr.getLevel().getText());
@@ -1056,7 +1385,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                         mCenterViewController.getTwrDmgL3().setText("");
                         mCenterViewController.getTwrAML3().setText(
                                 twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                        mCenterViewController.getTwrDmgL3().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                        mCenterViewController.getTwrDmgL3().setText(
+                                twrCCDmg(twr.getName(), twr.getLevel().getText(), twr.getLevelPrestige().getText()));
                     }
                 } else {
 
@@ -1071,7 +1401,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                             mCenterViewController.getTwrDmgL().setText("");
                             mCenterViewController.getTwrAML().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                            mCenterViewController.getTwrDmgL().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                            mCenterViewController.getTwrDmgL().setText(twrCCDmg(twr.getName(), twr.getLevel().getText(),
+                                                                                twr.getLevelPrestige().getText()));
                         }
                         if (deck.getTower2().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL1().setText(twr.getLevel().getText());
@@ -1079,7 +1410,9 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                             mCenterViewController.getTwrDmgL1().setText("");
                             mCenterViewController.getTwrAML1().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                            mCenterViewController.getTwrDmgL1().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                            mCenterViewController.getTwrDmgL1().setText(
+                                    twrCCDmg(twr.getName(), twr.getLevel().getText(),
+                                             twr.getLevelPrestige().getText()));
                         }
                         if (deck.getTower3().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL2().setText(twr.getLevel().getText());
@@ -1087,7 +1420,9 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                             mCenterViewController.getTwrDmgL2().setText("");
                             mCenterViewController.getTwrAML2().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                            mCenterViewController.getTwrDmgL2().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                            mCenterViewController.getTwrDmgL2().setText(
+                                    twrCCDmg(twr.getName(), twr.getLevel().getText(),
+                                             twr.getLevelPrestige().getText()));
                         }
                         if (deck.getTower4().equals(twr.getPromotion().getSelectionModel().getSelectedItem())) {
                             mCenterViewController.getTwrLL3().setText(twr.getLevel().getText());
@@ -1095,7 +1430,9 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                             mCenterViewController.getTwrDmgL3().setText("");
                             mCenterViewController.getTwrAML3().setText(
                                     twr.getAttackMode().getSelectionModel().getSelectedItem().toString());
-                            mCenterViewController.getTwrDmgL3().setText(twrCCDmg(twr.getName(),twr.getLevel().getText(),twr.getLevelPrestige().getText()));
+                            mCenterViewController.getTwrDmgL3().setText(
+                                    twrCCDmg(twr.getName(), twr.getLevel().getText(),
+                                             twr.getLevelPrestige().getText()));
                         }
                     }
 
@@ -1117,7 +1454,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                     mCenterViewController.getCcDmgL().setText("");
                     mCenterViewController.getCcAML().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
-                    mCenterViewController.getCcDmgL().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
+                    mCenterViewController.getCcDmgL().setText(
+                            twrCCDmg(cc.getCcName(), cc.getCcLevel().getText(), cc.getCcLevelP().getText()));
 
 
                 }
@@ -1129,7 +1467,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                     mCenterViewController.getCcDmgL1().setText("");
                     mCenterViewController.getCcAML1().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
-                    mCenterViewController.getCcDmgL1().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
+                    mCenterViewController.getCcDmgL1().setText(
+                            twrCCDmg(cc.getCcName(), cc.getCcLevel().getText(), cc.getCcLevelP().getText()));
                 }
 
 
@@ -1139,7 +1478,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                     mCenterViewController.getCcDmgL2().setText("");
                     mCenterViewController.getCcAML2().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
-                    mCenterViewController.getCcDmgL2().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
+                    mCenterViewController.getCcDmgL2().setText(
+                            twrCCDmg(cc.getCcName(), cc.getCcLevel().getText(), cc.getCcLevelP().getText()));
                 }
 
 
@@ -1149,7 +1489,8 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                     mCenterViewController.getCcDmgL3().setText("");
                     mCenterViewController.getCcAML3().setText(
                             cc.getCcAM().getSelectionModel().getSelectedItem().toString());
-                    mCenterViewController.getCcDmgL3().setText(twrCCDmg(cc.getCcName(),cc.getCcLevel().getText(),cc.getCcLevelP().getText()));
+                    mCenterViewController.getCcDmgL3().setText(
+                            twrCCDmg(cc.getCcName(), cc.getCcLevel().getText(), cc.getCcLevelP().getText()));
                 }
             } catch (NullPointerException npe) {
 
@@ -1186,46 +1527,53 @@ private String twrCCDmg (String name,String lvl, String lvlP) {
                 for (Item i : mWeaponList) {
                     try {
                         if (ldrs.getWeapon().getSelectionModel().getSelectedItem().toString().equals(i.getItemName())) {
-                          //  wItemS.setText(i.getSortOfItem());
-                        //    wItemQ.setText(i.getItemQuality());
+                            //  wItemS.setText(i.getSortOfItem());
+                            //    wItemQ.setText(i.getItemQuality());
 
-                            mCenterViewController.getLdrwAtt1().setText(i.getAttribute1()+"  "+i.getAttribute1Value().toString());
-                            mCenterViewController.getLdrwAtt2().setText(i.getAttribute2()+"  "+i.getAttribute2Value().toString());
-                            mCenterViewController.getLdrwAtt3().setText(i.getAttribute3()+"  "+i.getAttribute3Value().toString());
+                            mCenterViewController.getLdrwAtt1().setText(
+                                    i.getAttribute1() + "  " + i.getAttribute1Value().toString());
+                            mCenterViewController.getLdrwAtt2().setText(
+                                    i.getAttribute2() + "  " + i.getAttribute2Value().toString());
+                            mCenterViewController.getLdrwAtt3().setText(
+                                    i.getAttribute3() + "  " + i.getAttribute3Value().toString());
                             wAtt1 = i.getAttribute1();
-                            wAtt2 =(i.getAttribute2());
-                            wAtt3=(i.getAttribute3());
-                            wAttV1=(i.getAttribute1Value().toString());
-                            wAttV2=(i.getAttribute2Value().toString());
-                            wAttV3=(i.getAttribute3Value().toString());
+                            wAtt2 = (i.getAttribute2());
+                            wAtt3 = (i.getAttribute3());
+                            wAttV1 = (i.getAttribute1Value().toString());
+                            wAttV2 = (i.getAttribute2Value().toString());
+                            wAttV3 = (i.getAttribute3Value().toString());
                         }
                     } catch (NullPointerException npe) {
                     }
                 }
                 for (Item i : mAccessoryList) {
                     try {
-                        if (ldrs.getAccessory().getSelectionModel().getSelectedItem().toString().equals(i.getItemName())) {
+                        if (ldrs.getAccessory().getSelectionModel().getSelectedItem().toString().equals(
+                                i.getItemName())) {
                             //aItemS.setText(i.getSortOfItem());
-                           // aItemQ.setText(i.getItemQuality());
+                            // aItemQ.setText(i.getItemQuality());
 
-                            mCenterViewController.getLdraAtt1().setText(i.getAttribute1()+"  "+i.getAttribute1Value().toString());
-                            mCenterViewController.getLdraAtt2().setText(i.getAttribute2()+"  "+i.getAttribute2Value().toString());
-                            mCenterViewController.getLdraAtt3().setText(i.getAttribute3()+"  "+i.getAttribute3Value().toString());
-                            aAtt1=(i.getAttribute1());
-                            aAtt2=(i.getAttribute2());
-                            aAtt3=(i.getAttribute3());
-                            aAttV1=(i.getAttribute1Value().toString());
-                            aAttV2=(i.getAttribute2Value().toString());
-                            aAttV3=(i.getAttribute3Value().toString());
+                            mCenterViewController.getLdraAtt1().setText(
+                                    i.getAttribute1() + "  " + i.getAttribute1Value().toString());
+                            mCenterViewController.getLdraAtt2().setText(
+                                    i.getAttribute2() + "  " + i.getAttribute2Value().toString());
+                            mCenterViewController.getLdraAtt3().setText(
+                                    i.getAttribute3() + "  " + i.getAttribute3Value().toString());
+                            aAtt1 = (i.getAttribute1());
+                            aAtt2 = (i.getAttribute2());
+                            aAtt3 = (i.getAttribute3());
+                            aAttV1 = (i.getAttribute1Value().toString());
+                            aAttV2 = (i.getAttribute2Value().toString());
+                            aAttV3 = (i.getAttribute3Value().toString());
                         }
                     } catch (NullPointerException npe) {
                     }
                 }
 
                 mCenterViewController.getLdrDmgL().setText(
-                        dmgHero(ldrs.getName(), ldrs.getLevel().getText(), ldrs.getLevelPrestige().getText(),wAtt1, wAttV1, wAtt2,
-                                wAttV2, wAtt3, wAttV3, aAtt1, aAttV1,
-                                aAtt2, aAttV2, aAtt3, aAttV3, cd, manal));
+                        dmgHero(ldrs.getName(), ldrs.getLevel().getText(), ldrs.getLevelPrestige().getText(), wAtt1,
+                                wAttV1, wAtt2, wAttV2, wAtt3, wAttV3, aAtt1, aAttV1, aAtt2, aAttV2, aAtt3, aAttV3, cd,
+                                manal));
             }
         }
     }

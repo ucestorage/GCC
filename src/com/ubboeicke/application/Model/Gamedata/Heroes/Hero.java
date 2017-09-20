@@ -52,15 +52,13 @@ public class Hero {
         return TotalGold;
     }
 
-    public Hero(String name, Label level, TextField wantLevel, TextField upgCost, Label totalGold, Label goldDmg){
+
+    public Hero(String name,Label level,TextField wantedLevel, TextField upgCost,Label totalCost,Label dmgInc,Label goldPerDmg){
         Name = name;
         goldLvl = level;
-        wantLvl = wantLevel;
+        wantLvl = wantedLevel;
         UpgCost = upgCost;
-        TotalGold = totalGold;
-        GoldDmg = goldDmg;
-
-
+        TotalGold = totalCost;
 
     }
 
