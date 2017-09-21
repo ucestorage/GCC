@@ -1,41 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
-
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.control.CheckMenuItem?>
 <fx:root type="BorderPane" xmlns="http://javafx.com/javafx/8.0.111"
-
          xmlns:fx="http://javafx.com/fxml/1">
     <top>
         <VBox fx:id="vboxTop">
             <MenuBar>
                 <menus>
-
                     <Menu mnemonicParsing="false" text="Items">
                         <items>
-                            <MenuItem mnemonicParsing="false" text="Make new Item" onAction="#makeNewItem" />
+                            <MenuItem mnemonicParsing="false" text="Make new Item" onAction="#makeNewItem"/>
                         </items>
                     </Menu>
                     <Menu mnemonicParsing="=false" text="Decks">
-                        <MenuItem mnemonicParsing="false" text="Make new Deck" onAction="#makeNewDeck" />
-
-                            </Menu>
+                        <MenuItem mnemonicParsing="false" text="Make new Deck" onAction="#makeNewDeck"/>
+                    </Menu>
                     <Menu mnemonicParsing="false" text="Guild">
                         <items>
-                            <CheckMenuItem mnemonicParsing="false" text="Tower Damage 20%" />
+                            <CheckMenuItem mnemonicParsing="false" text="Tower Damage 20%"/>
                         </items>
                     </Menu>
-
                     <Menu mnemonicParsing="false" text="Options">
                         <items>
-                            <Menu mnemonicParsing="false" text="Basic Information" >
+                            <Menu mnemonicParsing="false" text="Basic Information">
                                 <items>
-                                <MenuItem mnemonicParsing="false" text="Player Name" onAction="#setPlayerName"/>
+                                    <MenuItem mnemonicParsing="false" text="Player Name" onAction="#setPlayerName"/>
                                     <MenuItem mnemonicParsing="false" text="Player Level" onAction="#setPlayerLevel"/>
                                     <MenuItem mnemonicParsing="false" text="Guild" onAction="#setGuildLabel"/>
                                     <MenuItem mnemonicParsing="false" text="Start Date" onAction="#setStartDate"/>
@@ -48,14 +38,8 @@
                             </Menu>
                         </items>
                     </Menu>
-
-
-
-
                 </menus>
             </MenuBar>
-
-
         </VBox>
     </top>
     <center>
@@ -63,4 +47,3 @@
         </TabPane>
     </center>
 </fx:root>
-

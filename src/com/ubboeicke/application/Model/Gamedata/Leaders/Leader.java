@@ -1,8 +1,5 @@
 package com.ubboeicke.application.Model.Gamedata.Leaders;
 
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Item;
-import com.ubboeicke.application.Model.Enums.AttackMode;
-import com.ubboeicke.application.Model.Gamedata.Items.Item;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -16,7 +13,6 @@ public class Leader {
     private ComboBox AttackMode;
     private ComboBox Weapon;
     private ComboBox Accessory;
-
 
     public Leader(String name, TextField level, TextField levelPrestige, ComboBox attackMode, ComboBox weapon, ComboBox accessory) {
         Name = name;

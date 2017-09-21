@@ -1,6 +1,5 @@
 package com.ubboeicke.application.Model.Gamedata.Decks;
 
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.GameObjectConstructor;
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import javafx.collections.ObservableList;
 
@@ -14,21 +13,20 @@ public class DeckParser {
     private ArrayList<String> mDeckStringList = new ArrayList<>();
     private ObservableList<Deck> mDeckList;
 
-    public DeckParser(CenterViewController centerViewController){
+    public DeckParser(CenterViewController centerViewController) {
         mCenterViewController = centerViewController;
-
-
     }
-    public ArrayList<String> getDeckStrings(){
+
+    public ArrayList<String> getDeckStrings() {
         mDeckList = mCenterViewController.getDeckTableView().getItems();
-        for (Deck d : mDeckList){
-            String s = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",d.getName(),d.getTownBuilding1(),d.getTownBuilding2(),d.getTownBuilding3(),d.getLeader(),d.getTreasure1(),d.getTreasure2(),d.getTreasure3(),d.getTreasure4(),d.getTreasure5(),d.getTower1(),d.getTower2(),d.getTower3(),d.getTower4(),d.getCC1(),d.getCC2(),d.getCC3(),d.getCC4(),d.getH1(),d.getH2(),d.getH3(),d.getH4(),d.getH5(),d.getH6(),d.getH7(),d.getH8(),d.getH9(),d.getH10(),d.getH11(),d.getH12());
+        for (Deck d : mDeckList) {
+            String s = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", d.getName(), d.getTownBuilding1(), d.getTownBuilding2(), d.getTownBuilding3(), d.getLeader(), d.getTreasure1(), d.getTreasure2(), d.getTreasure3(), d.getTreasure4(), d.getTreasure5(), d.getTower1(), d.getTower2(), d.getTower3(), d.getTower4(), d.getCC1(), d.getCC2(), d.getCC3(), d.getCC4(), d.getH1(), d.getH2(), d.getH3(), d.getH4(), d.getH5(), d.getH6(), d.getH7(), d.getH8(), d.getH9(), d.getH10(), d.getH11(), d.getH12());
             mDeckStringList.add(s);
-
         }
-        return  mDeckStringList;
+        return mDeckStringList;
     }
-    public Deck splitStrings(String s){
+
+    public Deck splitStrings(String s) {
         Deck deck;
         String part[] = s.split(",");
         String p0 = part[0];
@@ -61,11 +59,7 @@ public class DeckParser {
         String p27 = part[27];
         String p28 = part[28];
         String p29 = part[29];
-
-
-
-
-        deck = new Deck(p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,p16,p17,p18,p19,p20,p21,p22,p23,p24,p25,p26,p27,p28,p29);
+        deck = new Deck(p0, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20, p21, p22, p23, p24, p25, p26, p27, p28, p29);
         return deck;
     }
 }

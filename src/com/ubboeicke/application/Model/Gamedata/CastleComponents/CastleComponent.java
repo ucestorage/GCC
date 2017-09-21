@@ -17,7 +17,6 @@ public class CastleComponent {
         this.ccName = ccName;
         this.ccLevel = ccLevel;
         this.ccLevelP = ccLevelP;
-
     }
 
     public CastleComponent(String ccName, TextField ccLevel) {

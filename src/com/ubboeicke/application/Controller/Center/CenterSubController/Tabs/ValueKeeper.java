@@ -26,9 +26,10 @@ public class ValueKeeper {
     Integer finalHP = 0;
     Integer finalMP = 0;
     Double skillDmg = 0.5;
-    public ValueKeeper(){
 
+    public ValueKeeper() {
     }
+
     public void reset() {
         summonedUnitDmg = 0.0;
         fireDmg = 10.0;
@@ -54,7 +55,6 @@ public class ValueKeeper {
         tbDmg = 0.0;
         treasureDmg = 0.0;
         mp = 0.0;
-
     }
 
     public Double getSkillDmg() {

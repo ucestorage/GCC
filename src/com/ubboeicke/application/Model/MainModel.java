@@ -12,12 +12,10 @@ public class MainModel {
     private SaveAndLoadController mSaveAndLoadController;
     private SaveAndLoadHandler mSaveAndLoadHandler;
 
-
     public MainModel(MainController mainController) {
         this.mMainController = mainController;
         this.mSaveAndLoadController = new SaveAndLoadController();
         this.mSaveAndLoadHandler = new SaveAndLoadHandler(this, mMainController);
-
     }
 
     public SaveAndLoadController getSaveAndLoadController() {
@@ -27,6 +25,4 @@ public class MainModel {
     public SaveAndLoadHandler getSaveAndLoadHandler() {
         return mSaveAndLoadHandler;
     }
-
-
 }

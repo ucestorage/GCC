@@ -10,7 +10,6 @@ public class AttackMode {
         LowHP("LowHP"),
         Boss("Boss"),
         Flying("Flying");
-
         private String mString;
         Mode(String string){
             this.mString = string;

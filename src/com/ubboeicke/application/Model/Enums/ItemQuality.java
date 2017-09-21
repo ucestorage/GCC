@@ -9,7 +9,6 @@ public class ItemQuality {
         A("A"),
         S("S"),
         L("L");
-
         private String mString;
         Quality(String string){
             this.mString = string;

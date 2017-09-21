@@ -7,7 +7,6 @@ import com.ubboeicke.application.Model.Enums.ItemAttributesWithLegendaries;
 import com.ubboeicke.application.Model.Enums.ItemQuality;
 import com.ubboeicke.application.Model.Enums.ItemSort;
 import com.ubboeicke.application.Model.Gamedata.Items.Item;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +22,6 @@ import static com.ubboeicke.application.Model.Enums.ItemQuality.Quality.B;
  * Created by Ubbo Eicke on 09.06.2017.
  */
 public class ItemCreationController extends AnchorPane {
-
     @FXML
     private TextField itemNameTF;
     @FXML
@@ -51,7 +49,6 @@ public class ItemCreationController extends AnchorPane {
     private CenterViewController mCenterViewController;
     private ObservableList<Item> itemWeaponObservableList;
     private ObservableList<Item> itemAccessoryObservableList;
-
     private TableView<Item> itemWeaponTableView;
     private TableView<Item> itemAccessoryTableView;
     private String itemName;
@@ -77,88 +74,69 @@ public class ItemCreationController extends AnchorPane {
         populateCombobox();
         comboBoxListener();
         saveItem();
-
-
-
     }
-
-
 
     public void saveItem() {
         itemWeaponObservableList = mPopulateTabItem.getItemWeaponList();
         itemAccessoryObservableList = mPopulateTabItem.getItemAccessoryList();
         itemWeaponTableView = mCenterViewController.getItemWeaponTableView();
         itemAccessoryTableView = mCenterViewController.getItemAccessoryTableView();
-
-    itemsaveBTN.setOnAction(event -> {
-      //  System.out.println("Saving Item.");
-        try {
-        quality = itemQCB.getSelectionModel().getSelectedItem();
-
-        itemName = itemNameTF.getText();
-        qualityString = itemQCB.getSelectionModel().getSelectedItem().toString();
-        sortString = itemSCB.getSelectionModel().getSelectedItem().toString();
-
-
-        itemlvl = Integer.parseInt(itemLVLTF.getText());
-        att1value = Double.parseDouble(itemAV1TF.getText());
-        att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
-
-        switch (quality) {
-
-            case B:
-                if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
-                    itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value));
-                } else {
-                    itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value));
+        itemsaveBTN.setOnAction(event -> {
+            //  System.out.println("Saving Item.");
+            try {
+                quality = itemQCB.getSelectionModel().getSelectedItem();
+                itemName = itemNameTF.getText();
+                qualityString = itemQCB.getSelectionModel().getSelectedItem().toString();
+                sortString = itemSCB.getSelectionModel().getSelectedItem().toString();
+                itemlvl = Integer.parseInt(itemLVLTF.getText());
+                att1value = Double.parseDouble(itemAV1TF.getText());
+                att1String = itemA1CB.getSelectionModel().getSelectedItem().toString();
+                switch (quality) {
+                    case B:
+                        if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
+                            itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value));
+                        } else {
+                            itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value));
+                        }
+                        break;
+                    case A:
+                        att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
+                        att2value = Double.parseDouble(itemAV2TF.getText());
+                        if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
+                            itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
+                        } else {
+                            itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
+                        }
+                        break;
+                    case S:
+                        att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
+                        att2value = Double.parseDouble(itemAV2TF.getText());
+                        if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
+                            itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
+                        } else {
+                            itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
+                        }
+                        break;
+                    case L:
+                        att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
+                        att2value = Double.parseDouble(itemAV2TF.getText());
+                        att3String = itemA3CB.getSelectionModel().getSelectedItem().toString();
+                        att3value = Double.parseDouble(itemAV3TF.getText());
+                        if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
+                            itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
+                        } else {
+                            itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
+                        }
+                        break;
                 }
-                break;
-            case A:
-                att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
-                att2value = Double.parseDouble(itemAV2TF.getText());
-                if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
-                    itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
-                } else {
-                    itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
-                }
-
-                break;
-            case S:
-                att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
-                att2value = Double.parseDouble(itemAV2TF.getText());
-
-                if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
-                    itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
-                } else {
-                    itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value));
-                }
-
-                break;
-            case L:
-                att2String = itemA2CB.getSelectionModel().getSelectedItem().toString();
-                att2value = Double.parseDouble(itemAV2TF.getText());
-                att3String = itemA3CB.getSelectionModel().getSelectedItem().toString();
-                att3value = Double.parseDouble(itemAV3TF.getText());
-                if (sortString.equals("Bow") || sortString.equals("Sword") || sortString.equals("Staff") || sortString.equals("Hammer")) {
-                    itemWeaponObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
-                } else {
-                    itemAccessoryObservableList.add(new Item(itemName, qualityString, sortString, itemlvl, att1String, att1value, att2String, att2value, att3String, att3value));
-                }
-
-                break;
-        }
-
-
-        itemWeaponTableView.setItems(itemWeaponObservableList);
-        itemAccessoryTableView.setItems(itemAccessoryObservableList);
-        // mPopulateTabItem.getStage().close();
-        } catch (Exception e){
-            Alert a = new Alert(Alert.AlertType.CONFIRMATION,"Please use . as seperator!");
-            a.showAndWait();
-        }
-    });
-
-
+                itemWeaponTableView.setItems(itemWeaponObservableList);
+                itemAccessoryTableView.setItems(itemAccessoryObservableList);
+                // mPopulateTabItem.getStage().close();
+            } catch (Exception e) {
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Please use . as seperator!");
+                a.showAndWait();
+            }
+        });
     }
 
     private void populateCombobox() {
@@ -167,7 +145,6 @@ public class ItemCreationController extends AnchorPane {
         itemA1CB.getItems().setAll(ItemAttributes.Attributes.values());
         itemA2CB.getItems().setAll(ItemAttributes.Attributes.values());
         itemA3CB.getItems().setAll(ItemAttributesWithLegendaries.AttributesWithLegendaries.values());
-
     }
 
     private void comboBoxListener() {
@@ -222,7 +199,6 @@ public class ItemCreationController extends AnchorPane {
                     }
                 }
             }
-
         });
     }
 }

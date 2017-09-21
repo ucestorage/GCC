@@ -10,8 +10,6 @@ public class DB_CastleComponent implements Serializable {
     private static final long serialVersionUID = 1L;
     private List<String> list;
 
-
-
     public List<String> getList() {
         return list;
     }

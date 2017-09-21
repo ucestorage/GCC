@@ -1,10 +1,9 @@
 package com.ubboeicke.application.Model.Gamedata.Items;
 
-
 /**
  * Created by Ubbo Eicke on 10.06.2017.
  */
-public  class Item {
+public class Item {
     private String mItemName;
     private String mItemQuality;
     private String mSortOfItem;
@@ -15,8 +14,6 @@ public  class Item {
     private Double mAttribute2Value;
     private String mAttribute3;
     private Double mAttribute3Value;
-
-
 
     public Item(String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value, String attribute2, Double attribute2Value, String attribute3, Double attribute3Value) {
         mItemName = itemName;
@@ -30,7 +27,8 @@ public  class Item {
         mAttribute3 = attribute3;
         mAttribute3Value = attribute3Value;
     }
-    public Item (String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value) {
+
+    public Item(String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value) {
         mItemName = itemName;
         mItemQuality = itemQuality;
         mSortOfItem = sortOfItem;
@@ -38,7 +36,8 @@ public  class Item {
         mAttribute1 = attribute1;
         mAttribute1Value = attribute1Value;
     }
-    public Item (String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value, String attribute2, Double attribute2Value) {
+
+    public Item(String itemName, String itemQuality, String sortOfItem, Integer itemLevel, String attribute1, Double attribute1Value, String attribute2, Double attribute2Value) {
         mItemName = itemName;
         mItemQuality = itemQuality;
         mSortOfItem = sortOfItem;
@@ -48,6 +47,7 @@ public  class Item {
         mAttribute2 = attribute2;
         mAttribute2Value = attribute2Value;
     }
+
     public String getItemName() {
         return mItemName;
     }

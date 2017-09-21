@@ -19,7 +19,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -93,7 +92,7 @@ public class DeckCreationController extends AnchorPane {
     private CenterViewController mCenterViewController;
     private MainController mMainController;
     private PopulateTab_Deck mPopulateTabDeck;
-    private ObservableList<Deck>mDeckObservableList;
+    private ObservableList<Deck> mDeckObservableList;
     private TableView<Deck> mDeckTableView;
 
     public DeckCreationController(MainController mainController) throws IOException {
@@ -102,12 +101,10 @@ public class DeckCreationController extends AnchorPane {
         mPopulateTabDeck = mCenterViewController.getmPopulateTabDeck();
         mDeckObservableList = mCenterViewController.getDeckTableView().getItems();
         mDeckTableView = mCenterViewController.getDeckTableView();
-
         FXMLLoader loader = new FXMLLoader(DeckCreationController.class.getResource("DeckCreation.fxml"));
         loader.setRoot(this);
         loader.setController(this);
         loader.load();
-
         populateTB_CB();
         populateLDR_CB();
         populateT_CB();
@@ -121,24 +118,18 @@ public class DeckCreationController extends AnchorPane {
       /*  mDeckTableView = mCenterViewController.getDeckTableView();
        // mDeckObservableList= mDeckTableView.getItems();
         mDeckObservableList= mPopulateTabDeck.getDecks();*/
-
         saveBTN.setOnAction(event -> {
             s1 = nameTF.getText();
             Deck d = new Deck(s1, tbCB1.getSelectionModel().getSelectedItem().toString(), tbCB2.getSelectionModel().getSelectedItem().toString(), tbCB3.getSelectionModel().getSelectedItem().toString(), ldrCB.getSelectionModel().getSelectedItem().toString(), tCB1.getSelectionModel().getSelectedItem().toString(), tCB2.getSelectionModel().getSelectedItem().toString(), tCB3.getSelectionModel().getSelectedItem().toString(), tCB4.getSelectionModel().getSelectedItem().toString(), tCB5.getSelectionModel().getSelectedItem().toString(), twrCB1.getSelectionModel().getSelectedItem().toString(), twrCB2.getSelectionModel().getSelectedItem().toString(), twrCB3.getSelectionModel().getSelectedItem().toString(), twrCB4.getSelectionModel().getSelectedItem().toString(), ccCB1.getSelectionModel().getSelectedItem().toString(), ccCB2.getSelectionModel().getSelectedItem().toString(), ccCB3.getSelectionModel().getSelectedItem().toString(), ccCB4.getSelectionModel().getSelectedItem().toString(), h1CB.getSelectionModel().getSelectedItem().toString(), h2CB.getSelectionModel().getSelectedItem().toString(), h3CB.getSelectionModel().getSelectedItem().toString(), h4CB.getSelectionModel().getSelectedItem().toString(), h5CB.getSelectionModel().getSelectedItem().toString(), h6CB.getSelectionModel().getSelectedItem().toString(), h7CB.getSelectionModel().getSelectedItem().toString(), h8CB.getSelectionModel().getSelectedItem().toString(), h9CB.getSelectionModel().getSelectedItem().toString(), h10CB.getSelectionModel().getSelectedItem().toString(), h11CB.getSelectionModel().getSelectedItem().toString(), h12CB.getSelectionModel().getSelectedItem().toString());
-
             mDeckObservableList.add(d);
-          mDeckTableView.setItems(mDeckObservableList);
+            mDeckTableView.setItems(mDeckObservableList);
             mMainController.getStageDeck().close();
-
-
         });
     }
 
     public void populateTB_CB() {
         tbCB1.getItems().setAll(TownBuildings.TB);
-
         tbCB2.getItems().setAll(TownBuildings.TB);
-
         tbCB3.getItems().setAll(TownBuildings.TB);
         tbCB1.getSelectionModel().selectFirst();
         tbCB2.getSelectionModel().selectFirst();
@@ -165,18 +156,15 @@ public class DeckCreationController extends AnchorPane {
         tCB3.getSelectionModel().selectFirst();
         tCB4.getSelectionModel().selectFirst();
         tCB5.getSelectionModel().selectFirst();
-
     }
 
     public void populateTWR_CB() {
         ObservableList<String> twrName = FXCollections.observableArrayList();
-
         for (Tower twr : mCenterViewController.getTwrTableView().getItems()) {
             if (twr.getName().equals("Trophy") || twr.getName().equals("Cannon") || twr.getName().equals("Thorn Worm") || twr.getName().equals("Turret")) {
                 twrName.add(twr.getName());
             } else {
                 twrName.add(twr.getPromotion().getSelectionModel().getSelectedItem());
-
             }
         }
         twrCB1.getItems().setAll(twrName);
@@ -236,7 +224,6 @@ public class DeckCreationController extends AnchorPane {
             h10CB.getSelectionModel().selectFirst();
             h11CB.getSelectionModel().selectFirst();
             h12CB.getSelectionModel().selectFirst();
-
         }
     }
 }

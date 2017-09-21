@@ -1,12 +1,15 @@
 package com.ubboeicke.application.Model.DB.Save_Load;
+
 import com.ubboeicke.application.Model.DB.*;
 import com.ubboeicke.application.Model.Enums.Filename;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by Ubbo Eicke on 08.06.2017.
  */
@@ -20,7 +23,6 @@ public class SaveAndLoadController {
     private List<String> mOHeroList = new ArrayList<>();
     private List<String> mUHeroList = new ArrayList<>();
     private List<String> mDeckList = new ArrayList<>();
-
     private Controller_DB mControllerDb;
     private DB_CastleComponent mDBCastleComponent;
     private DB_Heroes_OH mDBHeroesOh;
@@ -32,7 +34,6 @@ public class SaveAndLoadController {
     private DB_Towers mDBTowers;
     private DB_Decks mDBDecks;
 
-
     public SaveAndLoadController() {
         this.mControllerDb = new Controller_DB();
         this.mDBStrings = mControllerDb.getDBStrings();
@@ -43,9 +44,9 @@ public class SaveAndLoadController {
         this.mDBLeaders = mControllerDb.getDBLeaders();
         this.mDBHeroesOh = mControllerDb.getDBHeroesOh();
         this.mDBHeroesUh = mControllerDb.getDBHeroesUh();
-
     }
-// LOAD STRINGS
+
+    // LOAD STRINGS
     public List<String> load() {
         mDBStrings = null;
         try {
@@ -57,6 +58,7 @@ public class SaveAndLoadController {
         }
         return mDBStrings.getList();
     }
+
     // LOAD ITEMS_WEAPONS
     public List<String> loadItemsWeapons() {
         mDBItemsWeapons = null;
@@ -69,6 +71,7 @@ public class SaveAndLoadController {
         }
         return mDBItemsWeapons.getList();
     }
+
     // LOAD ITEMS_ACCESSORIES
     public List<String> loadItemsAccessories() {
         mDBItemsAccessories = null;
@@ -81,6 +84,7 @@ public class SaveAndLoadController {
         }
         return mDBItemsAccessories.getList();
     }
+
     // LOAD CASTLE COMPONENTS
     public List<String> loadCC() {
         mDBCastleComponent = null;
@@ -93,6 +97,7 @@ public class SaveAndLoadController {
         }
         return mDBCastleComponent.getList();
     }
+
     // LOAD TOWERS
     public List<String> loadTWR() {
         mDBTowers = null;
@@ -105,6 +110,7 @@ public class SaveAndLoadController {
         }
         return mDBTowers.getList();
     }
+
     // LOAD Leaders
     public List<String> loadLDR() {
         mDBLeaders = null;
@@ -117,6 +123,7 @@ public class SaveAndLoadController {
         }
         return mDBLeaders.getList();
     }
+
     // LOAD Heroes_OH
     public List<String> loadHeroesOh() {
         mDBHeroesOh = null;
@@ -129,6 +136,7 @@ public class SaveAndLoadController {
         }
         return mDBHeroesOh.getList();
     }
+
     // LOAD Heroes_UH
     public List<String> loadHeroesUh() {
         mDBHeroesUh = null;
@@ -141,6 +149,7 @@ public class SaveAndLoadController {
         }
         return mDBHeroesUh.getList();
     }
+
     // LOAD DECKS
     public List<String> loadDecks() {
         mDBDecks = null;
@@ -154,7 +163,7 @@ public class SaveAndLoadController {
         return mDBDecks.getList();
     }
 
-//SAVE STRINGS
+    //SAVE STRINGS
     public void save(String item) {
         mStringList.add(item);
         mDBStrings.setList(mStringList);
@@ -166,6 +175,7 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE ITEMS_WEAPONS
     public void saveItemsWeapons(String item) {
         mItemWeaponList.add(item);
@@ -178,6 +188,7 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE ITEMS_ACCESSORIES
     public void saveItemsAccessories(String item) {
         mItemAccessoriesList.add(item);
@@ -190,6 +201,7 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE CASTLE COMPONENTS
     public void saveCC(String item) {
         mCCList.add(item);
@@ -202,6 +214,7 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE TOWERS
     public void saveTowers(String item) {
         mTWRList.add(item);
@@ -214,7 +227,8 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
-        //SAVE LEADERS
+
+    //SAVE LEADERS
     public void saveLeaders(String item) {
         mLDRList.add(item);
         mDBLeaders.setList(mLDRList);
@@ -226,6 +240,7 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE HEROES_OH
     public void saveHeroesOh(String item) {
         mOHeroList.add(item);
@@ -238,6 +253,7 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE HEROES_UH
     public void saveHeroesUh(String item) {
         mUHeroList.add(item);
@@ -250,13 +266,12 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
+
     //SAVE Decks
     public void saveDecks(String item) {
         mDBDecks = mControllerDb.getDBDecks();
         mDeckList.add(item);
-
         mDBDecks.setList(mDeckList);
-
         try {
             try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Filename.DECK))) {
                 oos.writeObject(mDBDecks);
@@ -265,5 +280,4 @@ public class SaveAndLoadController {
             e.printStackTrace();
         }
     }
-
 }

@@ -4,8 +4,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class Gold {
-
-
     private Label nameL;
     private Label levelL;
     private Label dmgL;
@@ -15,9 +13,22 @@ public class Gold {
     private Label totalCost;
     private Label dmgDiff;
     private Label goldPerDmg;
-
-
-
+    private String nameS;
+    private String levelS;
+    private String levelPS;
+    private String wAtt1;
+    private String wAtt2;
+    private String wAtt3;
+    private String wAttV1;
+    private String wAttV2;
+    private String wAttV3;
+    private String aAtt1;
+    private String aAtt2;
+    private String aAtt3;
+    private String aAttV1;
+    private String aAttV2;
+    private String aAttV3;
+    private String dmg;
     public Gold(Label nameL, Label levelL, Label dmgL, TextField wantedL, TextField upgCost, Label futDmgL, Label totalCost, Label dmgDiff, Label goldPerDmg, String wAtt1, String wAtt2, String wAtt3, String wAttV1, String wAttV2, String wAttV3, String aAtt1, String aAtt2, String aAtt3, String aAttV1, String aAttV2, String aAttV3, String levelPS) {
         this.nameL = nameL;
         this.levelL = levelL;
@@ -42,24 +53,6 @@ public class Gold {
         this.aAttV3 = aAttV3;
         this.levelPS = levelPS;
     }
-
-    private String nameS;
-    private String levelS;
-    private String levelPS;
-    private String wAtt1;
-    private String wAtt2;
-    private String wAtt3;
-    private String wAttV1;
-    private String wAttV2;
-    private String wAttV3;
-    private String aAtt1;
-    private String aAtt2;
-    private String aAtt3;
-    private String aAttV1;
-    private String aAttV2;
-    private String aAttV3;
-    private String dmg;
-
 
     public Gold(String nameS, String levelS, String levelPS, String wAtt1, String wAtt2, String wAtt3, String wAttV1, String wAttV2, String wAttV3, String aAtt1, String aAtt2, String aAtt3, String aAttV1, String aAttV2, String aAttV3, String dmg) {
         this.nameS = nameS;
@@ -143,8 +136,6 @@ public class Gold {
     public String getDmg() {
         return dmg;
     }
-
-
 
     public Label getNameL() {
         return nameL;

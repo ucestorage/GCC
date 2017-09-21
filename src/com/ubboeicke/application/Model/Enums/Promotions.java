@@ -1,5 +1,4 @@
 package com.ubboeicke.application.Model.Enums;
-
 /**
  * Created by Ubbo Eicke on 17.06.2017.
  */
@@ -32,7 +31,6 @@ public class Promotions {
     public static final String[] Priest = {"Cleric","Bishop"};
     public static final String[] Smith = {"Smith II", "STOS"};
     public static final String[] Architect = {"Careful Architect", "Skilled Architect","Great Architect"};
-
     public static final String[] Tree = {"Crystal Tree", "Golden Tree"};
     public static final String[] Worm = {"Death Worm ", "Death Worm II"};
     public static final String[] FlameTower = {"Burning Tower", "Burning Tower II"};
@@ -140,8 +138,6 @@ public class Promotions {
         if (s.equals("Architect")){
             strings = Architect;
         }
-
-
         return strings;
     }
     

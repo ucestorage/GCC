@@ -1,6 +1,9 @@
 package com.ubboeicke.application.Controller.Center;
 
-import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.*;
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Deck;
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Hero;
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_Item;
+import com.ubboeicke.application.Controller.Center.CenterSubController.Tabs.PopulateTab_TWR_CC;
 import com.ubboeicke.application.Model.Gamedata.CastleComponents.CastleComponent;
 import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
 import com.ubboeicke.application.Model.Gamedata.GoldCalc.Gold;
@@ -21,1213 +24,811 @@ import java.io.IOException;
  * Created by Ubbo Eicke on 02.06.2017.
  */
 public class CenterViewController {
-
     @FXML
     private Label ldrwAtt1;
-
     @FXML
     private Label ldraAtt1;
-
     @FXML
     private Label ldrwAtt2;
-
     @FXML
     private Label ldraAtt2;
-
     @FXML
     private Label ldrwAtt3;
-
     @FXML
     private Label ldraAtt3;
-
     @FXML
     private Tab overviewTab;
-
     @FXML
     private Label tL1;
-
     @FXML
     private Label tL2;
-
     @FXML
     private Label tL3;
-
     @FXML
     private Label tL4;
-
     @FXML
     private Label tL5;
-
     @FXML
     private Label ldrL;
-
     @FXML
     private Label ldrLvlL;
-
     @FXML
     private Label ldrAML;
-
     @FXML
     private Label ldrDmgL;
-
     @FXML
     private Label tbL1;
-
     @FXML
     private Label tbL2;
-
     @FXML
     private Label tbL3;
-
     @FXML
     private ComboBox<String> deckCB;
-
     @FXML
     private Label nameLH;
-
     @FXML
     private Label lvlLH;
-
     @FXML
     private Label lvlVLH;
-
     @FXML
     private Label dmgLH;
-
     @FXML
     private Label lvlPLH;
-
     @FXML
     private Label lvlPVLH;
-
     @FXML
     private Label att1WLH;
-
     @FXML
     private Label att2WLH;
-
     @FXML
     private Label att3WLH;
-
     @FXML
     private Label itemSWLH;
-
     @FXML
     private Label itemQWLH;
-
     @FXML
     private Label att1ALH;
-
     @FXML
     private Label att2ALH;
-
     @FXML
     private Label att3ALH;
-
     @FXML
     private Label itemSALH;
-
     @FXML
     private Label itemQALH;
-
     @FXML
     private Label att1VWLH;
-
     @FXML
     private Label att2VWLH;
-
     @FXML
     private Label att3VWLH;
-
     @FXML
     private Label att1VALH;
-
     @FXML
     private Label manaLH;
-
     @FXML
     private Label manaVLH;
-
     @FXML
     private Label cdLH;
-
     @FXML
     private Label cdVLH;
-
     @FXML
     private Label att2VALH;
-
     @FXML
     private Label att3VALH;
-
     @FXML
     private Label amLH;
-
     @FXML
     private Label amVLH;
-
     @FXML
     private Label nameLH1;
-
     @FXML
     private Label lvlLH1;
-
     @FXML
     private Label lvlVLH1;
-
     @FXML
     private Label dmgLH1;
-
     @FXML
     private Label lvlPLH1;
-
     @FXML
     private Label lvlPVLH1;
-
     @FXML
     private Label att1WLH1;
-
     @FXML
     private Label att2WLH1;
-
     @FXML
     private Label att3WLH1;
-
     @FXML
     private Label itemSWLH1;
-
     @FXML
     private Label itemQWLH1;
-
     @FXML
     private Label att1ALH1;
-
     @FXML
     private Label att2ALH1;
-
     @FXML
     private Label att3ALH1;
-
     @FXML
     private Label itemSALH1;
-
     @FXML
     private Label itemQALH1;
-
     @FXML
     private Label att1VWLH1;
-
     @FXML
     private Label att2VWLH1;
-
     @FXML
     private Label att3VWLH1;
-
     @FXML
     private Label att1VALH1;
-
     @FXML
     private Label manaLH1;
-
     @FXML
     private Label manaVLH1;
-
     @FXML
     private Label cdLH1;
-
     @FXML
     private Label cdVLH1;
-
     @FXML
     private Label att2VALH1;
-
     @FXML
     private Label att3VALH1;
-
     @FXML
     private Label amLH1;
-
     @FXML
     private Label amVLH1;
-
     @FXML
     private Label nameLH2;
-
     @FXML
     private Label lvlLH2;
-
     @FXML
     private Label lvlVLH2;
-
     @FXML
     private Label dmgLH2;
-
     @FXML
     private Label lvlPLH2;
-
     @FXML
     private Label lvlPVLH2;
-
     @FXML
     private Label att1WLH2;
-
     @FXML
     private Label att2WLH2;
-
     @FXML
     private Label att3WLH2;
-
     @FXML
     private Label itemSWLH2;
-
     @FXML
     private Label itemQWLH2;
-
     @FXML
     private Label att1ALH2;
-
     @FXML
     private Label att2ALH2;
-
     @FXML
     private Label att3ALH2;
-
     @FXML
     private Label itemSALH2;
-
     @FXML
     private Label itemQALH2;
-
     @FXML
     private Label att1VWLH2;
-
     @FXML
     private Label att2VWLH2;
-
     @FXML
     private Label att3VWLH2;
-
     @FXML
     private Label att1VALH2;
-
     @FXML
     private Label manaLH2;
-
     @FXML
     private Label manaVLH2;
-
     @FXML
     private Label cdLH2;
-
     @FXML
     private Label cdVLH2;
-
     @FXML
     private Label att2VALH2;
-
     @FXML
     private Label att3VALH2;
-
     @FXML
     private Label amLH2;
-
     @FXML
     private Label amVLH2;
-
     @FXML
     private Label nameLH3;
-
     @FXML
     private Label lvlLH3;
-
     @FXML
     private Label lvlVLH3;
-
     @FXML
     private Label dmgLH3;
-
     @FXML
     private Label lvlPLH3;
-
     @FXML
     private Label lvlPVLH3;
-
     @FXML
     private Label att1WLH3;
-
     @FXML
     private Label att2WLH3;
-
     @FXML
     private Label att3WLH3;
-
     @FXML
     private Label itemSWLH3;
-
     @FXML
     private Label itemQWLH3;
-
     @FXML
     private Label att1ALH3;
-
     @FXML
     private Label att2ALH3;
-
     @FXML
     private Label att3ALH3;
-
     @FXML
     private Label itemSALH3;
-
     @FXML
     private Label itemQALH3;
-
     @FXML
     private Label att1VWLH3;
-
     @FXML
     private Label att2VWLH3;
-
     @FXML
     private Label att3VWLH3;
-
     @FXML
     private Label att1VALH3;
-
     @FXML
     private Label manaLH3;
-
     @FXML
     private Label manaVLH3;
-
     @FXML
     private Label cdLH3;
-
     @FXML
     private Label cdVLH3;
-
     @FXML
     private Label att2VALH3;
-
     @FXML
     private Label att3VALH3;
-
     @FXML
     private Label amLH3;
-
     @FXML
     private Label amVLH3;
-
     @FXML
     private Label nameLH4;
-
     @FXML
     private Label lvlLH4;
-
     @FXML
     private Label lvlVLH4;
-
     @FXML
     private Label dmgLH4;
-
     @FXML
     private Label lvlPLH4;
-
     @FXML
     private Label lvlPVLH4;
-
     @FXML
     private Label att1WLH4;
-
     @FXML
     private Label att2WLH4;
-
     @FXML
     private Label att3WLH4;
-
     @FXML
     private Label itemSWLH4;
-
     @FXML
     private Label itemQWLH4;
-
     @FXML
     private Label att1ALH4;
-
     @FXML
     private Label att2ALH4;
-
     @FXML
     private Label att3ALH4;
-
     @FXML
     private Label itemSALH4;
-
     @FXML
     private Label itemQALH4;
-
     @FXML
     private Label att1VWLH4;
-
     @FXML
     private Label att2VWLH4;
-
     @FXML
     private Label att3VWLH4;
-
     @FXML
     private Label att1VALH4;
-
     @FXML
     private Label manaLH4;
-
     @FXML
     private Label manaVLH4;
-
     @FXML
     private Label cdLH4;
-
     @FXML
     private Label cdVLH4;
-
     @FXML
     private Label att2VALH4;
-
     @FXML
     private Label att3VALH4;
-
     @FXML
     private Label amLH4;
-
     @FXML
     private Label amVLH4;
-
     @FXML
     private Label nameLH5;
-
     @FXML
     private Label lvlLH5;
-
     @FXML
     private Label lvlVLH5;
-
     @FXML
     private Label dmgLH5;
-
     @FXML
     private Label lvlPLH5;
-
     @FXML
     private Label lvlPVLH5;
-
     @FXML
     private Label att1WLH5;
-
     @FXML
     private Label att2WLH5;
-
     @FXML
     private Label att3WLH5;
-
     @FXML
     private Label itemSWLH5;
-
     @FXML
     private Label itemQWLH5;
-
     @FXML
     private Label att1ALH5;
-
     @FXML
     private Label att2ALH5;
-
     @FXML
     private Label att3ALH5;
-
     @FXML
     private Label itemSALH5;
-
     @FXML
     private Label itemQALH5;
-
     @FXML
     private Label att1VWLH5;
-
     @FXML
     private Label att2VWLH5;
-
     @FXML
     private Label att3VWLH5;
-
     @FXML
     private Label att1VALH5;
-
     @FXML
     private Label manaLH5;
-
     @FXML
     private Label manaVLH5;
-
     @FXML
     private Label cdLH5;
-
     @FXML
     private Label cdVLH5;
-
     @FXML
     private Label att2VALH5;
-
     @FXML
     private Label att3VALH5;
-
     @FXML
     private Label amLH5;
-
     @FXML
     private Label amVLH5;
-
     @FXML
     private Label nameLH6;
-
     @FXML
     private Label lvlLH6;
-
     @FXML
     private Label lvlVLH6;
-
     @FXML
     private Label dmgLH6;
-
     @FXML
     private Label lvlPLH6;
-
     @FXML
     private Label lvlPVLH6;
-
     @FXML
     private Label att1WLH6;
-
     @FXML
     private Label att2WLH6;
-
     @FXML
     private Label att3WLH6;
-
     @FXML
     private Label itemSWLH6;
-
     @FXML
     private Label itemQWLH6;
-
     @FXML
     private Label att1ALH6;
-
     @FXML
     private Label att2ALH6;
-
     @FXML
     private Label att3ALH6;
-
     @FXML
     private Label itemSALH6;
-
     @FXML
     private Label itemQALH6;
-
     @FXML
     private Label att1VWLH6;
-
     @FXML
     private Label att2VWLH6;
-
     @FXML
     private Label att3VWLH6;
-
     @FXML
     private Label att1VALH6;
-
     @FXML
     private Label manaLH6;
-
     @FXML
     private Label manaVLH6;
-
     @FXML
     private Label cdLH6;
-
     @FXML
     private Label cdVLH6;
-
     @FXML
     private Label att2VALH6;
-
     @FXML
     private Label att3VALH6;
-
     @FXML
     private Label amLH6;
-
     @FXML
     private Label amVLH6;
-
     @FXML
     private Label nameLH7;
-
     @FXML
     private Label lvlLH7;
-
     @FXML
     private Label lvlVLH7;
-
     @FXML
     private Label dmgLH7;
-
     @FXML
     private Label lvlPLH7;
-
     @FXML
     private Label lvlPVLH7;
-
     @FXML
     private Label att1WLH7;
-
     @FXML
     private Label att2WLH7;
-
     @FXML
     private Label att3WLH7;
-
     @FXML
     private Label itemSWLH7;
-
     @FXML
     private Label itemQWLH7;
-
     @FXML
     private Label att1ALH7;
-
     @FXML
     private Label att2ALH7;
-
     @FXML
     private Label att3ALH7;
-
     @FXML
     private Label itemSALH7;
-
     @FXML
     private Label itemQALH7;
-
     @FXML
     private Label att1VWLH7;
-
     @FXML
     private Label att2VWLH7;
-
     @FXML
     private Label att3VWLH7;
-
     @FXML
     private Label att1VALH7;
-
     @FXML
     private Label manaLH7;
-
     @FXML
     private Label manaVLH7;
-
     @FXML
     private Label cdLH7;
-
     @FXML
     private Label cdVLH7;
-
     @FXML
     private Label att2VALH7;
-
     @FXML
     private Label att3VALH7;
-
     @FXML
     private Label amLH7;
-
     @FXML
     private Label amVLH7;
-
     @FXML
     private Label nameLH8;
-
     @FXML
     private Label lvlLH8;
-
     @FXML
     private Label lvlVLH8;
-
     @FXML
     private Label dmgLH8;
-
     @FXML
     private Label lvlPLH8;
-
     @FXML
     private Label lvlPVLH8;
-
     @FXML
     private Label att1WLH8;
-
     @FXML
     private Label att2WLH8;
-
     @FXML
     private Label att3WLH8;
-
     @FXML
     private Label itemSWLH8;
-
     @FXML
     private Label itemQWLH8;
-
     @FXML
     private Label att1ALH8;
-
     @FXML
     private Label att2ALH8;
-
     @FXML
     private Label att3ALH8;
-
     @FXML
     private Label itemSALH8;
-
     @FXML
     private Label itemQALH8;
-
     @FXML
     private Label att1VWLH8;
-
     @FXML
     private Label att2VWLH8;
-
     @FXML
     private Label att3VWLH8;
-
     @FXML
     private Label att1VALH8;
-
     @FXML
     private Label manaLH8;
-
     @FXML
     private Label manaVLH8;
-
     @FXML
     private Label cdLH8;
-
     @FXML
     private Label cdVLH8;
-
     @FXML
     private Label att2VALH8;
-
     @FXML
     private Label att3VALH8;
-
     @FXML
     private Label amLH8;
-
     @FXML
     private Label amVLH8;
-
     @FXML
     private Label nameLH9;
-
     @FXML
     private Label lvlLH9;
-
     @FXML
     private Label lvlVLH9;
-
     @FXML
     private Label dmgLH9;
-
     @FXML
     private Label lvlPLH9;
-
     @FXML
     private Label lvlPVLH9;
-
     @FXML
     private Label att1WLH9;
-
     @FXML
     private Label att2WLH9;
-
     @FXML
     private Label att3WLH9;
-
     @FXML
     private Label itemSWLH9;
-
     @FXML
     private Label itemQWLH9;
-
     @FXML
     private Label att1ALH9;
-
     @FXML
     private Label att2ALH9;
-
     @FXML
     private Label att3ALH9;
-
     @FXML
     private Label itemSALH9;
-
     @FXML
     private Label itemQALH9;
-
     @FXML
     private Label att1VWLH9;
-
     @FXML
     private Label att2VWLH9;
-
     @FXML
     private Label att3VWLH9;
-
     @FXML
     private Label att1VALH9;
-
     @FXML
     private Label manaLH9;
-
     @FXML
     private Label manaVLH9;
-
     @FXML
     private Label cdLH9;
-
     @FXML
     private Label cdVLH9;
-
     @FXML
     private Label att2VALH9;
-
     @FXML
     private Label att3VALH9;
-
     @FXML
     private Label amLH9;
-
     @FXML
     private Label amVLH9;
-
     @FXML
     private Label nameLH10;
-
     @FXML
     private Label lvlLH10;
-
     @FXML
     private Label lvlVLH10;
-
     @FXML
     private Label dmgLH10;
-
     @FXML
     private Label lvlPLH10;
-
     @FXML
     private Label lvlPVLH10;
-
     @FXML
     private Label att1WLH10;
-
     @FXML
     private Label att2WLH10;
-
     @FXML
     private Label att3WLH10;
-
     @FXML
     private Label itemSWLH10;
-
     @FXML
     private Label itemQWLH10;
-
     @FXML
     private Label att1ALH10;
-
     @FXML
     private Label att2ALH10;
-
     @FXML
     private Label att3ALH10;
-
     @FXML
     private Label itemSALH10;
-
     @FXML
     private Label itemQALH10;
-
     @FXML
     private Label att1VWLH10;
-
     @FXML
     private Label att2VWLH10;
-
     @FXML
     private Label att3VWLH10;
-
     @FXML
     private Label att1VALH10;
-
     @FXML
     private Label manaLH10;
-
     @FXML
     private Label manaVLH10;
-
     @FXML
     private Label cdLH10;
-
     @FXML
     private Label cdVLH10;
-
     @FXML
     private Label att2VALH10;
-
     @FXML
     private Label att3VALH10;
-
     @FXML
     private Label amLH10;
-
     @FXML
     private Label amVLH10;
-
     @FXML
     private Label nameLH11;
-
     @FXML
     private Label lvlLH11;
-
     @FXML
     private Label lvlVLH11;
-
     @FXML
     private Label dmgLH11;
-
     @FXML
     private Label lvlPLH11;
-
     @FXML
     private Label lvlPVLH11;
-
     @FXML
     private Label att1WLH11;
-
     @FXML
     private Label att2WLH11;
-
     @FXML
     private Label att3WLH11;
-
     @FXML
     private Label itemSWLH11;
-
     @FXML
     private Label itemQWLH11;
-
     @FXML
     private Label att1ALH11;
-
     @FXML
     private Label att2ALH11;
-
     @FXML
     private Label att3ALH11;
-
     @FXML
     private Label itemSALH11;
-
     @FXML
     private Label itemQALH11;
-
     @FXML
     private Label att1VWLH11;
-
     @FXML
     private Label att2VWLH11;
-
     @FXML
     private Label att3VWLH11;
-
     @FXML
     private Label att1VALH11;
-
     @FXML
     private Label manaLH11;
-
     @FXML
     private Label manaVLH11;
-
     @FXML
     private Label cdLH11;
-
     @FXML
     private Label cdVLH11;
-
     @FXML
     private Label att2VALH11;
-
     @FXML
     private Label att3VALH11;
-
     @FXML
     private Label amLH11;
-
     @FXML
     private Label amVLH11;
-
     @FXML
     private Label twrL;
-
     @FXML
     private Label twrLL;
-
     @FXML
     private Label twrAML;
-
     @FXML
     private Label twrDmgL;
-
     @FXML
     private Label twrL1;
-
     @FXML
     private Label twrLL1;
-
     @FXML
     private Label twrAML1;
-
     @FXML
     private Label twrDmgL1;
-
     @FXML
     private Label twrL2;
-
     @FXML
     private Label twrLL2;
-
     @FXML
     private Label twrAML2;
-
     @FXML
     private Label twrDmgL2;
-
     @FXML
     private Label twrL3;
-
     @FXML
     private Label twrLL3;
-
     @FXML
     private Label twrAML3;
-
     @FXML
     private Label twrDmgL3;
-
     @FXML
     private Label ccL;
-
     @FXML
     private Label ccLL;
-
     @FXML
     private Label ccAML;
-
     @FXML
     private Label ccDmgL;
-
     @FXML
     private Label ccL1;
-
     @FXML
     private Label ccLL1;
-
     @FXML
     private Label ccAML1;
-
     @FXML
     private Label ccDmgL1;
-
     @FXML
     private Label ccL2;
-
     @FXML
     private Label ccLL2;
-
     @FXML
     private Label ccAML2;
-
     @FXML
     private Label ccDmgL2;
-
     @FXML
     private Label ccL3;
-
     @FXML
     private Label ccLL3;
-
     @FXML
     private Label ccAML3;
-
     @FXML
     private Label ccDmgL3;
-
     @FXML
     private TableView<Hero> heroTableView1;
-
     @FXML
     private TableView<Hero> heroTableView2;
-
     @FXML
     private GridPane tclCOntainer;
-
     @FXML
     private TableView<CastleComponent> ccTableView;
-
     @FXML
     private TableView<Tower> twrTableView;
-
     @FXML
     private TableView<Leader> leaderTableView;
-
     @FXML
     private TableView<Item> itemWeaponTableView;
-
     @FXML
     private TableView<Item> itemAccessoryTableView;
-
     @FXML
     private TableView<Deck> deckTableView;
-
     @FXML
     private TableView<Gold> goldHeroesTV;
-
     @FXML
     private TitledPane goldHeroesPane;
-
     @FXML
     private Button calcBtn;
-
 
     private PopulateTab_Item mPopulateTabItem;
     private PopulateTab_TWR_CC mPopulateTabTwrCc;
     private PopulateTab_Hero mPopulateTabHero;
     private PopulateTab_Deck mPopulateTabDeck;
-
 
     //TODO split controller to controllers for single tabs
     public void initialize(TabPane tabPane) throws IOException {
@@ -1239,9 +840,9 @@ public class CenterViewController {
         mPopulateTabTwrCc = new PopulateTab_TWR_CC(this);
         mPopulateTabHero = new PopulateTab_Hero(this);
         mPopulateTabDeck = new PopulateTab_Deck(this);
-
     }
-    public ObservableList<Hero> getHeroes(){
+
+    public ObservableList<Hero> getHeroes() {
         ObservableList<Hero> heroList = FXCollections.observableArrayList();
         heroList.addAll(this.getHeroTableView1().getItems());
         heroList.addAll(this.getHeroTableView2().getItems());
@@ -1275,7 +876,6 @@ public class CenterViewController {
     public TitledPane getGoldHeroesPane() {
         return goldHeroesPane;
     }
-
 
     public Tab getOverviewTab() {
         return overviewTab;

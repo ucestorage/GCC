@@ -20,7 +20,6 @@ public class Tower {
         Level = level;
         LevelPrestige = levelPrestige;
         AttackMode = attackMode;
-
     }
 
     public Tower(String name, TextField level, TextField levelPrestige, ComboBox<com.ubboeicke.application.Model.Enums.AttackMode.Mode> attackMode) {
@@ -28,14 +27,12 @@ public class Tower {
         Level = level;
         LevelPrestige = levelPrestige;
         AttackMode = attackMode;
-
     }
 
     public Tower(String name, ComboBox<String> promotion, TextField level) {
         Name = name;
         Promotion = promotion;
         Level = level;
-
     }
 
     public Tower(String name, TextField level) {

@@ -29,7 +29,6 @@ public class Hero {
         AttackMode = attackMode;
         Weapon = weapon;
         Accessory = accessory;
-
     }
 
     public Hero(String name, ComboBox promotion, TextField level, ComboBox weapon, ComboBox accessory) {
@@ -40,26 +39,20 @@ public class Hero {
         Accessory = accessory;
     }
 
-    public void setGoldDmg(Label goldDmg) {
-        GoldDmg = goldDmg;
-    }
-
-    public void setTotalGold(Label totalGold) {
-        TotalGold = totalGold;
+    public Hero(String name, Label level, TextField wantedLevel, TextField upgCost, Label totalCost, Label dmgInc, Label goldPerDmg) {
+        Name = name;
+        goldLvl = level;
+        wantLvl = wantedLevel;
+        UpgCost = upgCost;
+        TotalGold = totalCost;
     }
 
     public Label getTotalGold() {
         return TotalGold;
     }
 
-
-    public Hero(String name,Label level,TextField wantedLevel, TextField upgCost,Label totalCost,Label dmgInc,Label goldPerDmg){
-        Name = name;
-        goldLvl = level;
-        wantLvl = wantedLevel;
-        UpgCost = upgCost;
-        TotalGold = totalCost;
-
+    public void setTotalGold(Label totalGold) {
+        TotalGold = totalGold;
     }
 
     public String getName() {
@@ -104,5 +97,9 @@ public class Hero {
 
     public Label getGoldDmg() {
         return GoldDmg;
+    }
+
+    public void setGoldDmg(Label goldDmg) {
+        GoldDmg = goldDmg;
     }
 }
