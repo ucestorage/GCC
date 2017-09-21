@@ -8,9 +8,9 @@ Optimized for 1920x1080 displays.
 
 [Features](https://github.com/ucestorage/GCC/blob/master/README.md#features)
 
-[Upcoming Features](https://github.com/ucestorage/GCC/blob/master/README.md#upcomingfeatures)
+[Upcoming Features](https://github.com/ucestorage/GCC/blob/master/README.md#upcoming-features)
 
-[How to use the GCC](https://github.com/ucestorage/GCC/blob/master/README.md#howtousethegcc)
+[How to use the GCC](https://github.com/ucestorage/GCC/blob/master/README.md#how-to-use-the-gcc)
 
 
 # Motivation
