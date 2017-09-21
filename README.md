@@ -34,4 +34,4 @@ So i started programming the Grow Castle Calculator, it is based on java and jav
 
 # How to use the GCC
 
-1. Download the latest release.
+1. Download the latest release [here](https://github.com/ucestorage/GCC/releases/).
