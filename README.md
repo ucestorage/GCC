@@ -3,6 +3,16 @@ Calculator for the mobile Application 'Grow Castle'
 
 Optimized for 1920x1080 displays.
 
+# Navigation
+[Motivation]()
+
+[Features]()
+
+[Upcoming Features]()
+
+[How to use the GCC]()
+
+
 # Motivation
 I was playing Grow Castle alot in 2016, back then i always wanted to know how i could spend my gold, to get more damage faster, to be able to clear the waves faster.
 
