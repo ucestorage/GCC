@@ -38,7 +38,7 @@ So i started programming the Grow Castle Calculator, it is based on java and jav
 
 2. Make sure you have the latest java version installed.
 
-3. Make a new Folder, put the .jar inside, start up the Application.
+3. Make a new Folder, put the .jar inside, startup the Application.
 
 4. Select "First Start"; enter Informations asked for.
 
@@ -57,14 +57,14 @@ So i started programming the Grow Castle Calculator, it is based on java and jav
 
 11. Now exit the application, it will ask if you want to save. Hit "Save"!
 
-12. Restart the aplication, instead of first Start, click "Load Save".
+12. Restart the application, instead of first Start, click "Load Save".
 
-13. Head over to Heroes tab and assign the before created items to your heroes. Do the same wih Leaders.
+13. Head over to Heroes tab and assign the before created items to your heroes. Do the same with Leaders.
 
 14. Now, go to Overview or Gold Calculations and select a Deck with the Deck Chooser.
 
 15. See the displayed results.
 
-Note: Everytime you make a new Item or Deck you have to reload the savedata.
+Note: Everytime you make a new Item or Deck you have to reload the save data.
 
 
