@@ -35,3 +35,18 @@ So i started programming the Grow Castle Calculator, it is based on java and jav
 # How to use the GCC
 
 1. Download the latest release [here](https://github.com/ucestorage/GCC/releases/).
+
+2. Make sure you have the latest java version installed.
+
+3. Start up the Application.
+
+4. Select "First Start"; enter Informations asked for.
+
+5. Click on "Heroes" Tab; enter your Gamedata.
+
+(Don't worry about items just yet)
+
+6. Click on "Towers/Leader/Castle Component" Tab; enter your Gamedata.
+
+7.
+
