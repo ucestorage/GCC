@@ -17,6 +17,12 @@ import javafx.scene.layout.GridPane;
  * Created by Ubbo Eicke on 11.06.2017.
  */
 public class PopulateTab_TWR_CC {
+    ComboBox<String> c1 = new ComboBox<>();
+    ComboBox<String> c2 = new ComboBox<>();
+    ComboBox<String> c3 = new ComboBox<>();
+    ComboBox<String> c4 = new ComboBox<>();
+    ComboBox<String> c5 = new ComboBox<>();
+    ComboBox<String> c6 = new ComboBox<>();
     private CenterViewController mCenterViewController;
     private TableView<CastleComponent> mCastleComponentTableView;
     private TableView<Tower> mTowerTableView;
@@ -29,12 +35,6 @@ public class PopulateTab_TWR_CC {
     private GridPane mGridPane;
     private PopulateTab_Item mPopulateTabItem;
     private GameObjectConstructor goc;
-    ComboBox<String> c1 = new ComboBox<>();
-    ComboBox<String> c2 = new ComboBox<>();
-    ComboBox<String> c3 = new ComboBox<>();
-    ComboBox<String> c4 = new ComboBox<>();
-    ComboBox<String> c5 = new ComboBox<>();
-    ComboBox<String> c6 = new ComboBox<>();
 
     public PopulateTab_TWR_CC(CenterViewController centerViewController) {
         mCenterViewController = centerViewController;
@@ -73,7 +73,6 @@ public class PopulateTab_TWR_CC {
         TableColumn ldrAccCol = new TableColumn("Accessory");
         ldrAccCol.setCellValueFactory(new PropertyValueFactory<Leader, String>("accessory"));
         ldrAccCol.setPrefWidth(125);
-
         TableColumn ccCol = new TableColumn("Castle Components");
         TableColumn ccNameCol = new TableColumn("Name");
         ccNameCol.setCellValueFactory(new PropertyValueFactory<CastleComponent, String>("ccName"));

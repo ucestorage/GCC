@@ -1,25 +1,30 @@
 package com.ubboeicke.application.Controller.Center.CenterSubController.Tabs;
+
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Controller.Main.MainController;
 import com.ubboeicke.application.Model.Gamedata.GoldCalc.Gold;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 public class PopulateTab_Goldcalc {
     private CenterViewController mCenterViewController;
-  
+
     private MainController mMainController;
     private TableView<Gold> mTableView;
+
     public PopulateTab_Goldcalc(MainController mainController) {
         mMainController = mainController;
-      
+
         mCenterViewController = mMainController.getCenterViewController();
         mTableView = mCenterViewController.getGoldHeroesTV();
         setupHeroTableView();
     }
+
     public TableView<Gold> getmTableView() {
         return mTableView;
     }
+
     private void setupHeroTableView() {
         TableColumn c1 = new TableColumn("Hero/Leader");
         c1.setPrefWidth(200.0);

@@ -1,4 +1,5 @@
 package com.ubboeicke.application.Controller.Center.CenterSubController.Tabs;
+
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Model.Gamedata.Decks.Deck;
 import javafx.collections.FXCollections;
@@ -6,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 /**
  * Created by Ubbo Eicke on 11.06.2017.
  */
@@ -13,11 +15,13 @@ public class PopulateTab_Deck {
     private CenterViewController mCenterViewController;
     private TableView<Deck> mDeckTableView;
     private ObservableList<Deck> mDecks = FXCollections.observableArrayList();
+
     public PopulateTab_Deck(CenterViewController centerViewController) {
         this.mCenterViewController = centerViewController;
         mDeckTableView = mCenterViewController.getDeckTableView();
         setupDeckTableView();
     }
+
     public void setupDeckTableView() {
         TableColumn Col1 = new TableColumn("Deck Name");
         Col1.setCellValueFactory(new PropertyValueFactory<Deck, String>("name"));
@@ -81,9 +85,10 @@ public class PopulateTab_Deck {
         Col30.setCellValueFactory(new PropertyValueFactory<Deck, String>("h12"));
         mDeckTableView.getColumns().addAll(Col1, Col2, Col3, Col4, Col6, Col7, Col8, Col9, Col10, Col5, Col11, Col12, Col13, Col14, Col15, Col16, Col17, Col18, Col19, Col20, Col21, Col22, Col23, Col24, Col25, Col26, Col27, Col28, Col29, Col30);
         mDeckTableView.setColumnResizePolicy((param -> true));
-   
+
         mDeckTableView.setItems(mDecks);
     }
+
     public ObservableList<Deck> getDecks() {
         return mDecks;
     }

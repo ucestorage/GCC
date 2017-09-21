@@ -1,4 +1,5 @@
 package com.ubboeicke.application.Controller.Center.CenterSubController.Tabs;
+
 import com.ubboeicke.application.Controller.Center.CenterViewController;
 import com.ubboeicke.application.Controller.Main.MainController;
 import com.ubboeicke.application.Controller.Top.TopViewController;
@@ -14,10 +15,12 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
+
 /**
  * Created by Ubbo Eicke on 24.06.2017.
  */
@@ -54,11 +57,13 @@ public class OverviewController {
     private ObservableList<Gold> goldTableItems = FXCollections.observableArrayList();
     private Button btn;
     private DecimalFormat df = new DecimalFormat("#");
+
     public OverviewController(MainController mainController) {
         mMainController = mainController;
         mCenterViewController = mainController.getCenterViewController();
         mTopViewController = mainController.getTopViewController();
     }
+
     public void populateDeckCB() {
         deckList = mCenterViewController.getDeckTableView().getItems();
         ComboBox<String> cb = mTopViewController.getDeckCB();
@@ -69,6 +74,7 @@ public class OverviewController {
         populateTabGoldcalc = new PopulateTab_Goldcalc(mMainController);
         onChangeDeckCB();
     }
+
     private void calculateBasicValues(String leader, String tb1, String tb2, String tb3, String t1, String t2, String t3, String t4, String t5, String twr1, String twr2, String twr3, String twr4) {
         if (leader.equals("Edward")) {
             vk.setSummonedUnitDmg(vk.getSummonedUnitDmg() + 10.0);
@@ -92,6 +98,7 @@ public class OverviewController {
         findValuesTwr(twr3);
         findValuesTwr(twr4);
     }
+
     private void onChangeDeckCB() {
         mCastleComponents = mCenterViewController.getCcTableView().getItems();
         mTowers = mCenterViewController.getTwrTableView().getItems();
@@ -476,6 +483,7 @@ public class OverviewController {
                 });
         btnListener();
     }
+
     private void btnListener() {
         GameObjectConstructor goc = new GameObjectConstructor();
         btn = mCenterViewController.getCalcBtn();
@@ -496,15 +504,18 @@ public class OverviewController {
             }
         });
     }
+
     private String dmgDiff(String l, String s) {
         return String.valueOf(df.format(Double.parseDouble(l) - Double.parseDouble(s)));
     }
+
     private String goldPerDmg(String s, String s1) {
         s = s.replaceAll(",", "");
         BigDecimal bd = new BigDecimal(Double.parseDouble(s) / Double.parseDouble(s1));
         NumberFormat nf = NumberFormat.getInstance(new Locale("en_US"));
         return nf.format(bd.longValue());
     }
+
     private String totalUpgCost(String name, String lvl, String wlvl, String upgCost) {
         Double fixCost;
         if (name.equals("Bow Master") || name.equals("Ranger") || name.equals("Dark Bow Master") || name.equals(
@@ -530,6 +541,7 @@ public class OverviewController {
         NumberFormat nf = NumberFormat.getInstance(new Locale("en_US"));
         return nf.format(bd.longValue());
     }
+
     private void fillGoldCalc() {
         GameObjectConstructor goc = new GameObjectConstructor();
         DecimalFormat df = new DecimalFormat("#");
@@ -550,6 +562,7 @@ public class OverviewController {
             populateTabGoldcalc.getmTableView().setItems(goldTableItems);
         }
     }
+
     private String giveDmg(Label l) {
         try {
             String s = l.getText();
@@ -559,6 +572,7 @@ public class OverviewController {
             return "0";
         }
     }
+
     private void findValuesTb(String s) {
         if (s.equals("Forge")) {
             vk.setHp(vk.getHp() + 0.1);
@@ -586,11 +600,13 @@ public class OverviewController {
             vk.setHumanSummons(vk.getHumanSummons() + 2.0);
         }
     }
+
     private void findValuesTwr(String s) {
         if (s.equals("Trophy")) {
             vk.setGoldBonus(vk.getGoldBonus() + 0.35);
         }
     }
+
     private void findValuesTreasures(String s) {
         if (s.equals("Red Potion")) {
             vk.setFinalHP(vk.getFinalHP() + 300);
@@ -615,6 +631,7 @@ public class OverviewController {
         }
         //TODO import rest of treasures
     }
+
     private void findValuesTreasuresWeapons(String s) {
         if (s.equals("Sling")) {
             archerDmg = archerDmg + 25.0;
@@ -638,6 +655,7 @@ public class OverviewController {
         if (s.equals("Poison Bow")) {
         }
     }
+
     private void fillHeroData(String s, Label dmgHero, Label wItemS, Label wItemQ, Label wAtt1, Label wAtt1v, Label wAtt2, Label wAtt2v, Label wAtt3, Label wAtt3v, Label aItemS, Label aItemQ, Label aAtt1, Label aAtt2, Label aAtt3, Label aAtt1v, Label aAtt2v, Label aAtt3v, Label herolvl, Label heroplvl, Label cd, Label manal, Label attackMode, Label amName) {
         wItemS.setText("");
         wItemQ.setText("");
@@ -738,6 +756,7 @@ public class OverviewController {
                         wAtt2v.getText(), wAtt3.getText(), wAtt3v.getText(), aAtt1.getText(), aAtt1v.getText(),
                         aAtt2.getText(), aAtt2v.getText(), aAtt3.getText(), aAtt3v.getText(), cd, manal));
     }
+
     private String dmgHero(String hero, String lvl, String lvlP, String wAtt1, String wAtt1v, String wAtt2, String wAtt2v, String wAtt3, String wAtt3v, String aAtt1, String aAtt1v, String aAtt2, String aAtt2v, String aAtt3, String aAtt3v, Label cdL, Label manaCost) {
         String finaldmg = "";
         Double baseManaCost = 1.0;
@@ -1082,6 +1101,7 @@ public class OverviewController {
         cdL.setText(String.valueOf(df.format(cdBaseValue)));
         return finaldmg;
     }
+
     private String finalDMG(Double dmgOnLvl1, Double skillAttDmg, String lvl, Double itemValue, Double dmgPlus) {
         DecimalFormat df = new DecimalFormat("#");
         // Double baseDmg = (dmgOnLvl1 * (1 + Double.parseDouble(lvl) * 0.1));
@@ -1092,6 +1112,7 @@ public class OverviewController {
         //       "(" + baseDmg + "+" + baseDmg + "*" + itemValue + ")*(1+" + skillAttDmg + ")*(1+" + vk.getSkillDmg() + ")*(1+" + vk.getTbDmg() + ")*(1+" + vk.getTreasureDmg() + ")=" + finalDmg);
         return "Dmg~: " + String.valueOf(df.format(finalDmg));
     }
+
     private String twrCCDmg(String name, String lvl, String lvlP) {
         DecimalFormat df = new DecimalFormat("#");
         Double dmgOnLvl1 = 0.0;
@@ -1152,6 +1173,7 @@ public class OverviewController {
                 lvlP)) * 0.1)) * (1 + skillAtt) * (1 + vk.getTowerDmg());
         return "Dmg~: " + String.valueOf(df.format(finalV));
     }
+
     private Double baseDmg(String s, String wAtt1, String wAtt1v, String wAtt2, String wAtt2v, String wAtt3, String wAtt3v, String aAtt1, String aAtt1v, String aAtt2, String aAtt2v, String aAtt3, String aAtt3v) {
         Double baseDmg = 0.0;
         try {
@@ -1178,6 +1200,7 @@ public class OverviewController {
             return baseDmg;
         }
     }
+
     private Double itemAttDmg(String s, String wAtt1, String wAtt1v, String wAtt2, String wAtt2v, String wAtt3, String wAtt3v, String aAtt1, String aAtt1v, String aAtt2, String aAtt2v, String aAtt3, String aAtt3v) {
         Double itemValue = 0.0;
         try {
@@ -1204,18 +1227,21 @@ public class OverviewController {
             return itemValue;
         }
     }
+
     private String calcHP(String s) {
         DecimalFormat df = new DecimalFormat("#");
         Double baseHP = 100.0;
         Double incPerLvl = 50.0;
         return String.valueOf(df.format((baseHP + (Double.parseDouble(s) * incPerLvl) * (1 + vk.getHp()))));
     }
+
     private String calcMP(String s) {
         DecimalFormat df = new DecimalFormat("#");
         Double baseMP = 50.0;
         Double incPerLvl = 10.0;
         return String.valueOf(df.format((baseMP + (Double.parseDouble(s) * incPerLvl) * (1 + vk.getMp()))));
     }
+
     private void fillOverviewData(Deck deck, Label tb1, Label tb2, Label tb3, Label t1, Label t2, Label t3, Label t4, Label t5, Label twr1, Label twr2, Label twr3, Label twr4, ObservableList<Tower> towers, Label cc1, Label cc2, Label cc3, Label cc4, ObservableList<CastleComponent> castleComponents, Label ldr, ObservableList<Leader> ldrList) {
         tb1.setText(deck.getTownBuilding1());
         tb2.setText(deck.getTownBuilding2());

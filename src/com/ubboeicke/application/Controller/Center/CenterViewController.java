@@ -824,7 +824,6 @@ public class CenterViewController {
     private TitledPane goldHeroesPane;
     @FXML
     private Button calcBtn;
-
     private PopulateTab_Item mPopulateTabItem;
     private PopulateTab_TWR_CC mPopulateTabTwrCc;
     private PopulateTab_Hero mPopulateTabHero;

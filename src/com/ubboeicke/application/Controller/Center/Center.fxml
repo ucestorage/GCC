@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<fx:root prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE" type="TabPane"
-         BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="1900.0" tabClosingPolicy="UNAVAILABLE"
+         type="TabPane" BorderPane.alignment="CENTER" xmlns="http://javafx.com/javafx/8.0.141">
     <tabs>
         <Tab fx:id="overviewTab" closable="false" text="Overview">
             <content>
@@ -1537,7 +1537,6 @@
                             </children>
                         </GridPane>
                     </right>
-
                 </BorderPane>
             </content>
         </Tab>
