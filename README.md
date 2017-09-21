@@ -4,13 +4,13 @@ Calculator for the mobile Application 'Grow Castle'
 Optimized for 1920x1080 displays.
 
 # Navigation
-[Motivation]()
+[Motivation](https://github.com/ucestorage/GCC/blob/master/README.md#motivation)
 
-[Features]()
+[Features](https://github.com/ucestorage/GCC/blob/master/README.md#features)
 
-[Upcoming Features]()
+[Upcoming Features](https://github.com/ucestorage/GCC/blob/master/README.md#upcomingfeatures)
 
-[How to use the GCC]()
+[How to use the GCC](https://github.com/ucestorage/GCC/blob/master/README.md#howtousethegcc)
 
 
 # Motivation
