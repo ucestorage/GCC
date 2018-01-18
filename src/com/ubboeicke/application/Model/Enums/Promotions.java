@@ -24,6 +24,8 @@ public class Promotions {
     public static final String[] Windy = {"Ice Windy","Fire Windy"};
     public static final String[] Angel = {"N/A"};
     public static final String[] Zeus = {"CD Zeus I", "CD Zeus II", "Slow Zeus I", "Slow Zeus II"};
+    public static final String[] GolemMaster = {"Golem Master I", "GM II Extra DMG", "GM II GEM", "GM II Double Attack"};
+    public static final String[] Succubus = {"Succubus Active", "Succubus Extra Target", "Succubus Monster DMG"};
     public static final String[] WhiteMage = {"White Wizard","Pure Wizard","White Sorcerer","Pure Sorcerer"};
     public static final String[] Necromancer = {"Evil Necromancer","Dark Necromancer","Nightmare","Dark Nightmare"};
     public static final String[] MBandF = {"Military Band (F) II"};
@@ -31,6 +33,7 @@ public class Promotions {
     public static final String[] Priest = {"Cleric","Bishop"};
     public static final String[] Smith = {"Smith II", "STOS"};
     public static final String[] Architect = {"Careful Architect", "Skilled Architect","Great Architect"};
+    public static final String[] OrcBand = {"Orc Band I", "Orc Band II"};
     public static final String[] Tree = {"Crystal Tree", "Golden Tree"};
     public static final String[] Worm = {"Death Worm ", "Death Worm II"};
     public static final String[] FlameTower = {"Burning Tower", "Burning Tower II"};
@@ -134,6 +137,15 @@ public class Promotions {
         }
         if (s.equals("Smith")){
             strings = Smith;
+        }
+        if (s.equals("Golem Master")){
+            strings = GolemMaster;
+        }
+        if (s.equals("Succubus")){
+            strings = Succubus;
+        }
+        if (s.equals("Orc Band")){
+            strings = OrcBand;
         }
         if (s.equals("Architect")){
             strings = Architect;

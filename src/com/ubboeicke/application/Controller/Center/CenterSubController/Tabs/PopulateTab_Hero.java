@@ -105,6 +105,8 @@ public class PopulateTab_Hero {
         mHeroes1.add(new Hero("Windy", goc.promotionCB(Promotions.Windy), goc.levelTextField(), goc.levelPrestigeTextField(), goc.attackModeCB(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
         mHeroes1.add(new Hero("Angel", goc.promotionCB(Promotions.Angel), goc.levelTextField(), goc.levelPrestigeTextField(), goc.attackModeCB(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
         mHeroes1.add(new Hero("Zeus", goc.promotionCB(Promotions.Zeus), goc.levelTextField(), goc.levelPrestigeTextField(), goc.attackModeCB(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Golem Master", goc.promotionCB(Promotions.GolemMaster), goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
+        mHeroes1.add(new Hero("Succubus", goc.promotionCB(Promotions.Succubus),goc.levelTextField(),goc.levelPrestigeTextField(),goc.attackModeCB(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
         mHeroes2.add(new Hero("White Mage", goc.promotionCB(Promotions.WhiteMage), goc.levelTextField(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
         mHeroes2.add(new Hero("Necromancer", goc.promotionCB(Promotions.Necromancer), goc.levelTextField(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
         mHeroes2.add(new Hero("Military Band (F)", goc.promotionCB(Promotions.MBandF), goc.levelTextField(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
@@ -112,6 +114,7 @@ public class PopulateTab_Hero {
         mHeroes2.add(new Hero("Priest", goc.promotionCB(Promotions.Priest), goc.levelTextField(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
         mHeroes2.add(new Hero("Smith", goc.promotionCB(Promotions.Smith), goc.levelTextField(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
         mHeroes2.add(new Hero("Architect", goc.promotionCB(Promotions.Architect), goc.levelTextField(), goc.weaponCB(mWeaponList), goc.accessoryCB(mAccessoryList)));
+        mHeroes2.add(new Hero("Orc Band", goc.promotionCB(Promotions.OrcBand),goc.levelTextField(),goc.weaponCB(mWeaponList),goc.accessoryCB(mAccessoryList)));
         mHeroTableView1.setItems(mHeroes1);
         mHeroTableView2.setItems(mHeroes2);
         mHeroTableView1.setOnKeyReleased(event -> {
